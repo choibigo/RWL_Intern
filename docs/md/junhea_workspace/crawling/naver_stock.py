@@ -29,13 +29,13 @@ def dividerstr(listA):
 
 def nametagsort(listA):
     ans = []
-    find_num = 12
+    find_num = 13
     name_num = 0
     stack = 1
     while find_num < len(listA):
         if listA[find_num] in company_name_list[name_num]:
             while find_num < len(listA):
-                i = find_num + 1
+                i = find_num + stack
                 if listA[i] in company_name_list[name_num]:
                     stack += 1
                 else:
@@ -44,9 +44,12 @@ def nametagsort(listA):
                     break
             find_num += stack
             stack = 1
-        for i in range(12):
-            ans.append(listA[find_num + i])
-        find_num += 12
+        for i in range(11):
+            try:
+                ans.append(listA[find_num + i])
+            except:
+                pass
+        find_num += 11
     return ans
 
 if response.status_code == 200:
@@ -65,8 +68,8 @@ if response.status_code == 200:
     memo = open("C:/anaconda3 for study/gitgit/RWL_Intern/docs/md/junhea_workspace/crawling/naver_stock.txt", 'w')
     for i in range(len(sortedcompany)):                             # 이름, 현재가격, 전일비, 등락률, 거래량, 거래대금, 매수호가, 매도호가, 시가총액, PER, ROE 순서대로 반복해서 출력
         memo.write('\n' + str(i) + ' : ' + sortedcompany[i])
-#    for i in range(len(company_name_list)):                        # 이름 정렬 테스트용
-#        memo.write('\n' + str(i) + ' : ' + company_name_list[i])
+    for i in range(len(company_name_list)):                        # 이름 정렬 테스트용
+        memo.write('\n' + str(i) + ' : ' + company_name_list[i])
     memo.close
 else:
     print('response.status_code')
