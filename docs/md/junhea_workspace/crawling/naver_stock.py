@@ -32,7 +32,7 @@ def nametagsort(listA):
     find_num = 13
     name_num = 0
     stack = 1
-    while find_num < len(listA):
+    while name_num < 30:
         if listA[find_num] in company_name_list[name_num]:
             while find_num < len(listA):
                 i = find_num + stack
