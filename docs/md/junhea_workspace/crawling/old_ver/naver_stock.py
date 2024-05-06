@@ -65,7 +65,7 @@ if response.status_code == 200:
             company_name_list.append(''.join(temp[namelocation+1:len(temp)-9]))
     companylist = dividerstr(company.get_text())
     sortedcompany = nametagsort(companylist)
-    memo = open("C:/anaconda3 for study/gitgit/RWL_Intern/docs/md/junhea_workspace/crawling/naver_stock.txt", 'w')
+    memo = open("C:/anaconda3 for study/gitgit/RWL_Intern/docs/md/junhea_workspace/crawling/old_ver/naver_stock.txt", 'w')
     for i in range(len(sortedcompany)):                             # 이름, 현재가격, 전일비, 등락률, 거래량, 거래대금, 매수호가, 매도호가, 시가총액, PER, ROE 순서대로 반복해서 출력
         memo.write('\n' + str(i) + ' : ' + sortedcompany[i])
     for i in range(len(company_name_list)):                        # 이름 정렬 테스트용
