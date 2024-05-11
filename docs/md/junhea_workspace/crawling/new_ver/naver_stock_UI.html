@@ -23,448 +23,93 @@
 
 <h2>거래량 상위 30</h2>
 
-<table id="sortableTable">
-    <thead>
-        <tr>
-            <th onclick="sortTable(0)">번호</th>
-            <th onclick="sortTable(1)">이름</th>
-            <th onclick="sortTable(2)">현재가격</th>
-            <th onclick="sortTable(3)">전일비</th>
-            <th onclick="sortTable(4)">등락률</th>
-            <th onclick="sortTable(5)">거래량</th>
-            <th onclick="sortTable(6)">거래대금</th>
-            <th onclick="sortTable(7)">매수호가</th>
-            <th onclick="sortTable(8)">매도호가</th>
-            <th onclick="sortTable(9)">시가총액</th>
-            <th onclick="sortTable(10)">PER</th>
-            <th onclick="sortTable(11)">ROE</th>
-        </tr>
-    </thead>
-    <tbody>
-      <tr>
-         <td> 1</td>
-         <td>KODEX 200선물인버스2X</td>
-         <td> 2,020</td>
-         <td>   42</td>
-         <td>+ 2.12%</td>
-         <td>135,619,194</td>
-         <td>  273,364</td>
-         <td> 2,020</td>
-         <td> 2,025</td>
-         <td>   17,382</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td> 2</td>
-         <td>대원전선</td>
-         <td> 2,095</td>
-         <td>  482</td>
-         <td>+29.88%</td>
-         <td>103,429,492</td>
-         <td>  204,923</td>
-         <td> 2,095</td>
-         <td>     0</td>
-         <td>    1,508</td>
-         <td> 16.24</td>
-         <td> 10.02</td>
-      </tr>
-      <tr>
-         <td> 3</td>
-         <td>대한전선</td>
-         <td>12,790</td>
-         <td>1,370</td>
-         <td>+12.00%</td>
-         <td> 60,422,276</td>
-         <td>  775,729</td>
-         <td>12,790</td>
-         <td>12,800</td>
-         <td>   23,847</td>
-         <td> 25.08</td>
-         <td>  7.83</td>
-      </tr>
-      <tr>
-         <td> 4</td>
-         <td>KODEX 코스닥150선물인버스</td>
-         <td> 3,445</td>
-         <td>   60</td>
-         <td>+ 1.77%</td>
-         <td> 37,705,649</td>
-         <td>  129,732</td>
-         <td> 3,440</td>
-         <td> 3,445</td>
-         <td>    5,030</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td> 5</td>
-         <td>한국ANKOR유전</td>
-         <td>   379</td>
-         <td>   14</td>
-         <td>+ 3.84%</td>
-         <td> 34,924,372</td>
-         <td>   14,003</td>
-         <td>   378</td>
-         <td>   379</td>
-         <td>      265</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td> 6</td>
-         <td>삼성 인버스 2X WTI원유 선물 ETN</td>
-         <td>    81</td>
-         <td>    2</td>
-         <td>- 2.41%</td>
-         <td> 27,704,502</td>
-         <td>    2,242</td>
-         <td>    80</td>
-         <td>    81</td>
-         <td>    1,213</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td> 7</td>
-         <td>KODEX 인버스</td>
-         <td> 4,125</td>
-         <td>   45</td>
-         <td>+ 1.10%</td>
-         <td> 22,007,112</td>
-         <td>   90,608</td>
-         <td> 4,120</td>
-         <td> 4,125</td>
-         <td>    7,186</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td> 8</td>
-         <td>KODEX 코스닥150레버리지</td>
-         <td>11,740</td>
-         <td>  380</td>
-         <td>- 3.14%</td>
-         <td> 21,508,690</td>
-         <td>  252,438</td>
-         <td>11,735</td>
-         <td>11,740</td>
-         <td>    8,887</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td> 9</td>
-         <td>광명전기</td>
-         <td> 2,550</td>
-         <td>   20</td>
-         <td>+ 0.79%</td>
-         <td> 21,141,266</td>
-         <td>   55,465</td>
-         <td> 2,550</td>
-         <td> 2,555</td>
-         <td>    1,105</td>
-         <td> 10.85</td>
-         <td>  8.69</td>
-      </tr>
-      <tr>
-         <td>10</td>
-         <td>삼성전자</td>
-         <td>84,500</td>
-         <td>  800</td>
-         <td>- 0.94%</td>
-         <td> 18,773,002</td>
-         <td>1,584,264</td>
-         <td>84,400</td>
-         <td>84,500</td>
-         <td>5,044,466</td>
-         <td> 39.65</td>
-         <td>  4.15</td>
-      </tr>
-      <tr>
-         <td>11</td>
-         <td>SK이터닉스</td>
-         <td>26,500</td>
-         <td>   50</td>
-         <td>+ 0.19%</td>
-         <td> 18,765,266</td>
-         <td>  507,407</td>
-         <td>26,450</td>
-         <td>26,500</td>
-         <td>    6,773</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td>12</td>
-         <td>이구산업</td>
-         <td> 5,700</td>
-         <td>  270</td>
-         <td>+ 4.97%</td>
-         <td> 18,323,686</td>
-         <td>  102,173</td>
-         <td> 5,690</td>
-         <td> 5,700</td>
-         <td>    1,906</td>
-         <td>285.00</td>
-         <td>  0.52</td>
-      </tr>
-      <tr>
-         <td>13</td>
-         <td>신성이엔지</td>
-         <td> 2,385</td>
-         <td>    5</td>
-         <td>- 0.21%</td>
-         <td> 17,536,405</td>
-         <td>   43,003</td>
-         <td> 2,385</td>
-         <td> 2,390</td>
-         <td>    4,909</td>
-         <td> 30.19</td>
-         <td>  7.15</td>
-      </tr>
-      <tr>
-         <td>14</td>
-         <td>흥아해운</td>
-         <td> 3,360</td>
-         <td>   75</td>
-         <td>- 2.18%</td>
-         <td> 17,429,852</td>
-         <td>   60,569</td>
-         <td> 3,360</td>
-         <td> 3,365</td>
-         <td>    8,078</td>
-         <td> 23.66</td>
-         <td> 23.02</td>
-      </tr>
-      <tr>
-         <td>15</td>
-         <td>에이프로젠</td>
-         <td> 1,822</td>
-         <td>  142</td>
-         <td>+ 8.45%</td>
-         <td> 16,152,749</td>
-         <td>   28,136</td>
-         <td> 1,822</td>
-         <td> 1,823</td>
-         <td>    4,825</td>
-         <td> -8.44</td>
-         <td>-30.65</td>
-      </tr>
-      <tr>
-         <td>16</td>
-         <td>SH에너지화학</td>
-         <td>   658</td>
-         <td>   29</td>
-         <td>+ 4.61%</td>
-         <td> 13,312,547</td>
-         <td>    9,015</td>
-         <td>   657</td>
-         <td>   658</td>
-         <td>      731</td>
-         <td>-28.61</td>
-         <td> -2.81</td>
-      </tr>
-      <tr>
-         <td>17</td>
-         <td>KODEX 레버리지</td>
-         <td>19,860</td>
-         <td>  455</td>
-         <td>- 2.24%</td>
-         <td> 13,086,449</td>
-         <td>  260,454</td>
-         <td>19,855</td>
-         <td>19,860</td>
-         <td>   19,622</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td>18</td>
-         <td>KR모터스</td>
-         <td> 1,295</td>
-         <td>  178</td>
-         <td>+15.94%</td>
-         <td> 12,747,551</td>
-         <td>   16,982</td>
-         <td> 1,294</td>
-         <td> 1,295</td>
-         <td>      377</td>
-         <td> -2.87</td>
-         <td>-59.28</td>
-      </tr>
-      <tr>
-         <td>19</td>
-         <td>한국패러랠</td>
-         <td>   291</td>
-         <td>    2</td>
-         <td>+ 0.69%</td>
-         <td> 11,639,179</td>
-         <td>    3,482</td>
-         <td>   290</td>
-         <td>   291</td>
-         <td>      233</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td>20</td>
-         <td>신한 인버스 2X WTI원유 선물 ETN(H)</td>
-         <td>    70</td>
-         <td>    2</td>
-         <td>- 2.78%</td>
-         <td>  8,925,282</td>
-         <td>      623</td>
-         <td>    69</td>
-         <td>    70</td>
-         <td>      443</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td>21</td>
-         <td>KODEX 코스닥150</td>
-         <td>14,245</td>
-         <td>  225</td>
-         <td>- 1.55%</td>
-         <td>  8,063,280</td>
-         <td>  114,880</td>
-         <td>14,245</td>
-         <td>14,250</td>
-         <td>    8,397</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td>22</td>
-         <td>KIB플러그에너지</td>
-         <td>   432</td>
-         <td>   10</td>
-         <td>- 2.26%</td>
-         <td>  7,190,967</td>
-         <td>    3,107</td>
-         <td>   431</td>
-         <td>   432</td>
-         <td>    1,024</td>
-         <td>  6.97</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td>23</td>
-         <td>대창</td>
-         <td> 1,461</td>
-         <td>    9</td>
-         <td>- 0.61%</td>
-         <td>  6,717,169</td>
-         <td>   10,021</td>
-         <td> 1,461</td>
-         <td> 1,462</td>
-         <td>    1,332</td>
-         <td> -6.86</td>
-         <td> -8.32</td>
-      </tr>
-      <tr>
-         <td>24</td>
-         <td>일진전기</td>
-         <td>21,600</td>
-         <td>1,600</td>
-         <td>- 6.90%</td>
-         <td>  6,657,895</td>
-         <td>  151,450</td>
-         <td>21,600</td>
-         <td>21,650</td>
-         <td>   10,300</td>
-         <td> 24.80</td>
-         <td>  9.65</td>
-      </tr>
-      <tr>
-         <td>25</td>
-         <td>삼성 인버스 2X 코스닥150 선물 ETN</td>
-         <td> 6,035</td>
-         <td>  190</td>
-         <td>+ 3.25%</td>
-         <td>  6,638,632</td>
-         <td>   40,049</td>
-         <td> 6,030</td>
-         <td> 6,035</td>
-         <td>    2,414</td>
-         <td>   N/A</td>
-         <td>   N/A</td>
-      </tr>
-      <tr>
-         <td>26</td>
-         <td>웰바이오텍</td>
-         <td>   545</td>
-         <td>   40</td>
-         <td>- 6.84%</td>
-         <td>  6,429,662</td>
-         <td>    3,562</td>
-         <td>   545</td>
-         <td>   546</td>
-         <td>      496</td>
-         <td> -5.05</td>
-         <td>-17.91</td>
-      </tr>
-      <tr>
-         <td>27</td>
-         <td>대한해운</td>
-         <td> 1,880</td>
-         <td>   56</td>
-         <td>- 2.89%</td>
-         <td>  5,858,271</td>
-         <td>   11,245</td>
-         <td> 1,880</td>
-         <td> 1,881</td>
-         <td>    6,001</td>
-         <td>  8.79</td>
-         <td>  4.36</td>
-      </tr>
-      <tr>
-         <td>28</td>
-         <td>삼부토건</td>
-         <td> 1,780</td>
-         <td>   22</td>
-         <td>- 1.22%</td>
-         <td>  4,999,571</td>
-         <td>    8,998</td>
-         <td> 1,780</td>
-         <td> 1,781</td>
-         <td>    3,636</td>
-         <td> -3.49</td>
-         <td>-35.88</td>
-      </tr>
-      <tr>
-         <td>29</td>
-         <td>LS네트웍스</td>
-         <td> 4,725</td>
-         <td>  225</td>
-         <td>+ 5.00%</td>
-         <td>  4,940,029</td>
-         <td>   23,305</td>
-         <td> 4,720</td>
-         <td> 4,725</td>
-         <td>    3,723</td>
-         <td> 34.74</td>
-         <td>  1.92</td>
-      </tr>
-      <tr>
-         <td>30</td>
-         <td>디아이</td>
-         <td>15,400</td>
-         <td>  740</td>
-         <td>- 4.58%</td>
-         <td>  4,761,670</td>
-         <td>   76,594</td>
-         <td>15,390</td>
-         <td>15,400</td>
-         <td>    4,358</td>
-         <td>138.74</td>
-         <td>  2.09</td>
-      </tr>
-    </tbody>
-</table>
+
 
 <script>
+   let company_data;
+   fetch("C:/anaconda3 for study/gitgit/RWL_Intern/docs/md/junhea_workspace/crawling/new_ver/company_name.json")
+      .then(response => response.json())
+      .then(json => {
+         company_data = json;
+         console.log(company_data);
+      })
+      .catch(error => console.error('Error:', error));
+   const rowCnt = 955;
+   const columnCnt = 18;
+   document.write('<table border="1">');
+   document.write('<tr>');
+   document.write('<th onclick="sortTable(0)">');
+   document.write('회사 이름');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(1)">');
+   document.write('전일 가격');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(2)">');
+   document.write('시작 가격');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(3)">');
+   document.write('당일 최고가');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(4)">');
+   document.write('당일 최저가');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(5)">');
+   document.write('거래량');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(6)">');
+   document.write('대금');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(7)">');
+   document.write('시가 총액');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(8)">');
+   document.write('외인소진율');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(9)">');
+   document.write('52주 최고가');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(10)">');
+   document.write('52주 최저가');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(11)">');
+   document.write('PER');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(12)">');
+   document.write('EPS');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(13)">');
+   document.write('추정PER');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(14)">');
+   document.write('추정EPS');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(15)">');
+   document.write('PBR');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(16)">');
+   document.write('BPS');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(17)">');
+   document.write('배당수익률');
+   document.write('</th>');
+   document.write('<th onclick="sortTable(18)">');
+   document.write('주당배당금');
+   document.write('</th>');
+   document.write('</tr>');
+   for (let i = 1; i < rowCnt; i++) {
+      var k = string(i);
+      document.write('<tr>');
+      document.write('<td>');
+      document.write(company_data[k]["stockName"]);
+      document.write('</td>');
+      for (let j = 0; j < columnCnt; j++)  {
+         document.write('<td>');
+         document.write(company_data[k]["totalInfos"][j]["value"]);
+         document.write('</td>');
+      }
+      document.write('</tr>')
+   }
+   document.write('</table>');
     function sortTable(colInd) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("sortableTable");
