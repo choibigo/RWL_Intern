@@ -1,0 +1,15 @@
+{
+    "player_name": "Nutella_Choco",
+    "ID": "8d3s-83k5-89s908",
+    "inventory": {
+        "Armor": {
+            "helmet": "Diamond",
+            "chest": "nederite",
+            "pants": "Diamond",
+            "shose": null
+        },
+        "quick_0": "Diamond_Pickaxe",
+        "quick_1": null
+    },
+    "Level": 100
+}
