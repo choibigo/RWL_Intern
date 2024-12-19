@@ -1,5 +1,0 @@
-user_input = input("저장할 내용을 입력하세요: ")
-f = open('C:/anaconda3 for study/gitgit/uninstructed_robot-1/docs/md/junhea_workspace/practice_ch04/test.txt', 'a')
-f.write('\n' + user_input)
-f.write('\n')
-f.close()
