@@ -44,6 +44,14 @@ i my me mine<br> you your you yours<br> he him him his
     '''
     
 
-##체크 리스트
-- [] this is complete
-- [] this is not complete
+## 체크 리스트 
+- [x] this is complete.
+- [ ] this is not complete.
+
+
+## table 만들기
+헤더1|헤더2|헤더3|헤더4
+---|---|---|---|
+1|2|3|4
+4|5|6|7
+
