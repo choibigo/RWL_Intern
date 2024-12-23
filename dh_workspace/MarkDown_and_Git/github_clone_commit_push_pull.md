@@ -32,3 +32,9 @@ git push : 로컬 변경 사항을 원격 저장소에 반영
 
 git pull : 원격 저장소의 변경 사항을 로컬에 반영
 > git pull origin main
+
+### 다른 명령어들
+
+git remote -v : 원격 저장소(Remote Repository)의 URL을 확인하는 명령어, 연결된 원격 저장소의 주소를 알 수 있다.
+> git remote -v  
+
