@@ -2,7 +2,7 @@
 
 # 커리큘럼
 - [ ] 기본
-    - [x] Git
+    - [ ] Git(clone, commit, push, pull 실습)
     - [x] VSCode
     - [ ] MD 파일 작성
 
