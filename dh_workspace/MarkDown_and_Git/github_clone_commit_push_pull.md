@@ -26,7 +26,7 @@ git commit : 로컬에서 변경 사항을 저장  (메시지 없이 commit이 �
 ### git push
 
 git push : 로컬 변경 사항을 원격 저장소에 반영
-> git push origin main
+> git push origin main      # main branch에 추가. origin 대신 링크를 넣어도 됨.
 
 ### git pull
 
