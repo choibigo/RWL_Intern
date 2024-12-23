@@ -2,11 +2,11 @@
 
 # 커리큘럼
 - [ ] 기본
+    - [x] Git
+    - [x] VSCode
     - [ ] MD 파일 작성
 
 - [ ] 환경 세팅
-    - [ ] Git
-    - [ ] VSCode
     - [ ] Anaconda
     - [ ] Docker
     - [ ] Docker를 활용한 Toy Project (시계?)
