@@ -1,3 +1,6 @@
+[유튜브강의](https://www.youtube.com/watch?v=p1-wm-ThnTI&list=PLlTylS8uB2fDLJRJCXqUowsOViG-ZKnWy&index=1)
+
+
 # docker의 구성
 * image
 * container
@@ -87,3 +90,24 @@ run 하다가 삭제할 거면 먼저 중지를 시킨다.
 
 그러고 삭제
 >docker rm test1
+
+---
+
+# dockerfile
+
+docker file은 docker image를 생성하기 위한 script file이다.<br>
+여러 키워드를 사용하여 dockerfile을 작성하여 빌드를 보다 쉽게 수행할 수 있다.
+
+참고)<br> 
+[dockerfile instruction1](https://rampart81.github.io/post/dockerfile_instructions/)<br>
+
+[dockerfile instruction2](https://toramko.tistory.com/entry/docker-%EB%8F%84%EC%BB%A4%ED%8C%8C%EC%9D%BCDockerfile-%EC%9D%98-%EA%B0%9C%EB%85%90-%EC%9E%91%EC%84%B1-%EB%B0%A9%EB%B2%95%EB%AC%B8%EB%B2%95-%EC%9E%91%EC%84%B1-%EC%98%88%EC%8B%9C)
+
+dockerfile에서 사용되는 주요 instruction은 다음과 같다.
+
+* FROM
+    * From 키워드를 사용하여 base가 되는 image를 지정.
+    * 주로 os 이미지나 runtime 이미지를 지정한다.
+
+* RUN
+    * 이미지를 빌드할 때 사용하는 command를 설정할 때 사용.
