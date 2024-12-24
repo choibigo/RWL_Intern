@@ -2,9 +2,9 @@
 
 # 커리큘럼
 - [ ] 기본
-    - [ ] Git(clone, commit, push, pull 실습)
+    - [X] Git(clone, commit, push, pull 실습)
     - [x] VSCode
-    - [ ] MD 파일 작성
+    - [X] MD 파일 작성
 
 - [ ] 환경 세팅
     - [ ] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
