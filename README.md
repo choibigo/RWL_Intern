@@ -7,7 +7,7 @@
     - [X] MD 파일 작성
 
 - [ ] 환경 세팅
-    - [ ] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
+    - [X] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
     - [ ] Docker
     - [ ] Docker를 활용한 Toy Project (시계?)
 - [ ] Python
