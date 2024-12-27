@@ -215,3 +215,78 @@ index.html
 3. \<body>: 웹 페이지의 본문 영역이다. 실제로 사용자에게 보여질 내용은 모두 이 영역 안에 들어감. 웹페이지 안의 내용은 모두 \<body> 안에 들어가야한다.
 4. \<h1>: 가장 중요한 제목을 나타내며, **"Hello World"** 가 표시됨.(md 파일과 비슷)
 5. \<p>: 단락을 정의하고, **"This is DH"** 라는 텍스트가 표시됨. 텍스트가 여러 문장으로 이루어졌을 때, 이 텍스트를 하나의 단락으로 묶어준다. \<h1>에 비해 작은 크기의 글자가 된다.
+
+
+<br>
+
+파일을 생성 후 build를 해보자.
+
+```docker
+docker build -t test123 . #-t는 tag, 뒤의 . 은 현재 directory를 의미
+```
+
+```docker
+docker image ls         #이 코드를 통해 이미지가 생성된 것을 확인 가능
+```
+* tag가 latest 로 된 것을 확인인 가능. 
+
+* 만일
+```docker
+  docker build -t test123:1.1 . # 이렇게 한 후에 docker image ls를 하면  
+                                # tag에 1.1이 뜬다. 
+```
+
+
+### 이번에는 실행을 해보자.
+```docker
+docker run --name test123_app -p 80:80 test123
+```
+(만약 tag가 1.1인 test123 이미지를 실행하고 싶다면 뒤에 test123:1.1을 적으면 됨.)
+
+![이미지](docker_run_test123_app.png)
+
+원래의 결과가 It works! 였다면 이번에는 index.html을 COPY해줘서 이런 결과가 나옴.
+
+이제 멈추자.
+```docker
+docker stop test123_app
+```
+
+만약
+```docker
+docker inspect test123:1.1
+```
+을 한다면 layer를 관찰할 수 있다.
+
+"Layers": [
+                "sha256:8b296f48696071aafb5a6286ca60d441a7e559b192fc7f94bb63ee93dae98f17",
+                "sha256:fa084c5dde2584a7b0fdd8592d88e956780dc1adfd7d6ea65b0d3f03f3f86556",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:5dceadbf19012836b14024f8c310b1fa241f948a0ef8727fb8a55ca2cc169e52",
+                "sha256:ca565a60a706cb16a23638feca3f550cafafd57435f90014ea9bc7a8e2293f43",
+                "sha256:52168ee29b8324df38821ffde57f46efe89f6141833afdac12b52ddb0142afd6",
+                "sha256:3fcbe81f91995cdd111103870b6e71a06ad952bc1b780e5802c43e4eb713122e"<br>
+            ]
+
+<br>
+여기에
+
+```docker
+docker inspect httpd
+```
+를 하면
+
+ "Layers": [
+                "sha256:8b296f48696071aafb5a6286ca60d441a7e559b192fc7f94bb63ee93dae98f17",
+                "sha256:fa084c5dde2584a7b0fdd8592d88e956780dc1adfd7d6ea65b0d3f03f3f86556",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:5dceadbf19012836b14024f8c310b1fa241f948a0ef8727fb8a55ca2cc169e52",
+                "sha256:ca565a60a706cb16a23638feca3f550cafafd57435f90014ea9bc7a8e2293f43",
+                "sha256:52168ee29b8324df38821ffde57f46efe89f6141833afdac12b52ddb0142afd6"
+            ]
+
+<br>
+가 나오는데 상위 다섯개의 layer가 동일한 것을 볼 수 있다.<br>
+내가 만든 이미지에는 6번째 layer가 추가가 된 것을 확인할 수 있다.<br>
+이것은 git에 commit을 올리는 것과 비슷하다고 생각할 수 있다.<br>
+기본 이미지의 내용들은 갖고오고 거기에 6번째 layer만큼 변경사항이 있다는 것을 표현해주는 것이다. 여기에 index.html 을 COPY한 내용이 포함되어 있을 것이다. 이걸 통해 우리가 dockerfile을 사용해서 이미지를 빌드할 수 있구나 정도로 이해하면 된다.

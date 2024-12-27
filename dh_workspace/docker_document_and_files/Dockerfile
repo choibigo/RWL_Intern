@@ -1,3 +1,3 @@
-From httpd
+FROM httpd
 
-COPY index.html
+COPY index.html /usr/local/apache2/htdocs
