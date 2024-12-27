@@ -24,6 +24,14 @@
 * 개별적
 * application 실행
 
+![이미지1](docker_basic_cm.png)
+
+![이미지2](docker_after_container_command.png)
+
+![이미지3](docker_after_image_command.png)
+
+![이미지4](docker_option_command.png)
+
 
 
 # docker 통신
