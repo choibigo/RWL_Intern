@@ -290,3 +290,57 @@ docker inspect httpd
 내가 만든 이미지에는 6번째 layer가 추가가 된 것을 확인할 수 있다.<br>
 이것은 git에 commit을 올리는 것과 비슷하다고 생각할 수 있다.<br>
 기본 이미지의 내용들은 갖고오고 거기에 6번째 layer만큼 변경사항이 있다는 것을 표현해주는 것이다. 여기에 index.html 을 COPY한 내용이 포함되어 있을 것이다. 이걸 통해 우리가 dockerfile을 사용해서 이미지를 빌드할 수 있구나 정도로 이해하면 된다.
+
+
+# docker compose 파일 
+
+compose 파일은 도커 애플리케이션의 서비스, 네트워크, 볼륨 등의 설정을 yaml 형식으로 작성하는 파일.
+
+예제파일
+![이미지](docker_compose.png)
+
+큰 틀에서의 구성요소는 다음과 같다.
+- version(deprecated 되어 더이상 설정하지 않아도 된다.)
+- services(가장 많이 사용됨. 아래 네개는 잘 사용 안한다 함.)
+- network
+- volume
+- config
+- secret
+
+여기서 우리는 service에 대해 자세히 보자.
+
+'services'는 여러 컨테이너를 정의하는 데 사용된다.
+
+![이미지](services.png)
+
+예를 들어 위와 같이 파일을 작성했다면, 'frontend'와 backend'는 각 컨테이너를 정의하게 되며, 각 컨테이너의 이름이 된다.
+
+webapp을 이미지를 이용해서 컨테이너를 가동하면 frontend가 되고, database 이미지를 이용해서 컨테이너를 가동하면 backend가 된다.
+
+![이미지](container_setting_keyword.png)
+
+특이점
+- ports는 dockerfile에서 사용한 expose와 비슷한 기능을 한다.
+- container_name은 frontend, backend와 같이 별도의 컨테이너 이름을 쓸 때 사용.
+- environment에서 다루는 환경변수가 많아서 파일이 지저분해질 것 같으면 env_file이라는 키워드를 사용해서 외부에서 env 파일을 가져와서 적용할 수 있다.
+- depends on은 예시로 applicataion을 올리고 database를 올리는 모든 컨테이너에 대한 설정이 docker_compose 파일에 모두 포함이 되어있다면 database가 올라가고 application이 올라가야해와 같은 상황에서 depends_on을 사용.
+- restart는 어떤 오류로 인해 이미지가 실행이 제대로 안 되었을 때 재시도 할 것인지 아니면 멈출 것인지에 대한 그런 설정들을 진행할 수 있다.
+
+***
+
+작성된 docker-compose.yml 파일을 실행하기 위해서는 다음과 같은 커맨드를 사용.
+
+>\> docker-compose up
+
+docker-compose라는 커맨드를 사용해서 실행을 하고 up이라는 커맨드로 커맨드를 실행하는 경로에서 docker-compose.yml파일을 찾아서 가동을 하게 된다. 이게 가장 기본적인 실행방법임.
+
+추가로 아래와 같은 옵션들을 사용할 수 있다.
+
+-f 옵션
+* docker-compose 는 기본적으로 'docker-compose.yml' 또는 'docker-compose.yaml'의 이름을 사용. 만약 다른 이름으로 파일을 관리하고 사용한다면 아래와 같이 입력.
+>\> docker-compose -f docker-compose-custom.yml up  #여기서 docker-compose-custom은 사용할 docker-compose파일의 이름임.
+
+-d 옵션
+백그라운드에서 docker-compose를 실행하기 위해 사용(-d옵션은 많이들 사용함.)
+
+>\> docker-compose up -d
