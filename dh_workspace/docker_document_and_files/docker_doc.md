@@ -183,14 +183,22 @@ httpd를 멈추려면 stop을 한다.
 지우고 localhost를 F5를 하면? 연결이 안됨이 뜬다.
 
 
+---
+
 다음 파일들을 이용해보자.
 
 dockerfile
 ```dockerfile
-FROM httpd
+FROM httpd 
 
 COPY index.html /usr/local/apache2/htdocs
 ```
+
+* FROM httpd: Apache HTTP 서버를 기본 이미지로 사용하여 새로운 이미지를 생성
+
+* COPY index.html /usr/local/apache2/htdocs/: 현재 디렉토리에 있는 index.html 파일을 Apache 서버의 웹 루트 디렉토리인 /usr/local/apache2/htdocs/에 복사. 이렇게 하면 Apache 서버가 이 HTML 파일을 웹 페이지로 제공. <br>!!중요!!: COPY는 지정된 directory가 없으면 자동으로 directory를  생성해줌
+
+<br>
 
 index.html
 ```html
@@ -202,4 +210,8 @@ index.html
     </body>
 </html>
 ```
-
+1. \<html>: HTML 문서의 시작을 알림. \<html> 태그는 HTML 문서의 시작과 끝을 나타낸다.
+2. \<meta charset="utf-8"/>: 문자 인코딩을 UTF-8로 설정하여 다양한 문자가 제대로 표시되도록 함.
+3. \<body>: 웹 페이지의 본문 영역이다. 실제로 사용자에게 보여질 내용은 모두 이 영역 안에 들어감. 웹페이지 안의 내용은 모두 \<body> 안에 들어가야한다.
+4. \<h1>: 가장 중요한 제목을 나타내며, **"Hello World"** 가 표시됨.(md 파일과 비슷)
+5. \<p>: 단락을 정의하고, **"This is DH"** 라는 텍스트가 표시됨. 텍스트가 여러 문장으로 이루어졌을 때, 이 텍스트를 하나의 단락으로 묶어준다. \<h1>에 비해 작은 크기의 글자가 된다.
