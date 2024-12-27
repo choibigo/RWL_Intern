@@ -111,3 +111,95 @@ dockerfile에서 사용되는 주요 instruction은 다음과 같다.
 
 * RUN
     * 이미지를 빌드할 때 사용하는 command를 설정할 때 사용.
+
+* ADD
+    * 이미지에 호스트의 파일이나 폴더를 추가하기 위해 사용
+    * 만약 이미지에 복사하려는 디렉토리가 존재하지 않으면 docker가 자동으로 생성.
+
+* COPY
+    * 호스트의 환경의 파일이나 폴더를 이미지 안으로 복사하기 위해 사용.
+    * 'ADD'와 동일하게 동작하지만 가장 확실한 차이점은 URL을 지정하거나, 압축파일을 자동으로 풀지 않음.
+
+* EXPOSE
+    * 이미지가 통신에 사용할 포트를 지정할 때 사용
+
+* ENV
+    * 환경 변수를 지정할 때 사용
+    * 여기서 설정한 변수는 $name, ${name} 의 형태로 사용할 수 있음.
+    * 추가로 아래와 같은 문법을 사용하여 사용할 수 있음.
+      * ${name:-else}:name 이 정의가 안 되어 있다면 'else'가 사용됨.
+* CMD
+    * 도커 컨테이너가 실행될 때 실행한 커맨드를 지정
+    * 'RUN'과 비슷하지만 CMD는 도커이미지를 빌드할 때 실행되는 것이 아니라 컨테이너를 시작할 때 실행된다는 것이 다름.
+* ENTRYPOINT
+    * 도커 이미지가 실행될 때 사용되는 기본 커맨드를 지정(강제)
+* WORKDIR
+    * RUN, CMD, ENTRYPOINT 등을 사용한 커맨드를 실행하는 디렉토리를 지정
+    * -w 옵션으로 오버라이딩 할 수 있음.
+* VOLUME
+    * 퍼시스턴스 데이터를 저장할 경로를 지정할 때 사용
+    * 호스트의 디렉토리를 도커 컨테이너에 연결
+    * 주로 휘발성으로 사용되면 안되는 데이터를 저장할 때 사용
+
+
+* 기타 옵션 - 많이 사용 안된다.
+    * SHELL
+    * LABEL
+    * USER
+    * ARG
+    * STOPSIGNAL
+    * HEALTHCHECK
+
+
+
+## docker build 커맨드
+dockerfile을 실행하기 위해서는 docker build 커맨드를 사용
+
+docker build ${option} ${dockerfile directory}
+
+        ex) docker build-t test . ( 이러면 이미지의 이름이 test가 됨. (space). 은 현재 디렉터리 라는 의미.)
+
+생성된 이미지를 컨테이너를 실행하기 위해서는 run 커맨드를 사용<br>
+
+        ex) docker run --name test_app -p 80:80 test    (test는 위에서 만든 이미지 이름)
+
+
+# dockerfile 실습편
+
+> docker run --name original_httpd -p 80:80 httpd
+
+httpd 이미지를 컨테이너로 올렸을 때 localhost를 한다면 실행이 된다.
+
+> docker stop original_httpd
+
+httpd를 멈추려면 stop을 한다.
+
+>docker rm original_httpd
+
+그러고는 rm을 통해 삭제
+
+>docker container ls -a  # 지워졌는지 확인
+
+지우고 localhost를 F5를 하면? 연결이 안됨이 뜬다.
+
+
+다음 파일들을 이용해보자.
+
+dockerfile
+```dockerfile
+FROM httpd
+
+COPY index.html /usr/local/apache2/htdocs
+```
+
+index.html
+```html
+<html>
+    <meta charset="utf-8"/>
+    <body>
+        <h1>Hello World</h1>
+        <p>This is DH</p>
+    </body>
+</html>
+```
+

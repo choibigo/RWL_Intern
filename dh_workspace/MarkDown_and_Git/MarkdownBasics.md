@@ -38,10 +38,10 @@ i my me mine<br> you your you yours<br> he him him his
 
 ## 코드블록
 
-    '''python
+    ```python
     for i in range(1,5):
         print(i)
-    '''
+    ```
     
 
 ## 체크 리스트 
