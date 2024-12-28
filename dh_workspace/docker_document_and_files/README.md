@@ -383,3 +383,156 @@ docker desktop에서 컨테이너를 delete하고 docker container ls -a 를 하
 >docker-compose -f docker-compose-custom.yml up -d
 * 이번에는 -d옵션을 이용했는데 이건 로그가 안 뜬다는 것을 관찰할 수 있다.
 
+***
+# 도커 이미지 생성 및 저장하기
+
+**도커 이미지 생성하기**
+
+지금까지 강의에서는 official 이미지만 사용했다.
+
+똑같은 이미지에 설정을 추가하여 컨테이너를 가동해도 되지만, 매번 같은 설정을 사용하고 있다면 그 설정을 가지고 있는 이미지를 생성하여 사용할 수 있다.
+
+**주로 이미지를 생성하는 경우**
+
+1. 특정 이미지에 자주 사용하는 설정을 추가하여 편하게 사용하고 싶을 경우
+2. 본인이 개발한 애플리케이션을 이미지로 생성하고 싶을 경우
+
+![alt text](container_image_production.png)
+
+이 작업을 수행하기 위해선느 컨테이너가 있는 상황에서 아래의 커맨드를 입력
+
+- container_name : 이미지로 만들고자 하는 컨테이너의 이름
+- image_name : 생성할 이미지의 이름
+
+>\> docker commit {container_name}{image_name}
+
+<br>
+
+또 다른 방법으로는 Dockerfile을 사용할 수 있음.<br>
+Dockerfile에 추가하고자 하는 설정을 반영하고 그 파일로 이미지를 빌드(Dockerfile 작성하기 참고)
+>\> docker build ${option} ${dockerfile directory}
+
+**도커 이미지 파일로 저장**
+
+이렇게 생성된 이미지는 파일로 저장할 수 있다. 많이 사용하지 않지만 대체로 운영서버에서 이미지를 사용해야 할 때 종종 사용하기도 한다.
+
+방법은 크게 2가지가 존재
+- save/load 커맨드
+- export/import 커맨드
+
+save와 load 커맨드를 사용하면 아래와 같이 동작한다.<br>
+save를 이용한 이미지 저장은 원본 이미지와 레이어를 동일하게 가져가는 형식으로 동작한다.
+
+**save**
+- 도커이미지를 tar파일로 추출
+- docker save -o test123.tar test123:latest
+  
+**load**
+- 추출된 tar 파일을 이미지로 불러옴
+- docker load -i test123.tar
+
+export와 import 커맨드를 사용하면 아래와 같이 동작함.<br>
+export를 이용한 이미지 저장은 원본 이미지와 다르게 하나의 레이어로 통합되어 추출된다.<br>
+이렇게 추출된 이미지는 다시 컨테이너로 가동하기 위해서는 별도의 작업이 필요하다.<br>
+(export/import는 save/load와 다르게 동작한다. save는 commit된 이미지를 사용하지만, export는 save와 다르게 commit을 선행적으로 할 필요가 없다.)
+
+**export**
+- 도커 컨테이너를 tar 파일로 추출
+- docker export test123 > test123.tar 
+- 코드의미1: 앞의 tar123은 대상의 이미지가 아닌 container의의 이름을 넣어주고 
+- 코드의미2: 꺽쇠 >를 이용해서 tar파일의 이름을 설정해준다.
+  
+**import**
+- 추출된 tar 파일을 이미지로 불러옴.
+- docker import test123.tar test123:version
+- 코드 의미: tar파일을 넣어주고 어떤 이미지로 생성을 할지 설정을 해줌.
+
+# 도커 이미지 생성 및 저장하기_실습
+
+**도커 이미지를 생성하는 경우**
+
+먼저 commit 커맨드를 사용해서 컨테이너를 이미지로 사용 해보자.
+>docker-compose -f docker-compose-custom.yml up -d
+
+로 컨테이너가 돌아가는 상태에서
+
+>docker commit db_master test123
+
+을 통해 db_master를 test123이라는 이름으로 이미지 생성해보자.
+
+![alt text](test123_image_created.png)
+
+docker desktop에서 test123이라는 이름의 이미지가 생성된 것을 관찰할 수 있다.
+
+또는
+
+>docker image ls
+
+를 통해 이미지가 생성된 것을 확인 가능하다.
+
+(Dockerfile로 이미지를 생성하는 것은 이전 강의를 참조하자.)
+
+**도커 이미지를 저장하는 경우**
+
+**save/load**
+
+>docker save -o test123.tar test123:latest
+
+* save의 경우 이미지를 사용한다. -o는 output을 의미한다. 저장할 파일의 이름을 입력해주는구나 라고 보면 된다.
+
+* 뒤의 test123:latest는 이미지 이름과 버전을 입력해주는 것임.(기본은 :version을 뺀 test123만 입력하는 것이다.)
+
+* dir을 이용해서 test123.tar가 만들어 진 것을 관찰할 수 있다.
+
+이걸 load를 해보자. load하기 전에 test123을 이미지에서 지워라. 왜냐하면 어차피 test123은 test123.tar와 같은 이미지니까.
+
+>docker load -i test123.tar
+* -i 옵선을 사용한다.
+* ![alt text](docker_load.png)
+* 이미지에서 test123이 생성된 것을 확인할 수 있다.(이미지 id도 그대로 가져오는 것을 확인할 수 있다.)
+* load에서는 이미지 이름을 따로 넣어주지 않았다. 왜냐하면 save에서 이미지의 이름(test123)을 이미 넣어줬기 때문이다.
+
+**export/import**
+
+export/import를 하기 위해서 앞에서 실행했던 test123이미지를 지우고 시작하자. 그리고 docker_experiment 폴더에서 test123.tar파일 자체도 지우고 시작하자.
+
+>docker export db_master > test123.tar
+* 앞의 db_master는 컨테이너 이름을 의미하고, 꺽쇠 뒤의 test 123.tar는 tar 파일의 이름을 설정하는 것이다.
+* 코드를 실행한 결과 docker_experiment폴더에 test123.tar가 생성된 것을 확인할 수 있다.
+* save를 했을 때의 test123.tar와 export를 했을 때의 test123.tar를 비교했을 때 save는 test123.tar의 파일 하나하나가 layer인 것을 확인할 수 있고 export는 test123.tar가 컨테이너가 실행 중인 상태의 파일 시스템만을 저장한 것을 확인할 수 있다.
+
+이제 import를 해보자.
+>docker import test123.tar imagetest:version
+* test123.tar은 tar파일이름을 의미하고, imagetest:version은 이미지의 이름과 version이라는 tag를 의미한다.
+* ![alt text](docker_import_practice.png) 
+* imagetest라는 이름의 image가 생성된 것을 확인할 수 있다.
+---
+참고) import를 통해 생성된 이미지는 추가적으로 몇개 커맨드 옵션들을 넣어줘야 가동이 될 것이다. load로 불러온 이미지는 우리가 평소에 이미지를 run하는 방식으로 진행하면 그대로 진행된다.
+
+참고 내용에 대한 챗 지피티 답)<br>
+1. docker import로 이미지를 불러올 때
+docker import 명령어는 컨테이너의 파일 시스템 상태를 기반으로 새로운 Docker 이미지를 생성하는 데 사용됩니다. 이때 중요한 점은 이미지에 필요한 정보가 부족할 수 있다는 것입니다. 즉, 이미지에 태그, 실행에 필요한 기본 명령어(ENTRYPOINT나 CMD 등)와 같은 설정이 빠져 있을 수 있습니다.
+
+* **docker import**는 컨테이너의 파일 시스템만 저장하기 때문에, 그 자체로는 이미지 실행에 필요한 메타데이터가 부족할 수 있습니다. 그래서 이미지를 실행할 때 추가적인 설정이 필요할 수 있습니다.
+
+  * 예를 들어:
+
+  * docker run 명령어에 추가 옵션을 줘야 할 수도 있다.
+  * ENTRYPOINT나 CMD가 설정되어 있지 않으면, docker run을 실행할 때 명령어를 명시적으로 입력해야 할 수 있습니다.
+
+예시: docker import로 이미지를 만들고 실행할 때
+
+```bash
+# 이미지를 불러온 후, 실행할 때 커맨드를 명시적으로 지정해야 할 수 있음
+docker import my_container.tar my_image:latest
+docker run -it my_image:latest /bin/bash  # /bin/bash와 같은 실행할 명령을 명시적으로 지정
+```
+
+2. docker load로 이미지를 불러올 때
+
+반면, docker load는 docker save로 저장된 Docker 이미지를 불러오는 명령어입니다. 이 이미지는 이미지의 레이어와 메타데이터(예: CMD, ENTRYPOINT, EXPOSE 등)를 포함하고 있기 때문에, docker load로 이미지를 불러온 후에는 이미지 실행에 필요한 설정이 이미 포함되어 있습니다.
+
+따라서, docker load로 불러온 이미지는 docker run 명령어를 사용해 일반적인 방식으로 실행할 수 있습니다. 추가적인 옵션이나 설정을 명시할 필요 없이 바로 실행할 수 있습니다.
+
+---
+
