@@ -536,3 +536,4 @@ docker run -it my_image:latest /bin/bash  # /bin/bash와 같은 실행할 명령
 
 ---
 
+12강은 음......
