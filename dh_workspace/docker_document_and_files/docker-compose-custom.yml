@@ -15,8 +15,8 @@ services:
         ports:
             - "3308:3306" #이 옵션은 docker engine에게 각 container에게 포트를 수동으로 설정하게 해준다.
             
-        aroundhub_redis:
-            image: redis:7.0.0
-            restart: always
-            ports:
-                - "6381:6379"
+    aroundhub_redis:
+        image: redis:7.0.0
+        restart: always
+        ports:
+            - "6381:6379"

@@ -352,3 +352,34 @@ docker-compose라는 커맨드를 사용해서 실행을 하고 up이라는 커�
 백그라운드에서 docker-compose를 실행하기 위해 사용(-d옵션은 많이들 사용함.)
 
 >\> docker-compose up -d
+
+
+***
+# docker-compose 실습
+docker-compose.yml과 docker-compose-custom.yml을 이용해서 실습을 해보자.
+<br>
+C:\Users\dhlee\docker_experiment에서 실행한다.
+
+cmd에서
+>docker-compose up
+
+결과는 다음과 같다.
+![alt text](docker_compose_yml.png)
+* container name: db_master와 아래의 docker_experiment-aroundhub_redis-1(container name을 지정해주지 않아서 이런 결과가 나온것 같다.) 두개의 컨테이너가 나온다.
+* cmd를 보면 현재 -d옵션을 주지 않아서 compose에 연관된 로그 같은 것들이 찍힌다.
+* port도 코드에 넣은 것처럼 찍힌다.(현재 docker-compose.yml이 잡힌 것을 알 수 있다.)
+
+docker desktop에서 컨테이너를 delete하고 docker container ls -a 를 하면 컨테이너가 사라진 것을 알 수 있다.
+
+<br>
+
+이번에는 docker-compose-custom.yml을 실습해보자.
+>docker-compose -f docker-compose-custom.yml up 
+
+![alt text](docker_compose_custom_yml.png)
+* 실행 결과는 위와 같고 port만 다르다.
+* 우리가 쓰고 있는 이름이 다르므로 -f 옵션을 이용해서 지정을 해주면 된다는 결론을 내릴 수 있다.
+
+>docker-compose -f docker-compose-custom.yml up -d
+* 이번에는 -d옵션을 이용했는데 이건 로그가 안 뜬다는 것을 관찰할 수 있다.
+

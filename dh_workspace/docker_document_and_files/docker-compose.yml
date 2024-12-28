@@ -3,7 +3,7 @@ services:
         image: mariadb:10.6 #mariadb 10.6버전 이미지 사용
         container_name: db_master # container 이름 설정
         restart: always     #항상 재시작하겠다는 의미
-        environment:
+        environment:        #환경변수 설정 내용(환경변수와 관련된 내용은 docker hub에서 이미지를 검색해보면 가이드가 존재한다.)
             MARIADB_ROOT_PASSWORD: aroundhub12# #container 생성 후 root의 비밀번호를 저장한 파일을 설정함으로서 root 비밀번호를 설정
             MARIADB_DATABASE: springboot
             MARIADB_USER: flature
@@ -15,8 +15,8 @@ services:
         ports:
             - "3307:3306" #이 옵션은 docker engine에게 각 container에게 포트를 수동으로 설정하게 해준다.
             
-        aroundhub_redis:    #서비스2
-            image: redis:7.0.0
-            restart: always
-            ports:
-                - "6380:6379"
+    aroundhub_redis:    #서비스2(여기는 환경변수와 관련된 내용은 없다.)
+        image: redis:7.0.0
+        restart: always
+        ports:
+            - "6380:6379"
