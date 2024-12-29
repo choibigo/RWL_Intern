@@ -165,7 +165,7 @@ dockerfile을 실행하기 위해서는 docker build 커맨드를 사용
 
 docker build ${option} ${dockerfile directory}
 
-        ex) docker build-t test . ( 이러면 이미지의 이름이 test가 됨. (space). 은 현재 디렉터리 라는 의미.)
+        ex) docker build -t test . ( 이러면 이미지의 이름이 test가 됨. (space). 은 현재 디렉터리 라는 의미.)
 
 생성된 이미지를 컨테이너를 실행하기 위해서는 run 커맨드를 사용<br>
 
