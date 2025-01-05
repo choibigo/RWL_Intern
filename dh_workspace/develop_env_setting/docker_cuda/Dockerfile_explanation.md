@@ -52,4 +52,9 @@ nvidia-smi
 * nvidia-smi: 시스템에서 GPU의 상태와 정보를 확인하는 명령어.
 ---
 
+이 코드도 참고하자.
+```
+nvcc -V
+```
+-V의 의미는 volume의 V이다.
 cuda이식은 여기까지...
