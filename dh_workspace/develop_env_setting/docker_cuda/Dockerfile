@@ -15,10 +15,12 @@ RUN apt-get update && apt-get install -y \
     libpython3.8-dev \
     && apt-get clean
 
-# Python 3.8 설치
-RUN add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get update \
-    && apt-get install -y python3.8 python3-pip
+RUN apt-get install -y gcc
+RUN apt-get install -y g++
+RUN apt-get install -y libgl1-mesa-glx
+RUN apt-get install -y libglib2.0-0
+RUN apt-get install -y tesseract-ocr tesseract-ocr-kor
+RUN apt-get install -y x11-apps
 
 # Anaconda 설치
 ENV PATH="/root/miniconda3/bin:${PATH}"
@@ -33,6 +35,8 @@ RUN conda init bash
 # Conda 환경 활성화 및 PyTorch, torchvision, torchaudio 설치
 RUN conda update conda -y && \
 conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0  pytorch-cuda=11.8 -c pytorch -c nvidia
+
+ENV DISPLAY=$DISPLAY:0
 
 # 기본 셸 실행
 CMD ["bash", "-c", "tail -f /dev/null"]
