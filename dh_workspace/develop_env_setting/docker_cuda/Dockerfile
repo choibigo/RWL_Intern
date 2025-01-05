@@ -15,10 +15,12 @@ RUN apt-get update && apt-get install -y \
     libpython3.8-dev \
     && apt-get clean
 
+
 RUN apt-get install -y gcc
 RUN apt-get install -y g++
 RUN apt-get install -y libgl1-mesa-glx
 RUN apt-get install -y libglib2.0-0
+RUN apt-get install -y openbox
 RUN apt-get install -y tesseract-ocr tesseract-ocr-kor
 RUN apt-get install -y x11-apps
 
@@ -33,8 +35,9 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 RUN conda init bash
 
 # Conda 환경 활성화 및 PyTorch, torchvision, torchaudio 설치
-RUN conda update conda -y && \
-conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0  pytorch-cuda=11.8 -c pytorch -c nvidia
+RUN conda update conda -y 
+RUN conda install pytorch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0  pytorch-cuda=11.8 -c pytorch -c nvidia
+
 
 ENV DISPLAY=$DISPLAY:0
 
