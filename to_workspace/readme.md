@@ -1,17 +1,17 @@
-### 최태오 Workspace
+# 최태오 Workspace
 
-### 커리큘럼
-- [ ] 기본
+## 커리큘럼
+### 기본
     - [ ] Git(clone, commit, push, pull 실습)
     - [ ] VSCode
     - [ ] MD 파일 작성
 
-- [ ] 환경 세팅
+### 환경 세팅
     - [ ] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
     - [ ] Docker
         - [ ] https://www.youtube.com/watch?v=MsMHStVibEk&list=PLlTylS8uB2fDLJRJCXqUowsOViG-ZKnWy&index=12 ~ 재생목록 12 (스프링 부트 Dockerfile 만들기 [ 도커 (Docker) 기초 ])
         - [ ] https://www.youtube.com/watch?v=OPmSQCfzl1Q&list=PLtUgHNmvcs6rS5aNCRIZtVcyk3gRX2iOd ~ 2.8
-- [ ] Python
+### Python
     - [ ] PEP 8 (https://peps.python.org/pep-0008/)
     - [ ] Coding Skill
         - [ ] 점프 투 파이썬
@@ -19,7 +19,7 @@
             - 필요한 부분만 보기
     - [ ] Toy Project (Crawling?)
           
-- [ ] Deep Learning
+### Deep Learning
     - [ ] 밑바닥 부터 시작하는 딥러닝
     - [ ] 모두를 위한 딥러닝 (https://www.youtube.com/watch?v=7eldOrjQVi0&list=PLQ28Nx3M4JrhkqBVIXg-i5_CVVoS1UzAv)
     - [ ] Toy Project
