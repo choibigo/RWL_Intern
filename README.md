@@ -19,5 +19,5 @@
     - [ ] Toy Project (Crawling?)
 - [ ] Deep Learning
     - [ ] 밑바닥 부터 시작하는 딥러닝
-    - [ ] 모두를 위한 딥러닝
+    - [ ] 모두를 위한 딥러닝 (https://www.youtube.com/watch?v=7eldOrjQVi0&list=PLQ28Nx3M4JrhkqBVIXg-i5_CVVoS1UzAv)
     - [ ] Toy Project (Classification? Detection?)
