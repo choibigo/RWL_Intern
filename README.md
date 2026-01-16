@@ -13,8 +13,9 @@
         - [ ] https://www.youtube.com/watch?v=OPmSQCfzl1Q&list=PLtUgHNmvcs6rS5aNCRIZtVcyk3gRX2iOd ~ 2.8
 - [ ] Python
     - [ ] Coding Skill
-        - 점프 투 파이썬
-        - https://school.programmers.co.kr/learn/courses/2/2-%EB%AC%B4%EB%A3%8C-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%9E%85%EB%AC%B8
+        - [ ] 점프 투 파이썬
+        - [ ] 파이썬 코딩의 기술
+            - 필요한 부분만 보기
     - [ ] Toy Project (Crawling?)
 - [ ] Deep Learning
     - [ ] 밑바닥 부터 시작하는 딥러닝
