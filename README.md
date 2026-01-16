@@ -11,7 +11,6 @@
     - [ ] Docker
         - [ ] https://www.youtube.com/watch?v=MsMHStVibEk&list=PLlTylS8uB2fDLJRJCXqUowsOViG-ZKnWy&index=12 ~ 재생목록 12 (스프링 부트 Dockerfile 만들기 [ 도커 (Docker) 기초 ])
         - [ ] https://www.youtube.com/watch?v=OPmSQCfzl1Q&list=PLtUgHNmvcs6rS5aNCRIZtVcyk3gRX2iOd ~ 2.8
-    - [ ] Docker를 활용한 Toy Project (시계?)
 - [ ] Python
     - [ ] Coding Skill
         - 점프 투 파이썬
