@@ -3,6 +3,10 @@
 - [x] PC 세팅 복습
 - [x] 기본 명령어로 복습
 - [x] 추가로 유용한 명령어 익히기
+  - [x] Stash 실습
+  - [x] Rebase 실습
+  - [x] Worktree 실습
+  - [x] Bisect 실습
 - [x] 브랜치 merge 문제 해결
 
 ---
@@ -42,7 +46,7 @@ GIT은 분산 버전 관리 시스템(DVCS)으로, 파일을 변경 이력을 �
 
 `git switch <branch 이름>`
 
-> checkout으로도 브랜치 전환은 됨. 하지만 checkout 기능이 너무 많아서 요즘 브랜치간의 이동 생성은 switch을 권장하는 편.
+> checkout으로도 브랜치 전환은 됨. 하지만 checkout 기능이 너무 많아서 요즘 브랜치간의 이동 및 생성은 switch을 권장하는 편.
 
 |명령어| checkout | switch |
 |:---:|:---:|:---:|
