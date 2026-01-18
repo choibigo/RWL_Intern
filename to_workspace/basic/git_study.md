@@ -2,8 +2,8 @@
 - [x] git 이론 복습
 - [x] PC 세팅 복습
 - [x] 기본 명령어로 복습
-- [ ] 추가로 유용한 명령어 익히기
-- [ ] 브랜치 merge 문제 해결
+- [x] 추가로 유용한 명령어 익히기
+- [x] 브랜치 merge 문제 해결
 
 ---
 
@@ -42,15 +42,15 @@ GIT은 분산 버전 관리 시스템(DVCS)으로, 파일을 변경 이력을 �
 
 `git switch <branch 이름>`
 
-> checkout으로도 브랜치 전환은 됨. 하지만 checkout 기능이 너무 많아서 요즘 브랜치간의 이동 생성은 swith을 권장하는 편.
+> checkout으로도 브랜치 전환은 됨. 하지만 checkout 기능이 너무 많아서 요즘 브랜치간의 이동 생성은 switch을 권장하는 편.
 
 |명령어| checkout | switch |
 |:---:|:---:|:---:|
-|커밋 이동| `git checkout 6cb87bb`| 그냥은 안됨|
+|커밋 이동| `git checkout 6cb87bb`| 놉 |
 |브랜치 이동| `git checkout main` | `git switch main`|
 |브랜치 생성하여 이동|`git checkout -b new_branch` | `git switch -c new_branch` |
 
-참고로 리포지토리 하나 클론하고 다른 브랜치가 안보일때, 그냥 그 브랜치고 switch하면 알아서 찾음.
+참고로 리포지토리 하나 클론하고 다른 브랜치가 안보일때, 그냥 그 브랜치로 switch하면 알아서 찾음.
 
 # 유용한 명령어 익히기
 
@@ -64,7 +64,7 @@ GIT은 분산 버전 관리 시스템(DVCS)으로, 파일을 변경 이력을 �
 
 `git diff` = add 전에 어떤 것들이 변경 됐는지 출력
 
-`git commit --amend -m "새로운 메시지"` = 이전 커밋 메시지 수정 (*단, 이미 remote까지 푸쉬가 됐다면 --force으로 강제로 덮어씌워야함*)
+`git commit --amend -m "새로운 메시지"` = 이전 커밋 메시지 수정 (*단, 이미 remote까지 푸쉬가 됐다면 --force으로 강제로 덮어씌워야함, 협업 브랜치에서는 금지!*)
 
 `git config --global core.editor "code --wait"` = Vim 대신에 vscode 사용해서 편집하기
 
@@ -106,7 +106,7 @@ stash@{1}: WIP on to_basic_git: d3fc4c5 Complete rebase md
 
 - `git stash clear`는 모든 stash 삭제.
 
-## 커밋 압축
+## Rebase - 커밋 압축
 커밋이 너무 많아질때 이를 유지보수하기 좋게 rebase를 이용하여 여러 커밋을 하나로 압축할 수 있다.
 
 `git rebase -i`
@@ -120,13 +120,16 @@ stash@{1}: WIP on to_basic_git: d3fc4c5 Complete rebase md
   <img src="images/git_image.png" width="430">
 </div>
 일단 commit for rebase 0,1,2를 만들었다.
+
 - 푸쉬를 하면 리모트에 잘 올라가는 것을 볼 수 있다.
 <div align="center">
   <img src="images/git_image-1.png" width="430">
 </div>
 
 - 이제 rebase를 해보자.
+
 `git rebase -i HEAD~3`
+
 <div align="center">
   <img src="images/git_image-3.png" width="430">
 </div>
@@ -146,7 +149,7 @@ s 07b515d # commit for rebase 2
 
 <details>
 <summary>그러면 왜 이런식으로 편집하게 만들었을까?</summary>
-그거는 많은 양의 커밋들을 squash해야하고, 어떤 커밋이 어느 커밋으로 squash할지 일일히 정할수 있도록 만들었기 때문이다.
+그거는 많은 양의 커밋들을 squash해야하고, 어떤 커밋이 어느 커밋으로 squash할지 일일이 정할수 있도록 만들었기 때문이다.
 
 - 예를 들어 아래의 경우 처음 위의 커밋은 그냥 그대로 있고. 그 다음 커밋이 이후 2개를 흡수. 5번째 커밋이 이후 3개를 흡수하는 방식으로 끝난다.
 
@@ -189,13 +192,13 @@ s 980d96f Update git md
 </div>
 그러면 리모트에도 적용이 깔끔하게 된다.
 
-## 개별 워크스페이스 생성
+## Worktree - 개별 워크스페이스 생성
 그동안 현재 코드와 이전 레거시 코드, 또는 다른 브랜치를 비교할 때 현재 변화를 stash에 올려 checkout으로 이동하여 비교하거나, 아니면 아예 clone을 하는 방식을 취했다.
 
 이 clone 방식을 쉽게하는 방식이 **worktree**를 이용하는 방식이다.
 
 - Worktree는 마치 현재 워크스페이스와 별개로 새로 클론한 리포랑 같다.
-  > 다만 복수의 worktree가 같은 브렌치를 **동시에 볼 수는 없다**.
+  > 다만 복수의 worktree가 같은 브랜치를 **동시에 볼 수는 없다**.
 
   > Git이 헷갈리지 않게, 현재 git 리포 **바깥에** 워크트리를 새로 생성하는 것이 바람직하다.
 
@@ -224,7 +227,9 @@ PS \RWL_fix> git branch # 브랜치 확인
 ```
 - 기존 폴더 위치가 바탕화면이라 옆에 나란히 생긴 모습.
 
-![alt text](images/git_1_image-2.png)
+<div align="center">
+  <img src="images/git_1_image-2.png" width="80">
+</div>
 
 - 개별적으로 vscode을 켜서 관리하면 끝!
 
@@ -251,7 +256,7 @@ PS C:\Users\admin\Desktop\RWL_fix> type .git
 gitdir: C:/Users/admin/Desktop/RWL_Intern/.git/worktrees/RWL_fix
 PS C:\Users\admin\Desktop\RWL_fix>
 ```
-## 버그 자동 사냥
+## Bisect - 오류 자동 추적
 Git에 커밋별로 테스트를 자동으로 돌려 버그를 찾아주는 훌륭한 **bisect** 기능이 있다.
 
 - 테스트를 위해 여러 간단한 코드를 만들자. images 폴더에 calc.py를 계속 업데이트하고, 인위적으로 버그를 내서 잡아보자.
@@ -285,7 +290,8 @@ if __name__ == "__main__":
 ```
 
 이렇게 커밋을 3개 만들고.
-![alt text](image.png)
+
+![alt text](images/git_2_image.png)
 
 테스트 코드를 하나 만들자.
 
@@ -314,13 +320,16 @@ else:
 - 이제 bisect을 하기 위해 다음 명령어들을 순서대로 실행한다.
 
 `git bisect start` = 해당 명령를 실행하면 bisect을 위한 detached branch으로 진입한다.
+
 `git bisect bad HEAD` = 버그가 발견된 곳의 커밋을 작성한다. 지금 발견했으니 일단 HEAD로(현재) 작성.
+
 `git bisect good HEAD~2` = 정상이었을 때를 적는다. 2커밋 전에는 정상이었다.
+
 `git bisect run python3 to_workspace/basic/images/test.py` = 이제 파이썬 테스트 코드를 실행한다. 이렇게하면 git 커밋을 이동하면서 알아서 다 테스트 코드를 돌려봐준다.
 
 - 그러면 다음과 같이 결과가 나온다.
 
-![alt text](image-1.png)
+![alt text](images/git_2_image-1.png)
 
 `git bisect log`를 하면 일일히 돌려봤을때 결과가 good인지 bad인지 체크해주는 것을 볼 수 있다.
 
@@ -342,3 +351,5 @@ d3fc4c5 HEAD@{6}: checkout: moving from main to to_basic_git
 8458f56 (main) HEAD@{7}: reset: moving to HEAD
 8458f56 (main) HEAD@{8}: checkout: moving from to_basic_git to main
 ```
+
+`git branch -d <삭제할 브랜치명>` = 브랜치 삭제. 사용이 끝난 브랜치는 깔끔하게 삭제해두자.

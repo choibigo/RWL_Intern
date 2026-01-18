@@ -1,6 +1,6 @@
 - [ ] vscode 팁 정리
 - [ ] vscode 단축키 정리
-- [ ] merge 충돌 해결해보기
+- [x] merge 충돌 해결해보기
 
 ---
 # VScode 팁

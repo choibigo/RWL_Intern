@@ -166,7 +166,13 @@ $$
 ## 파일 관리 팁
 만약 어떤 폴더의 명칭은 한꺼번에 전부 바꾸고 싶으면?
 
+- 윈도우
+
 `Get-ChildItem *.png | Rename-Item -NewName { "git_" + $_.Name }`
+
+- 우분투
+
+`for f in *.png; do mv "$f" "git_2_$f"; done`
 
 위 명령어를 사용하면 된다. 아마 여러 이미지를 추가하고 위치를 바꿀때 사용할 것이다.
 
