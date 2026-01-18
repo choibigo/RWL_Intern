@@ -16,3 +16,6 @@
 
 `git config --global core.editor "code --wait"` = Vim 대신에 vscode 사용해서 편집하기
 
+## Merge 오류 해결
+
+내가 좋아하는 과일은?

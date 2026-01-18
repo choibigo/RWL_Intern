@@ -254,7 +254,7 @@ PS C:\Users\admin\Desktop\RWL_fix>
 ## 버그 자동 사냥
 Git에 커밋별로 테스트를 자동으로 돌려 버그를 찾아주는 훌륭한 **bisect** 기능이 있다.
 
-- 테스트를 위해 여러 간단한 코드를 만들자.
+- 테스트를 위해 여러 간단한 코드를 만들자. images 폴더에 calc.py를 계속 업데이트하고, 인위적으로 버그를 내서 잡아보자.
 
 - 커밋0: 잘 작동하는 함수
 ```python
@@ -324,14 +324,8 @@ else:
 
 `git bisect log`를 하면 일일히 돌려봤을때 결과가 good인지 bad인지 체크해주는 것을 볼 수 있다.
 
-`git bisect reset` = bisect 종료하고 돌아가기. 지금은 bisect용 개별 브랜치이 들어와있다. Bisect는 추적을 위한거지 수정을 위한 기능이 아니다, 돌아가주자.
+`git bisect reset` = bisect 종료하고 돌아가기. 지금은 bisect용 개별 브랜치이 들어와있다. Bisect는 추적을 위한거지 수정을 위한 기능이 아니다, HEAD으로 다시 돌아가서 버그를 수정해주자.
 
-
-## 여기 부터 잘 merge 해볼것
-
-images 폴더에 calc.py를 계속 업데이트하고, 인위적으로 버그를 내서 잡을 것.
-
-`git bisect reset`으로 본래 HEAD으로 돌아가서 수정하면 된다.
 
 ## 기타 명령어
 
