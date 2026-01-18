@@ -59,6 +59,34 @@ GIT은 분산 버전 관리 시스템(DVCS)으로, 파일을 변경 이력을 �
 
 ## stash 실습
 
+만약 커밋되지 않은 작업 내역이 있다면 다른 곳으로 checkout시 abort가 뜬다. (스테이지가 되도 안된다. 무조건 커밋이 되야한다.)
+
+- 위 경우를 위해 stash이라는 임시저장공간에 현재 변경을 임시 저장 할 수 있다!
+
+`git stash`
+
+```bash
+PS C:\Users\admin\Desktop\RWL_Intern> git stash
+Saved working directory and index state WIP on to_basic_git: d3fc4c5 Complete rebase md
+```
+
+하지만 이 경우 **현재 변경점들이 사라진다는** 것을 인지하고 있어라.
+
+그리고 VScode이 현재 상태들을 **다 저장하지 않으면** 이 사라진 상태를 창에 **반영하지 않으니**, 꼭 **저장하고 stash를** 해라.
+
+`git stash list`를 저장된 stash 리스트를 볼 수 있다.
+
+```bash
+PS C:\Users\admin\Desktop\RWL_Intern> git stash list
+stash@{0}: WIP on main: 8458f56 commit for rebase 0
+stash@{1}: WIP on to_basic_git: d3fc4c5 Complete rebase md
+```
+
+- `git stash pop`이나 `git stash apply`을 통해서 저장된 것을 다시 꺼내 사용할 수 있다. pop으로 꺼낼시 stash은 그대로 삭제되고, apply는 적용되고 stash가 삭제되지 않는다.
+
+하지만 주의해야할 것은 pop이나 apply시 **마지막**으로 저장된 stash **부터** 꺼내는 것이다. 해당 커밋이나 브랜치에서 했던 stash를 꺼내는 것이 아니다. (stack 처럼 쌓이는 것이다)
+
+특정 stash를 꺼내고 싶으면 `git stash pop "stash@{1}"` 이렇게 stash 이름을 작성하면 된다. (" "이 있어야 함)
 
 ## 커밋 압축
 커밋이 너무 많아질때 이를 유지보수하기 좋게 rebase를 이용하여 여러 커밋을 하나로 압축할 수 있다.
