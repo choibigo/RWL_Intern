@@ -208,6 +208,12 @@ gitdir: C:/Users/admin/Desktop/RWL_Intern/.git/worktrees/RWL_fix
 PS C:\Users\admin\Desktop\RWL_fix>
 ```
 
+## 여기 부터 잘 merge 해볼것
+
+images 폴더에 calc.py를 계속 업데이트하고, 인위적으로 버그를 내서 잡을 것.
+
+`git bisect reset`으로 본래 HEAD으로 돌아가서 수정하면 된다.
+
 ## 기타 명령어
 
 `git reflog` = 헤드 이동 이력을 볼 수 있다.
