@@ -40,6 +40,18 @@ GIT은 분산 버전 관리 시스템(DVCS)으로, 파일을 변경 이력을 �
 
 `git push origin main`
 
+`git switch <branch 이름>`
+
+> checkout으로도 브랜치 전환은 됨. 하지만 checkout 기능이 너무 많아서 요즘 브랜치간의 이동 생성은 swith을 권장하는 편.
+
+|명령어| checkout | switch |
+|:---:|:---:|:---:|
+|커밋 이동| `git checkout 6cb87bb`| 그냥은 안됨|
+|브랜치 이동| `git checkout main` | `git switch main`|
+|브랜치 생성하여 이동|`git checkout -b new_branch` | `git switch -c new_branch` |
+
+참고로 리포지토리 하나 클론하고 다른 브랜치가 안보일때, 그냥 그 브랜치고 switch하면 알아서 찾음.
+
 # 유용한 명령어 익히기
 
 `git show` = 마지막 커밋 정보 출력
@@ -105,17 +117,18 @@ stash@{1}: WIP on to_basic_git: d3fc4c5 Complete rebase md
 
 - **개인** branch에서 한번 rebase를 해보자.
 <div align="center">
-  <img src="images/git_image.png" width="300">
+  <img src="images/git_image.png" width="430">
 </div>
 일단 commit for rebase 0,1,2를 만들었다.
 - 푸쉬를 하면 리모트에 잘 올라가는 것을 볼 수 있다.
 <div align="center">
-  <img src="images/git_image-1.png" width="300">
+  <img src="images/git_image-1.png" width="430">
 </div>
+
 - 이제 rebase를 해보자.
 `git rebase -i HEAD~3`
 <div align="center">
-  <img src="images/git_image-3.png" width="300">
+  <img src="images/git_image-3.png" width="430">
 </div>
 
 그러면 vscode으로 편집할 수 있는 상태가 나온다. (디폴트는 Vim)
@@ -126,24 +139,55 @@ s ee74013 # commit for rebase 1
 s 07b515d # commit for rebase 2
 ```
 위를 위해 없앨 커밋 앞에 pick을 s(squash)으로 변경한다.
+
+> 참고로 이 경우 위에만 꼭 pick으로 남고 나머지가 squash 되야한다.
+
+> squash의 경우 애초에 이후 커밋이 이전 커밋으로 녹여낸다는 의미이다. 즉, 이후의 커밋들을 squash 해야한다.
+
+<details>
+<summary>그러면 왜 이런식으로 편집하게 만들었을까?</summary>
+그거는 많은 양의 커밋들을 squash해야하고, 어떤 커밋이 어느 커밋으로 squash할지 일일히 정할수 있도록 만들었기 때문이다.
+
+- 예를 들어 아래의 경우 처음 위의 커밋은 그냥 그대로 있고. 그 다음 커밋이 이후 2개를 흡수. 5번째 커밋이 이후 3개를 흡수하는 방식으로 끝난다.
+
+```
+pick 2be7f74 Commit for bisect 0
+pick 365450b Commit for bisect 1
+s 07e70fb Commit for bisect 2
+s 4fd0272 Commit for bisect new test 0
+pick 3ca7067 Commit for bisect new test 1
+s 048f8ed Commit for bisect new test 2
+s 4a46a78 Finish bisect test
+s 980d96f Update git md
+```
+
+그래서 커밋이 8개에서 3개로 줄어든다 (하나는 그냥 그대로, 잘못 들어갔을 수도 있으니).
+
+물론 이런식으로 하면 이후에 이름을 설정하는 창도 2번 뜬다.
+</details>
+
+<br>
+
 - 위 창을 닫으면 이제 다음 창으로 넘어간다
 <div align="center">
-  <img src="images/git_image-4.png" width="300">
+  <img src="images/git_image-4.png" width="430">
 </div>
 위 내용을 다 지우고 새로운 커밋명을 작성한다. (이렇게 안하면 선택한 커밋이 제목명으로 남고, 나머지는 본문명으로 들어간다.)
 <div align="center">
-  <img src="images/git_image-5.png" width="300">
+  <img src="images/git_image-5.png" width="430">
 </div>
+
 - 위 창도 닫으면 변경점이 적용됐다는 것을 볼 수 있다.
 <div align="center">
-  <img src="images/git_image-6.png" width="300">
+  <img src="images/git_image-6.png" width="430">
 </div>
 (브랜치 변경해서 보자)
+
 - 마지막으로 리모트에 푸쉬해주자. `git push origin to_basic_git --force`
 <div align="center">
-  <img src="images/git_image-7.png" width="300">
+  <img src="images/git_image-7.png" width="430">
 </div>
-그러면 리모트에도 적용이 깔끔하게 됐다!
+그러면 리모트에도 적용이 깔끔하게 된다.
 
 ## 개별 워크스페이스 생성
 그동안 현재 코드와 이전 레거시 코드, 또는 다른 브랜치를 비교할 때 현재 변화를 stash에 올려 checkout으로 이동하여 비교하거나, 아니면 아예 clone을 하는 방식을 취했다.
@@ -207,6 +251,81 @@ PS C:\Users\admin\Desktop\RWL_fix> type .git
 gitdir: C:/Users/admin/Desktop/RWL_Intern/.git/worktrees/RWL_fix
 PS C:\Users\admin\Desktop\RWL_fix>
 ```
+## 버그 자동 사냥
+Git에 커밋별로 테스트를 자동으로 돌려 버그를 찾아주는 훌륭한 **bisect** 기능이 있다.
+
+- 테스트를 위해 여러 간단한 코드를 만들자.
+
+- 커밋0: 잘 작동하는 함수
+```python
+def add(a, b):
+    return a + b
+
+if __name__ == "__main__":
+    print(add(10, 20)) 
+```
+
+- 커밋1: 오류나는 코드
+```python
+# def add(a, b):
+#     return a - b 
+
+if __name__ == "__main__":
+    print(add(10, 20))  # 버그 발생!
+```
+
+- 커밋2: 그냥 다음 커밋을 위한 변경점
+```python
+#calc.py
+def add(a, b):
+    return a + b
+
+if __name__ == "__main__":
+    print(add(10, 20)) 
+```
+
+이렇게 커밋을 3개 만들고.
+![alt text](image.png)
+
+테스트 코드를 하나 만들자.
+
+정상이면 0반환, 함수를 호출하고 사용했을 때 오류가 발생하면 1을 반환한다.
+
+```python
+# test.py
+import sys
+
+try:
+    from calc import add
+    r = (add(10, 20) == 30)
+except Exception:
+    print("Failed!")
+    sys.exit(1) # 오류로 1반환
+
+else:
+    if r: 
+        print("Success!")
+        sys.exit(0) # 만약 True가 들어왔다면 성공으로 0반환
+    else:
+        print("Failed!")
+        sys.exit(1)
+```
+
+- 이제 bisect을 하기 위해 다음 명령어들을 순서대로 실행한다.
+
+`git bisect start` = 해당 명령를 실행하면 bisect을 위한 detached branch으로 진입한다.
+`git bisect bad HEAD` = 버그가 발견된 곳의 커밋을 작성한다. 지금 발견했으니 일단 HEAD로(현재) 작성.
+`git bisect good HEAD~2` = 정상이었을 때를 적는다. 2커밋 전에는 정상이었다.
+`git bisect run python3 to_workspace/basic/images/test.py` = 이제 파이썬 테스트 코드를 실행한다. 이렇게하면 git 커밋을 이동하면서 알아서 다 테스트 코드를 돌려봐준다.
+
+- 그러면 다음과 같이 결과가 나온다.
+
+![alt text](image-1.png)
+
+`git bisect log`를 하면 일일히 돌려봤을때 결과가 good인지 bad인지 체크해주는 것을 볼 수 있다.
+
+`git bisect reset` = bisect 종료하고 돌아가기. 지금은 bisect용 개별 브랜치이 들어와있다. Bisect는 추적을 위한거지 수정을 위한 기능이 아니다, 돌아가주자.
+
 
 ## 기타 명령어
 
