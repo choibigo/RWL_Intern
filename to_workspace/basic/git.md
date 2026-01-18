@@ -61,6 +61,8 @@ GIT은 분산 버전 관리 시스템(DVCS)으로, 파일을 변경 이력을 �
 
 만약 커밋되지 않은 작업 내역이 있다면 다른 곳으로 checkout시 abort가 뜬다. (스테이지가 되도 안된다. 무조건 커밋이 되야한다.)
 
+![alt text](images/git_1_image-1.png)
+
 - 위 경우를 위해 stash이라는 임시저장공간에 현재 변경을 임시 저장 할 수 있다!
 
 `git stash`
@@ -87,6 +89,10 @@ stash@{1}: WIP on to_basic_git: d3fc4c5 Complete rebase md
 하지만 주의해야할 것은 pop이나 apply시 **마지막**으로 저장된 stash **부터** 꺼내는 것이다. 해당 커밋이나 브랜치에서 했던 stash를 꺼내는 것이 아니다. (stack 처럼 쌓이는 것이다)
 
 특정 stash를 꺼내고 싶으면 `git stash pop "stash@{1}"` 이렇게 stash 이름을 작성하면 된다. (" "이 있어야 함)
+
+- `git stash drop "stash@{0}"`을 통해 특정 stash를 삭제할 수 있다.
+
+- `git stash clear`는 모든 stash 삭제.
 
 ## 커밋 압축
 커밋이 너무 많아질때 이를 유지보수하기 좋게 rebase를 이용하여 여러 커밋을 하나로 압축할 수 있다.
@@ -139,8 +145,81 @@ s 07b515d # commit for rebase 2
 </div>
 그러면 리모트에도 적용이 깔끔하게 됐다!
 
-## git reflog
+## 개별 워크스페이스 생성
+그동안 현재 코드와 이전 레거시 코드, 또는 다른 브랜치를 비교할 때 현재 변화를 stash에 올려 checkout으로 이동하여 비교하거나, 아니면 아예 clone을 하는 방식을 취했다.
 
-## git worktree
+이 clone 방식을 쉽게하는 방식이 **worktree**를 이용하는 방식이다.
 
-## git bisect
+- Worktree는 마치 현재 워크스페이스와 별개로 새로 클론한 리포랑 같다.
+  > 다만 복수의 worktree가 같은 브렌치를 **동시에 볼 수는 없다**.
+
+  > Git이 헷갈리지 않게, 현재 git 리포 **바깥에** 워크트리를 새로 생성하는 것이 바람직하다.
+
+- 워크트리를 추가해보자.
+
+`git worktree add <경로> <브랜치명>`
+
+RWL_fix이라는 워크트리는(또는 새로운 워크스페이스) 상위 폴더에 추가해보자(현재 폴더 밖에). 
+
+생성된 worktree는 main 브랜치 기준으로 생길 것이다. (기존 브랜치명이 아니면 새로 생성됨)
+
+`git worktree add ../RWL_fix main`
+
+```bash
+# 워크트리 생성
+PS \RWL_Intern> git worktree add ../RWL_fix main # main 브랜치 기준으로 생성
+Preparing worktree (checking out 'main')
+HEAD is now at 8458f56 commit for rebase 0
+
+PS \RWL_Intern> cd .. # 이동
+PS > cd .\RWL_fix\
+
+PS \RWL_fix> git branch # 브랜치 확인
+* main
++ to_basic_git
+```
+- 기존 폴더 위치가 바탕화면이라 옆에 나란히 생긴 모습.
+
+![alt text](images/git_1_image-2.png)
+
+- 개별적으로 vscode을 켜서 관리하면 끝!
+
+![alt text](images/git_1_image-3.png)
+
+- 현재 가동중인 워크트리 리스트 출력. 
+
+`git worktree list`
+```bash
+PS C:\Users\admin\Desktop\RWL_fix> git worktree list
+C:/Users/admin/Desktop/RWL_Intern  7a4047f [to_basic_git]
+C:/Users/admin/Desktop/RWL_fix     8458f56 [main]
+```
+
+- 만약 워크트리를 삭제하고 싶으면 그냥 폴더를 삭제하는 것이 아니라 명령어로 수동 제거를 해야한다.(아니면 유령 워크트리가 남는다.)
+
+`git worktree remove ..\RWL_fix\`
+
+(아니면 폴더 수동으로 삭제하고 `git worktree prune`)
+
+- 혹시 시작 worktree가 어디인지 궁금하면 `type .git`을 치면 된다.
+```bash
+PS C:\Users\admin\Desktop\RWL_fix> type .git
+gitdir: C:/Users/admin/Desktop/RWL_Intern/.git/worktrees/RWL_fix
+PS C:\Users\admin\Desktop\RWL_fix>
+```
+
+## 기타 명령어
+
+`git reflog` = 헤드 이동 이력을 볼 수 있다.
+```bash
+PS C:\Users\admin\Desktop\RWL_Intern> git reflog
+7a4047f (HEAD -> to_basic_git) HEAD@{0}: commit: Studied git stash
+d3fc4c5 HEAD@{1}: reset: moving to HEAD
+d3fc4c5 HEAD@{2}: checkout: moving from main to to_basic_git
+8458f56 (main) HEAD@{3}: reset: moving to HEAD
+8458f56 (main) HEAD@{4}: checkout: moving from to_basic_git to main
+d3fc4c5 HEAD@{5}: reset: moving to HEAD
+d3fc4c5 HEAD@{6}: checkout: moving from main to to_basic_git
+8458f56 (main) HEAD@{7}: reset: moving to HEAD
+8458f56 (main) HEAD@{8}: checkout: moving from to_basic_git to main
+```
