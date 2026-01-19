@@ -110,6 +110,13 @@ stash@{1}: WIP on to_basic_git: d3fc4c5 Complete rebase md
 
 - `git stash clear`는 모든 stash 삭제.
 
+### 만약 pull시 이것저것 때문에 충돌이 발생했다?
+`git stash -u` = 추적이 안되는 파일까지 stash (u추가 필요)
+
+`git pull origin main` = 충동할 것이 없으니 pull
+
+`git stash drop` = stash 삭제
+
 ## Rebase - 커밋 압축
 커밋이 너무 많아질때 이를 유지보수하기 좋게 rebase를 이용하여 여러 커밋을 하나로 압축할 수 있다.
 
