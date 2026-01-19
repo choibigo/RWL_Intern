@@ -1,3 +1,4 @@
+### 계획
 - [x] vscode 팁 서치
 - [x] vscode 단축키 정리
 - [x] merge 충돌 해결해보기
@@ -104,6 +105,7 @@ ctrl + k ctrl + t : 테마 변경
 ctrl + shift + enter : 위에 공백줄 추가
 
 **ctrl + space** : 자동완성 선택 재오픈
+
 ![alt text](images/vs_0_image-2.png)
 
 ctrl + shift + space : 매개변수 정보 출력
