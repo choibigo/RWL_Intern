@@ -1,16 +1,10 @@
-# RWL 인턴 관리 저장소
-
-## 인원
-- [김동현](https://github.com/choibigo/RWL_Intern/tree/main/dh_workspace)
-- [김한누리](https://github.com/choibigo/RWL_Intern/tree/main/hnr_workspace)
-- [조민제](https://github.com/choibigo/RWL_Intern/tree/main/mj_workspace)
-- [최태오](https://github.com/choibigo/RWL_Intern/tree/main/to_workspace)
+# 최태오 Workspace
 
 ## 커리큘럼
 ### 기본
-- [ ] Git(clone, commit, push, pull 실습)
-- [ ] VSCode
-- [ ] MD 파일 작성
+- [x] Git(clone, commit, push, pull 실습)
+- [x] VSCode
+- [x] MD 파일 작성
 
 ### 환경 세팅
 - [ ] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
