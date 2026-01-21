@@ -20,7 +20,7 @@ Conda 가상 환경은 특정 폴더에 별도의 실행 파일들을 모아놓�
 
 포맷을 주기적으로 하기 싫으면 가상환경을 생활화하는게 좋다.
 
-![alt text](images/conda_image.png)
+<img src="images/conda_image.png" width=600>
 
 (하지만 가상환경으로 할 때 버그가 더 많이 생기는 것 같은 느낌이...)
 
