@@ -65,6 +65,46 @@
 
 ## 2. [컨테이너 구조 및 커맨드 사용법 -이론편-](https://youtu.be/M25Pl0tX8yw?si=vG3Za_augQ_MW-kW)
 
+![alt text](image-1.png)
+ 
+도커 켄터이너는 두 계층으로 구성 됨.
+- Container Layer: 읽기/쓰기 전용의 얇은 계층. 컨테이너 사용하면서 생기는 변경사항들은 전부 여기에.
+- Image Layers: 읽기 전용 게층으로, 가져온 이미지의 레이어. 다른 컨테이너와 공유 가능.
+
+서로 다른 컨테이너 계층은 서로 소통을 안하지만, 이미지 레이어는 여럿을 동시에, 여러 컨테이너에 사용하는 것이 가능.
+
+![alt text](image-3.png)
+
+이미지 레이어를 공유할 수 있기에 용량을 절약할 수 있음. 하나의 이미지를 여러 곳에서 사용할 수 있으니.
+
+### 도커 명령어
+
+> 모든 도커 명령어는 `docker {대상} {커맨드} {옵션} {인자}` 형태임.
+
+명령어가 궁금하면?
+
+`docker`
+
+또는
+
+`docker {대상} --help`
+
+생각보다 그리 많지 않음.
+
+- docker container 주 명령어
+
+![alt text](image-4.png)
+
+- docker image 주 명령어
+
+![alt text](image-5.png)
+
+- 주로 사용하는 옵션 설명
+
+![alt text](image-6.png)
+
+-i와 -t를 같이 많이 쓴다고 함.
+
 ## 3. [도커 커맨드 사용법 -실습편-](https://youtu.be/prohMhNwZF0?si=4wZnvjEQ4tAUgwT6)
 
 ## 4. [도커 컨테이너 통신하기 -이론편-](https://youtu.be/jTOqXmRKGzA?si=5mae4-Qaf8IxxYuE)
