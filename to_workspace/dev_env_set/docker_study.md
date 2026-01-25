@@ -1,5 +1,6 @@
 ### 계획
 - [ ] 도커(Docker) 기초: 1~12강 시청
+    - [ ] 도커와 vscode
 - [ ] [인프런] 비전공자도 이해할 수 있는 Docker 입문/실전: 1.1~2.8 시청.
 - [ ] 도커 실습
 
@@ -106,6 +107,35 @@
 -i와 -t를 같이 많이 쓴다고 함.
 
 ## 3. [도커 커맨드 사용법 -실습편-](https://youtu.be/prohMhNwZF0?si=4wZnvjEQ4tAUgwT6)
+
+## 실습 전에 도커 설치
+
+### 윈도우11에서 설치
+
+https://www.docker.com/get-started/
+
+`wsl --update`
+
+파워쉘 켜서 docker 한번 쳐서 잘 되는지 확인.
+
+![alt text](image-7.png)
+
+`docker container --help`
+
+`docker container ls`: 현재 컨테이너 목록 체크.
+
+`docker image ls` : 현재 이미지 목록 체크.
+
+`docker container stop {컨테이너명(NAME)}` : 해강 컨테이너 중지. (잠시 중단하는 것, start으로 다시 킬 수 있음.)
+
+`docker container rm {컨테이너명(NAME)}` : 해당 컨테이너 삭제. (삭제를 하기 전에 먼저 stop을 먼저 해야함.)
+
+`docke container ls -a` : 이미 삭제된 컨테이너 포함해서 목록보기.
+
+`docker image rm {이미지명(NAME)}` : 해당 이미지 삭제.
+
+
+### 도커와 vscode
 
 ## 4. [도커 컨테이너 통신하기 -이론편-](https://youtu.be/jTOqXmRKGzA?si=5mae4-Qaf8IxxYuE)
 
