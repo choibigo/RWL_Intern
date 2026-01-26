@@ -161,7 +161,7 @@ https://www.docker.com/get-started/
 
 ## 5. [도커 컨테이너 통신하기 -실습편-](https://youtu.be/v6KJAovryCo?si=U-jwN2YAzKSKlsDt)
 
-[강의자료 깃허브 링크](git@github.com:Around-Hub-Studio/around-hub-spring-boot.git)
+[강의자료 깃허브 링크](https://github.com/Around-Hub-Studio/around-hub-spring-boot)
 
 음.. http 도커 이미지를 compose해서 사용해야 될 것 같은데 안보이누.. 뭐 이 실습은 이전 수업에서 했으니 일단 넘어가주자.
 
@@ -179,8 +179,45 @@ jenkins 이미지를 다운받아서 해당 실습을 진행해봤다.
 
 ## 6. [도커파일(Dockerfile) 작성하기 -이론편-](https://youtu.be/8p9RvxVOQEY?si=WcrQxiOtltb42b_F)
 
+Docker file이란? Docker image를 생성하기 위한 파일. 도커 이미지가 컨테이너의 설계도이니. 도커 파일은 설계도의 설계도라고 할 수 있으려나?
 
+### Docker file 주요 Instruction
 
+- FROM: base가 되는 이미지를 지정. 모든 이미지를 노 베이스에서 만들 수는 없으니 지정함. 주로 OS 같은걸 베이스로 잡음.
+
+- RUN: 이미지를 빌드할때 발동하는 커맨드 지정용.
+
+- ADD: 이미지 안에 호스트의(로컬) 파일이나 폴더를 추가하는 용도. 만약 없다면 자동 생성 됨.
+
+- COPY: 호스트 환경의 파일이나 폴더를 이미지 안에 복사함. 위 add와 동작은 동일하지만, URL을 지정하거나, 압축파일을 자동으로 풀지 않음(조금 더 보수적).
+
+- EXPOSE: 통신에 사용할 포트 지정.
+
+- ENV: 환경 변수 지정용. else 문법 이용 가능.
+
+- CMD: **컨테이너**가 실행될 때 실행하는 커맨드 지정. 이미지 빌드할때 실행되는 것 아님! 그건 RUN.
+
+- ENTRYPOINT: 도커 이미지가 실행될 때 사용되는 기본 커맨드 지정. (CMD는 상황에 따라서 조금 바뀔 수 있는데 이건 그렇지 않음. 베이스가 되는 필수 명령어를 실행하는데 용도.)
+
+- WORKDIR: 위 RUN, CMD, ENTRYPOINT 등을 실행할 디렉토리 지정. 그냥 빌드할 때 `-w` 옵션으로 오버라이딩으로도 가능.
+
+- VOLUME: **퍼시스턴스 데이터**를 저장할 경로 지정. 호스트의 디렉토리를 도커 컨테이너에 연결하는 것. 주로 중요한 데이터들, 백업할 필요가 있는 데이터들을 지정하기 위함. (예를 들어 모델 트레이닝하고 체크포인트 등을 저장)
+
+> 참고로 퍼시스턴스 데이터는 지속석으로 필요한, 영속적인 데이터를 일컫는다.
+
+> 컨테이너가 삭제되면 그 속의 데이터들은 다 함께 삭제됨. 집에 방을 월세로 잠시 내서 방을 빼면 다 같이 빼는 느낌?
+
+### 도커 빌드
+
+도커 빌드를 이용하여 도커 파일을 실행.
+
+`docker build {옵션} {도커파일 디렉토리}`
+
+(ex: docker build -t test)
+
+위 명령어를 시행하면 이미지가 만들어짐.
+
+이제 run을 통해 그 이미지를 컨테이너로 만들어 실행하면 됨.
 
 
 ## 7. [도커파일(Dockerfile) 작성하기 -실습편-](https://youtu.be/BCsiVlmEQCQ?si=USMi7pIvc-Z1iNMP)
