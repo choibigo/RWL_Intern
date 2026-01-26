@@ -130,7 +130,7 @@ https://www.docker.com/get-started/
 
 `docker container rm {컨테이너명(NAME)}` : 해당 컨테이너 삭제. (삭제를 하기 전에 먼저 stop을 먼저 해야함.)
 
-`docke container ls -a` : 이미 삭제된 컨테이너 포함해서 목록보기.
+`docker container ls -a` : 이미 삭제된 컨테이너 포함해서 목록보기.는 아니고 삭제된 것들 뿐만 아니라 다양한 상태의 컨테이너 전부 보기.
 
 `docker image rm {이미지명(NAME)}` : 해당 이미지 삭제.
 
@@ -161,7 +161,27 @@ https://www.docker.com/get-started/
 
 ## 5. [도커 컨테이너 통신하기 -실습편-](https://youtu.be/v6KJAovryCo?si=U-jwN2YAzKSKlsDt)
 
+[강의자료 깃허브 링크](git@github.com:Around-Hub-Studio/around-hub-spring-boot.git)
+
+음.. http 도커 이미지를 compose해서 사용해야 될 것 같은데 안보이누.. 뭐 이 실습은 이전 수업에서 했으니 일단 넘어가주자.
+
+jenkins 이미지를 다운받아서 해당 실습을 진행해봤다.
+
+`docker run --name test1 -d jenkins/jenkins:lts`
+
+`docker run --name test2 -d -p 8080:80 jenkins/jenkins:lts`
+
+![alt text](image-11.png)
+
+`-p` 옵션 유뮤에 따라 포트가 생긴 것을 볼 수 있다. 
+
+> 참고로 옵션 `-d`는 백그라운드에서 실행한다는 의미로, 해당 옵션을 사용하지 않으면 현재 터미널에서 아웃풋이 쭉 출력된다.
+
 ## 6. [도커파일(Dockerfile) 작성하기 -이론편-](https://youtu.be/8p9RvxVOQEY?si=WcrQxiOtltb42b_F)
+
+
+
+
 
 ## 7. [도커파일(Dockerfile) 작성하기 -실습편-](https://youtu.be/BCsiVlmEQCQ?si=USMi7pIvc-Z1iNMP)
 
