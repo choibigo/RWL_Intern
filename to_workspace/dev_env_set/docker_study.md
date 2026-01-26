@@ -1,5 +1,6 @@
 ### 계획
 - [ ] 도커(Docker) 기초: 1~12강 시청
+    - [ ] 도커와 vscode
 - [ ] [인프런] 비전공자도 이해할 수 있는 Docker 입문/실전: 1.1~2.8 시청.
 - [ ] 도커 실습
 
@@ -107,11 +108,80 @@
 
 ## 3. [도커 커맨드 사용법 -실습편-](https://youtu.be/prohMhNwZF0?si=4wZnvjEQ4tAUgwT6)
 
+## 실습 전에 도커 설치
+
+### 윈도우11에서 설치
+
+https://www.docker.com/get-started/
+
+`wsl --update`
+
+파워쉘 켜서 docker 한번 쳐서 잘 되는지 확인.
+
+![alt text](image-7.png)
+
+`docker container --help`
+
+`docker container ls`: 현재 컨테이너 목록 체크.
+
+`docker image ls` : 현재 이미지 목록 체크.
+
+`docker container stop {컨테이너명(NAME)}` : 해강 컨테이너 중지. (잠시 중단하는 것, start으로 다시 킬 수 있음.)
+
+`docker container rm {컨테이너명(NAME)}` : 해당 컨테이너 삭제. (삭제를 하기 전에 먼저 stop을 먼저 해야함.)
+
+`docker container ls -a` : 이미 삭제된 컨테이너 포함해서 목록보기.는 아니고 삭제된 것들 뿐만 아니라 다양한 상태의 컨테이너 전부 보기.
+
+`docker image rm {이미지명(NAME)}` : 해당 이미지 삭제.
+
+
+### 도커와 vscode
+
 ## 4. [도커 컨테이너 통신하기 -이론편-](https://youtu.be/jTOqXmRKGzA?si=5mae4-Qaf8IxxYuE)
+
+도커는 기본적으로 독립된 환경이라 외부에서 접근이 쉽지 않음.
+
+![alt text](image-8.png)
+
+통신을 따로 해야함. `-p` 옵션을 쓰지 않으면 어려움.
+
+- 이 `-p` 옵션은 Port의 약자로, Port Mapping을 설정하는데 필요함. 이 포트를 기반으로 도커는 가상 네트워크에서 돌아가는데, 이 IP 포트 주소가 사전에 없으면 외부에서 접근하기가 어려움.
+    - 예시: 만약 사이트를 만드는 도커 파일을 실행할 때 다음과 같은 명령으로 킬 수 있음: `docker run -p 8080:80 nginx`. 8080이 호스트 포트 (내 브라우저에 입력할 포트). 80이 컨테이너 포트, 즉 컨테이너 내부 웹 서버(Nginx)가 실제 사용 중인 포트. 이제 누가 사이트에 들어가서 신호를 준다면, 그게 8080 포트 -> 80 포트 -> 도커로 가게 됨.
+    - 만약 일일히 포트를 작성하기 귀찮으면 대분자 `-P`를 사용할 것. 알아서 남는걸로 지정함.
+
+영상에서도 설명하지만 아래 처럼 쓰면 됨.
+
+ ![alt text](image-9.png)
+
+ 이게 `-p` 옵션을 사용했을 때 통신 구조.
+
+ ![alt text](image-10.png)
+
+ 이미지를 보면 알 수 있지만, 컨테이너들의 내부는 서로 전부 독립이기에 포트 번호가 서로 같아도 충돌이 발생하지 않는다. 그냥 외부 호스트 포트만 다르면 된다.
 
 ## 5. [도커 컨테이너 통신하기 -실습편-](https://youtu.be/v6KJAovryCo?si=U-jwN2YAzKSKlsDt)
 
+[강의자료 깃허브 링크](git@github.com:Around-Hub-Studio/around-hub-spring-boot.git)
+
+음.. http 도커 이미지를 compose해서 사용해야 될 것 같은데 안보이누.. 뭐 이 실습은 이전 수업에서 했으니 일단 넘어가주자.
+
+jenkins 이미지를 다운받아서 해당 실습을 진행해봤다.
+
+`docker run --name test1 -d jenkins/jenkins:lts`
+
+`docker run --name test2 -d -p 8080:80 jenkins/jenkins:lts`
+
+![alt text](image-11.png)
+
+`-p` 옵션 유뮤에 따라 포트가 생긴 것을 볼 수 있다. 
+
+> 참고로 옵션 `-d`는 백그라운드에서 실행한다는 의미로, 해당 옵션을 사용하지 않으면 현재 터미널에서 아웃풋이 쭉 출력된다.
+
 ## 6. [도커파일(Dockerfile) 작성하기 -이론편-](https://youtu.be/8p9RvxVOQEY?si=WcrQxiOtltb42b_F)
+
+
+
+
 
 ## 7. [도커파일(Dockerfile) 작성하기 -실습편-](https://youtu.be/BCsiVlmEQCQ?si=USMi7pIvc-Z1iNMP)
 
