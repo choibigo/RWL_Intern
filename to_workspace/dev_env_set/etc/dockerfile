@@ -1,0 +1,25 @@
+# 1. FROM: 베이스 이미지 지정 (파이썬 3.9 버전 사용)
+FROM python:3.9-slim
+
+# 작업 디렉토리 생성 (이 이후 명령어는 /app 내부에서 실행됨)
+WORKDIR /app
+
+# 2. RUN: 이미지 생성 과정에서 실행할 명령어 (Flask 라이브러리 설치)
+RUN pip install flask
+
+# 3. ENV: 환경 변수 설정 (기본값을 'DockerUser'로 설정)
+ENV USER_NAME="DockerUser"
+
+# 4. ADD: 호스트의 파일을 이미지 안으로 복사
+# (현재 폴더의 app.py를 컨테이너의 /app 폴더로 추가)
+ADD app.py .
+
+# 5. VOLUME: 컨테이너 내부의 데이터 저장소 지정
+# (로그 파일이 저장될 /data 디렉토리를 볼륨으로 지정)
+VOLUME ["/data"]
+
+# 6. EXPOSE: 이 컨테이너가 사용할 포트 명시 (문서화 목적이 큼)
+EXPOSE 5000
+
+# 7. CMD: 컨테이너가 시작될 때 실행할 기본 명령어
+CMD ["python", "app.py"]
