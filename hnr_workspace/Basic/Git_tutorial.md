@@ -104,8 +104,6 @@ git push -u origin main
 
 ![image.png](image%2012.png)
 
-- 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
-
 ![image.png](image%2013.png)
 
 - Repo 생성 완료
