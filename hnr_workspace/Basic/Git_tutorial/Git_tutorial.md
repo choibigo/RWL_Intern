@@ -146,5 +146,3 @@ git push -u origin main
 - Untracked → 아직 원격에 올라가 있지 않은 파일 : 추적이 되고 있지 않음
 
 ![image.png](image%2019.png)
-
-- VSCode 를 통해
