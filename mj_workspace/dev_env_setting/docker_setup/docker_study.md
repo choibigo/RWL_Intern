@@ -275,6 +275,8 @@ docker export nginx-test>test123.tar
 docker import test123.tar test123:version
 ```
 위 명령을 통해 export로 생성된 tar 파일을 새로운 docker image로 생성 가능함
+<img src="images/docker8.png" width="700">
+
 | 명령              | 저장 대상               |
 | --------------- | ------------------- |
 | `docker save`   | **이미지(Image)**      |
