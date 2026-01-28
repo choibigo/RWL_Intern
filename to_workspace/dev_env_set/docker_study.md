@@ -222,6 +222,106 @@ Docker file이란? Docker image를 생성하기 위한 파일. 도커 이미지�
 
 ## 7. [도커파일(Dockerfile) 작성하기 -실습편-](https://youtu.be/BCsiVlmEQCQ?si=USMi7pIvc-Z1iNMP)
 
+### 도커 파일을 만들어 직접 빌드하는 실습
+
+Flask를 이용해 간단한 사이트를 호스팅하는 코드를 작성-> app.py
+
+```docker
+# 1. FROM: 베이스 이미지 지정 (파이썬 3.9 버전 사용)
+FROM python:3.9-slim
+
+# 작업 디렉토리 생성 (이 이후 명령어는 /app 내부에서 실행됨)
+WORKDIR /app
+
+# 2. RUN: 이미지 생성 과정에서 실행할 명령어 (Flask 라이브러리 설치)
+RUN pip install flask
+
+# 3. ENV: 환경 변수 설정 (기본값을 'DockerUser'로 설정)
+ENV USER_NAME="DockerUser"
+
+# 4. ADD: 호스트의 파일을 이미지 안으로 복사
+# (현재 폴더의 app.py를 컨테이너의 /app 폴더로 추가)
+ADD app.py .
+
+# 5. VOLUME: 컨테이너 내부의 데이터 저장소 지정
+# (로그 파일이 저장될 /data 디렉토리를 볼륨으로 지정)
+VOLUME ["/data"]
+
+# 6. EXPOSE: 이 컨테이너가 사용할 포트 명시 (문서화 목적이 큼)
+EXPOSE 5000
+
+# 7. CMD: 컨테이너가 시작될 때 실행할 기본 명령어
+CMD ["python", "app.py"]
+```
+
+위 파일들을 etc 폴더에 배치하고.
+
+이제 빌드를 하면 된다.
+
+`docker build -t my-web-server .`
+
+![alt text](image-12.png)
+
+이제 이미지 목록에 추가됐음을 볼 수 있다.
+
+![alt text](image-13.png)
+
+이제 이미지를 가지고 컨테이너를 만들어보자.
+
+`docker run -d -p 5000:5000 -v $(pwd)/logs:/data --name my-container my-web-server`
+
+![alt text](image-14.png)
+
+이제 크롬창에 아래 사이트에 들어가서 확인하면 됨.
+
+http://localhost:5000/
+
+![alt text](image-15.png)
+
+etc 속 logs 폴더의 access.log를 보면 기록이 잘 남아있다. 이를 통해 효과적으로 도커 속에서 외부로 파일이 잘 저장된 것.
+
+```
+[2026-01-27 12:53:23] Access from DockerUser
+```
+
+- 권한 떄문에 컨테이너가 종료되지 않는다.
+
+`docker rm -f my-container`
+
+```
+Error response from daemon: cannot remove container "my-container": could not kill container: permission denied
+```
+
+앞에 sudo를 붙여도 안된다.
+
+- Ubuntu 보안 모듈 때문이 22.04에서 이런 문제가 종종 발생한다고 한다.
+
+그래서 OS 차원에서 직접 해당 프로세스를 찾아 죽여야한다고 한다.
+
+`docker inspect --format '{{.State.Pid}}' my-container`
+
+그러면 번호가 출력된다. 이를 아래 명령어에 기입. (컨테이너 프로세스 종료)
+
+`sudo kill -9 {번호}`
+
+이제 도커에서 제거가 가능할 것이다.
+
+`docker rm -f my-container`
+
+- 하지만 결국 재발. 아래 명령어들을 사용해서 충돌 해결.
+```bash
+# 1. AppArmor 관리 도구 설치
+sudo apt-get update
+sudo apt-get install -y apparmor-utils
+
+# 2. 꼬여있는(Unknown) 보안 프로필 제거
+sudo aa-remove-unknown
+
+# 3. 도커 서비스 재시작
+sudo systemctl restart docker
+```
+이제 잘 됨.
+
 ## 8. [도커 컴포즈(docker-compose) 파일 작성하기 -이론편-](https://youtu.be/3FY-DzXYu7E?si=cmIGua6Z1AtuQ_fo)
 
 ## 9. [도커 컴포즈(docker-compose) 파일 작성하기 -실습편-](https://youtu.be/vwL0I5dhdyI?si=EGhaAOYFFRoBwOOp)
