@@ -129,7 +129,7 @@ alt + 여기저기 클릭 : 여기저기 클릭한 곳들이 전부 커서가 �
 
 ctrl + k ctrl + s로 단축키를 확인할 수 있다.
 
-![alt text](image.png)
+![alt text](images/vs_1_image.png)
 
 충돌하는 기능은 Gemini Code Assist으로 해당 키를 변경해서 해결했다.
 
