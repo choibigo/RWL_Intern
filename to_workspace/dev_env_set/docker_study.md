@@ -12,6 +12,8 @@
 
 [비전공자도 이해할 수 있는 Docker 입문/실전 1.1~2.8강(총 12회)](https://youtube.com/playlist?list=PLtUgHNmvcs6rS5aNCRIZtVcyk3gRX2iOd&si=rcllx93oBu5SZAzI)
 
+- 참고로 윈도우11에서는 도커 데스크톱 앱을 실행시켜야 cli에서 docker 명령어가 먹힌다 (근데 그냥 docker는 신기하게 되고, 뒤에 무언가를 붙인 순간 안된다.)
+
 # 도커 기초 강의
 
 ## 1. [도커 기초강의 안내](https://youtu.be/p1-wm-ThnTI?si=5p0gFUGJ9eVFvugT)
@@ -322,12 +324,294 @@ sudo systemctl restart docker
 ```
 이제 잘 됨.
 
+- 아래 명령어도 실행해서 인풋을 다르게 해보자.
+
+`docker run -d -p 5000:5000 -v $(pwd)/logs:/data -e USER_NAME="HanyangStudent" --name my-container my-web-server`
+
+### 이미지 레이어 보기
+
+참고로 `docker inspect my-web-server`를 보면 다양한걸 볼 수 있는데, 아래 처럼 이미지의 레이어들을 볼 수 있다.
+
+![alt text](image-19.png)
+
+- 여기서 한층 한층이 쌓여서 현재 컨테이너가 된 것이다.
+
+가장 위에 있는 것이 기본 OS일 것이고, 가장 아래에 있는 것들이 내가 추가한 것들이다.
+```
+"RootFS": {
+    "Type": "layers",
+    "Layers": [
+        "sha256:d7c97cb6f1fe...",  <-- Bottom Layer (Base OS)
+        "sha256:4f237755fbae...",
+        "sha256:298992e09a03...",
+        "sha256:c8f6b54339a8...",
+        "sha256:46a942acd0a6...",
+        "sha256:ae4e9e9853ec...",  <-- Your 'pip install flask'
+        "sha256:510b4f540a57..."   <-- Your 'ADD app.py' (Top Layer)
+    ]
+}
+```
+도커는 이러한 레이어로 구성된다. 이렇게 한층 한층이 파일 시스템을 바꾸는 것이고, 현재 컨테이너가 되는 것이다.
+
+이를 통해 노베이스에서 부터 컨테이너를 만들 필요가 없다. 
+
+- 이제 비로소 위에 그림에서 왜 이렇게 표현했는지 이해가 완전히 간다.
+
+![alt text](image-20.png)
+
 ## 8. [도커 컴포즈(docker-compose) 파일 작성하기 -이론편-](https://youtu.be/3FY-DzXYu7E?si=cmIGua6Z1AtuQ_fo)
+
+
+이 한줄로 컨테이너를 만들 수 있다.
+
+`docker-compose up -d`
+
+docker compose는 도커 애플리케이션의 서비스, 네트워크, 볼륨 등의 설정을 yaml 형식으로 작성하는 파일.
+
+보통 compose 파일은 아래 같이 생겼다.
+
+![alt text](image-16.png)
+
+### docker compose와 dockerfile의 차이는?
+비슷하게 보이지만 엄연히 다르다. 
+- Dockerfile은 도커 이미지를 빌드할 때 이용하는 것이다. 도커는 이미지 빌드시 이 파일을 보고 아웃풋으로 **image**하나를 내놓는 것이다.
+- Docker Compose은 이 이미지를 바탕으로 **컨테이너**를 만들때 필요한 설정들을 지시하는 것이다. 그렇기에 Run의 단계에서 실행할 때 이용된다.
+
+### 왜 Docker Compose가 필요한가?
+
+위에서 실습할 때 Run 중에 이런 명령어를 사용했다.
+
+`docker run -d -p 5000:5000 -v $(pwd)/logs:/data -e USER_NAME="HanyangStudent" --name my-container my-web-server`
+
+이렇게 매번 치면 오타가 날 확률이 매우 높다. Compose를 사용하면 이 모든 옵션들을 하나의 `docker-compose.yml`에 적어두고. 이를 한줄로 실행할 수 있다.
+
+- 예를 들어 위 cli 명령어를 아래 docker-compose.yaml 파일로 만들고.
+
+```yaml
+version: '3.8'
+
+services:
+  web-server:
+    # 1. 이미지: 아까 만든 이미지를 쓰거나, 여기서 바로 빌드할 수도 있음
+    build: .  # 현재 폴더의 Dockerfile을 보고 빌드해라!
+    
+    # 2. 이름 설정 (--name)
+    container_name: my-compose-container
+    
+    # 3. 포트 연결 (-p 5000:5000)
+    ports:
+      - "5000:5000"
+    
+    # 4. 볼륨 연결 (-v)
+    volumes:
+      - ./logs:/data
+    
+    # 5. 환경 변수 (-e)
+    environment:
+      - USER_NAME=HanyangStudent
+```
+
+### 위 compose 요소들 중에서 가장 자주 쓰이는 것은 services다 나머지는 잘 안쓴다.
+
+![alt text](image-17.png)
+
+Frontend와 backend이 각각 컨테이너 이름이 되는거다. 그리고 아래에 보이는 이미지들이 해당 컨테이너가 사용하는 각각의 이미지가 되는 것이다.
+
+이미지와 마찬가지로 아래와 같은 키워드로 많은 것을 정의할 수 있다.
+
+![alt text](image-18.png)
+
+- 작성한 compose.yaml 파일은 `docker-compose up`으로 실행할 수 있다.
+
+> 만약 다른 이름을 사용한다면 `docker-compose -f custom_file.yml up`을 사용하면 된다.
 
 ## 9. [도커 컴포즈(docker-compose) 파일 작성하기 -실습편-](https://youtu.be/vwL0I5dhdyI?si=EGhaAOYFFRoBwOOp)
 
+신기하게도 docker-compose.yaml를 작성하면 좌측에 이미지가 고래로 바뀜.
+
+![alt text](image-23.png)
+
+그러니까 yaml 형식이 전부가 아니고 docker-compose.yaml이 디폴트명이고, 기본적으로 이를 인식한다는 것. 그래서 이름을 바꿀시 개별적인 커맨드가 필요한 것임.
+
+- docker-compose.yaml
+```yaml
+version: '3.8'
+
+services:
+  my-flask-app:
+    # 1. build: 현재 폴더(.)에 있는 Dockerfile을 보고 이미지 빌드
+    build: . 
+    
+    # 2. container_name: 컨테이너 이름 지정
+    container_name: practice-container
+    
+    # 3. ports: 윈도우 포트 5000 <-> 컨테이너 포트 5000 연결
+    ports:
+      - "5000:5000"
+    
+    # 4. volumes: 윈도우의 현재폴더 내 logs 폴더를 컨테이너 /data와 연결
+    # 윈도우에서도 상대 경로(./)를 쓰면 도커가 알아서 처리해줍니다.
+    volumes:
+      - ./logs:/data
+    
+    # 5. environment: 환경변수 설정 (윈도우 사용자임을 표시해봅시다)
+    environment:
+      - USER_NAME=최태오
+```
+
+- 이재 해당 compose 파일을 이용해서 빌드해보자.
+
+`docker-compose up -d --build`
+
+> 참고로 여기서 `--build`는 코드가 바뀌었을 수도 있으니 강제로 새로 빌드하라는 옵션임. 아니면 기존의 코드를 그대로 가져옴. (compose 수정사항들은 바로바로 반영되지만, app.py 같은 소스코드는 이 옵션을 추가해야 반영됨.)
+
+이제 짧은 cli으로 도커를 run할 수 있다!
+
 ## 10. [도커 이미지 생성 및 저장하기 -이론편-](https://youtu.be/az46ttJ8JUQ?si=MBMz67SchFjzgyZt)
 
+주로 쓰이는 이미지를 만드는 방식에는 두가지가 있음.
+
+- 하나는 기존 이미지에(또는 노베이스에서 시작하여) 추가 레이어를 포함하여 컨테이너 생성.
+
+![alt text](image-21.png)
+
+위 방법이 기존에 우리가 하던 방법이다.
+
+- 나머지 하나는 현재 컨테이너에서 이것저것 만들고 변경하고. 현재 상태를 이미지로 저장하는 것이다.
+
+![alt text](image-22.png)
+
+이 방식은 다음 명령어를 사용한다.
+
+`docker commit {대상 컨테이너명} {생성할 이미지명}`
+
+> 주의: VOLUME에 저장된 데이터는 commit에 포함되지 않음. 컨테이너 내부 파일 시스템 사항만 저장됨.
+
+### 이미지 저장 및 전송
+
+이렇게 만든 이미지는 생각보다 용량이 꽤 된다.
+
+도커파일 자체는 얼마 안되지만, 그걸 이용해서 빌드한 이미지나, 아니면 현재 컨테이너로 부터 추출한 이미지는 꽤 무겁다. 일단 현재 docker 엔진이 저장하고 있지만, 이를 운반할 필요성도 있다.
+
+이러한 이미지들은 docker hub에 올리거나, 아니면 로컬로 저장해서 운반 시킬 수 있다. 
+
+로컬 저장 및 불러오기 방식에 docker 이미지용 saver과 load / 컨테이너용 export와 import 커맨드를 이용할 수 있음..
+
+#### save, load <- 대상 이미지를 내보내는용
+
+- **save**: 도커 이미지를 tar 파일로 변환.
+
+`docker save -o my_image.tar my_imager`
+
+> 참고로 tar 파일은 암축이 아닌, 여러 파일을 하나로 묶는 메타데이터 저장 방식임.
+
+- **load**: tar 파일을 가져와 로드함.
+
+`docker load -i my_image.tar`
+
+save과 load 방식은 여러 레이어 계층을 유지함.
+
+
+### export, import <- 대상 컨테이너에서 이미지를 내보내는용
+
+하지만 export과 import는 아님. 여러 레이어를 하나로 통합하여 추출.
+
+- export
+
+`docker export my-container > my-container.tar`
+
+- import
+
+`docker import my-container.tar my-container`
+
+만약 레이어 계층을 유지하고 싶으면 그냥 commit하고 이미지를 만든 뒤에 그냥 save/load를 사용하자.
+
+> 그리도 다양한 환경에서 작동하게 만들려면 무조건 save/load 방식이 권장된다고 한다.
+
 ## 11. [도커 이미지 생성 및 저장하기 -실습편-](https://youtu.be/bK6sHpy9au0?si=YpPTirMAuV4pI3xX)
+
+`docker-compose up -d --build`으로 컨테이너 실행.
+
+- 아래 명령어를 사용해서 해당 컨테이너로 접속한다.
+
+`docker exec -it practice-container bash`
+
+![alt text](image-24.png)
+
+- 뭔가 추가로 설치하고 나온다.
+
+```
+pip install requests
+exit
+```
+
+- 이제 현 상태를 이미지로 만든다
+
+`docker commit practice-container practice-image:v1`
+
+![alt text](image-25.png)
+
+그러면 아래 처럼 새로운 이미지가 생긴다.
+
+![alt text](image-26.png)
+
+- 이제 이미지를 save 해보자.
+
+`docker save -o practice-image-v1.tar practice-image:v1`
+
+잘 저장됐다.
+
+![alt text](image-27.png)
+
+- 이제 기존 이미지를 삭제하고 다시 불러오자.
+
+이미지를 삭제한다. (rm image는 안된다. `rmi`라고 적어야한다.)
+
+`docker rmi practice-image:v1`
+
+- 이제 불러오기 위해 load를 한다.
+
+`docker load -i practice-image-v1.tar`
+
+이제 로컬 파일로 이미지를 주고 받을 수 있는 능력을 습득했다!
+
+### Docker Hub 이용해보기
+
+하지만 로컬은 기본적으로 불편함 또한 존재한다. 용량과 관리의 불편함이다.
+
+이를 해결해주는 것이 Docker Hub. 바로 사용해보자.
+
+- 일단 로그인
+
+`docker login`
+
+- 이미지에 이름표를 달아야 업로드가 된다. `docker tag [현재이미지] [내아이디]/[올릴이름]:[버전]`
+
+`docker tag practice-image:v1 bigenlight/practice-image:v1`
+
+- 그리고 마지막으로 이를 푸쉬하면 된다.
+
+`docker push bigenlight/practice-image:v1`
+
+![alt text](image-28.png)
+
+이제 Docker Hub에 들어가서 잘 업로드 됐다는 것을 확인할 수 있다.
+
+https://hub.docker.com/repositories/bigenlight
+
+![alt text](image-29.png)
+
+
+> 참고로 commit안에 compose 파일이 들어가지는 않는다. 만약 공유하고 싶으면 깃리포에 compose 파일을 올리고, 해당 리포를 클론하고, docker hub에서 이미지를 pull한 뒤에 docker compose를 시키면 된다.
+
+- 최종 테스트
+
+기존 이미지 삭제해보고.
+
+`docker rmi practice-image:v1`
+
+도커허브에서 직업 pull하는 동시에 run.
+
+`docker run -d -p 5000:5000 --name remote-test bigenlight/practice-image:v1`
 
 ## 12. [스프링 부트 Dockerfile 만들기](https://youtu.be/MsMHStVibEk?si=NPNfP0_nUw5EGwfA)

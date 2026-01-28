@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  my-flask-app:
+    # 1. build: 현재 폴더(.)에 있는 Dockerfile을 보고 이미지 빌드
+    build: . 
+    
+    # 2. container_name: 컨테이너 이름 지정
+    container_name: practice-container
+    
+    # 3. ports: 윈도우 포트 5000 <-> 컨테이너 포트 5000 연결
+    ports:
+      - "5000:5000"
+    
+    # 4. volumes: 윈도우의 현재폴더 내 logs 폴더를 컨테이너 /data와 연결
+    # 윈도우에서도 상대 경로(./)를 쓰면 도커가 알아서 처리해줍니다.
+    volumes:
+      - ./logs:/data
+    
+    # 5. environment: 환경변수 설정 (윈도우 사용자임을 표시해봅시다)
+    environment:
+      - USER_NAME=최태오

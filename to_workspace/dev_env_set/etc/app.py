@@ -18,7 +18,7 @@ def hello():
     with open(log_path, "a") as f:
         f.write(f"[{now}] Access from {user_name}\n")
     
-    return f"Hello, {user_name}! Your visit has been recorded."
+    return f"Hello, {user_name}! Your visit has been recorded and saved."
 
 if __name__ == '__main__':
     # EXPOSE 실습: 5000번 포트로 실행
