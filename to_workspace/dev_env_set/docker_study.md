@@ -6,7 +6,9 @@
 
 # Docker study
 
-![alt text](image.png)
+<div align="center">
+    <img src="images/docker_image.png" width=800>
+</div>
 
 [도커 기초 강의 1~12강](https://youtube.com/playlist?list=PLlTylS8uB2fDLJRJCXqUowsOViG-ZKnWy&si=r5twdtdIIQlsAnHI)
 
@@ -24,7 +26,7 @@
 
 기본적으로 Linux 환경으로 설계됨.
 
-![alt text](image-2.png)
+![alt text](images/docker_image-2.png)
 
 - Infrastructure: PC의 하드웨어. (CPU, GPU, RAM)
 - HOST Operating System: OS (Window, Linux)
@@ -68,15 +70,15 @@
 
 ## 2. [컨테이너 구조 및 커맨드 사용법 -이론편-](https://youtu.be/M25Pl0tX8yw?si=vG3Za_augQ_MW-kW)
 
-![alt text](image-1.png)
- 
+![alt text](images/docker_image-1.png)
+
 도커 켄터이너는 두 계층으로 구성 됨.
 - Container Layer: 읽기/쓰기 전용의 얇은 계층. 컨테이너 사용하면서 생기는 변경사항들은 전부 여기에.
 - Image Layers: 읽기 전용 게층으로, 가져온 이미지의 레이어. 다른 컨테이너와 공유 가능.
 
 서로 다른 컨테이너 계층은 서로 소통을 안하지만, 이미지 레이어는 여럿을 동시에, 여러 컨테이너에 사용하는 것이 가능.
 
-![alt text](image-3.png)
+![alt text](images/docker_image-3.png)
 
 이미지 레이어를 공유할 수 있기에 용량을 절약할 수 있음. 하나의 이미지를 여러 곳에서 사용할 수 있으니.
 
@@ -96,15 +98,15 @@
 
 - docker container 주 명령어
 
-![alt text](image-4.png)
+![alt text](images/docker_image-4.png)
 
 - docker image 주 명령어
 
-![alt text](image-5.png)
+![alt text](images/docker_image-5.png)
 
 - 주로 사용하는 옵션 설명
 
-![alt text](image-6.png)
+![alt text](images/docker_image-6.png)
 
 -i와 -t를 같이 많이 쓴다고 함.
 
@@ -120,7 +122,7 @@ https://www.docker.com/get-started/
 
 파워쉘 켜서 docker 한번 쳐서 잘 되는지 확인.
 
-![alt text](image-7.png)
+![alt text](images/docker_image-7.png)
 
 `docker container --help`
 
@@ -143,7 +145,7 @@ https://www.docker.com/get-started/
 
 도커는 기본적으로 독립된 환경이라 외부에서 접근이 쉽지 않음.
 
-![alt text](image-8.png)
+![alt text](images/docker_image-8.png)
 
 통신을 따로 해야함. `-p` 옵션을 쓰지 않으면 어려움.
 
@@ -153,11 +155,11 @@ https://www.docker.com/get-started/
 
 영상에서도 설명하지만 아래 처럼 쓰면 됨.
 
- ![alt text](image-9.png)
+<img src="images/docker_image-9.png" width=450>
 
  이게 `-p` 옵션을 사용했을 때 통신 구조.
 
- ![alt text](image-10.png)
+ ![alt text](images/docker_image-10.png)
 
  이미지를 보면 알 수 있지만, 컨테이너들의 내부는 서로 전부 독립이기에 포트 번호가 서로 같아도 충돌이 발생하지 않는다. 그냥 외부 호스트 포트만 다르면 된다.
 
@@ -173,7 +175,7 @@ jenkins 이미지를 다운받아서 해당 실습을 진행해봤다.
 
 `docker run --name test2 -d -p 8080:80 jenkins/jenkins:lts`
 
-![alt text](image-11.png)
+![alt text](images/docker_image-11.png)
 
 `-p` 옵션 유뮤에 따라 포트가 생긴 것을 볼 수 있다. 
 
@@ -262,23 +264,23 @@ CMD ["python", "app.py"]
 
 `docker build -t my-web-server .`
 
-![alt text](image-12.png)
+<img src="images/docker_image-12.png" width=400>
 
 이제 이미지 목록에 추가됐음을 볼 수 있다.
 
-![alt text](image-13.png)
+<img src="images/docker_image-13.png" width=400>
 
 이제 이미지를 가지고 컨테이너를 만들어보자.
 
 `docker run -d -p 5000:5000 -v $(pwd)/logs:/data --name my-container my-web-server`
 
-![alt text](image-14.png)
+![alt text](images/docker_image-14.png)
 
 이제 크롬창에 아래 사이트에 들어가서 확인하면 됨.
 
 http://localhost:5000/
 
-![alt text](image-15.png)
+![alt text](images/docker_image-15.png)
 
 etc 속 logs 폴더의 access.log를 보면 기록이 잘 남아있다. 이를 통해 효과적으로 도커 속에서 외부로 파일이 잘 저장된 것.
 
@@ -332,7 +334,7 @@ sudo systemctl restart docker
 
 참고로 `docker inspect my-web-server`를 보면 다양한걸 볼 수 있는데, 아래 처럼 이미지의 레이어들을 볼 수 있다.
 
-![alt text](image-19.png)
+![alt text](images/docker_image-19.png)
 
 - 여기서 한층 한층이 쌓여서 현재 컨테이너가 된 것이다.
 
@@ -357,7 +359,7 @@ sudo systemctl restart docker
 
 - 이제 비로소 위에 그림에서 왜 이렇게 표현했는지 이해가 완전히 간다.
 
-![alt text](image-20.png)
+![alt text](images/docker_image-20.png)
 
 ## 8. [도커 컴포즈(docker-compose) 파일 작성하기 -이론편-](https://youtu.be/3FY-DzXYu7E?si=cmIGua6Z1AtuQ_fo)
 
@@ -370,7 +372,7 @@ docker compose는 도커 애플리케이션의 서비스, 네트워크, 볼륨 �
 
 보통 compose 파일은 아래 같이 생겼다.
 
-![alt text](image-16.png)
+![alt text](images/docker_image-16.png)
 
 ### docker compose와 dockerfile의 차이는?
 비슷하게 보이지만 엄연히 다르다. 
@@ -413,13 +415,13 @@ services:
 
 ### 위 compose 요소들 중에서 가장 자주 쓰이는 것은 services다 나머지는 잘 안쓴다.
 
-![alt text](image-17.png)
+![alt text](images/docker_image-17.png)
 
 Frontend와 backend이 각각 컨테이너 이름이 되는거다. 그리고 아래에 보이는 이미지들이 해당 컨테이너가 사용하는 각각의 이미지가 되는 것이다.
 
 이미지와 마찬가지로 아래와 같은 키워드로 많은 것을 정의할 수 있다.
 
-![alt text](image-18.png)
+![alt text](images/docker_image-18.png)
 
 - 작성한 compose.yaml 파일은 `docker-compose up`으로 실행할 수 있다.
 
@@ -429,7 +431,7 @@ Frontend와 backend이 각각 컨테이너 이름이 되는거다. 그리고 아
 
 신기하게도 docker-compose.yaml를 작성하면 좌측에 이미지가 고래로 바뀜.
 
-![alt text](image-23.png)
+![alt text](images/docker_image-23.png)
 
 그러니까 yaml 형식이 전부가 아니고 docker-compose.yaml이 디폴트명이고, 기본적으로 이를 인식한다는 것. 그래서 이름을 바꿀시 개별적인 커맨드가 필요한 것임.
 
@@ -473,13 +475,13 @@ services:
 
 - 하나는 기존 이미지에(또는 노베이스에서 시작하여) 추가 레이어를 포함하여 컨테이너 생성.
 
-![alt text](image-21.png)
+![alt text](images/docker_image-21.png)
 
 위 방법이 기존에 우리가 하던 방법이다.
 
 - 나머지 하나는 현재 컨테이너에서 이것저것 만들고 변경하고. 현재 상태를 이미지로 저장하는 것이다.
 
-![alt text](image-22.png)
+![alt text](images/docker_image-22.png)
 
 이 방식은 다음 명령어를 사용한다.
 
@@ -536,7 +538,7 @@ save과 load 방식은 여러 레이어 계층을 유지함.
 
 `docker exec -it practice-container bash`
 
-![alt text](image-24.png)
+![alt text](images/docker_image-24.png)
 
 - 뭔가 추가로 설치하고 나온다.
 
@@ -549,11 +551,11 @@ exit
 
 `docker commit practice-container practice-image:v1`
 
-![alt text](image-25.png)
+<img src="images/docker_image-25.png" width=450>
 
 그러면 아래 처럼 새로운 이미지가 생긴다.
 
-![alt text](image-26.png)
+![alt text](images/docker_image-26.png)
 
 - 이제 이미지를 save 해보자.
 
@@ -561,7 +563,7 @@ exit
 
 잘 저장됐다.
 
-![alt text](image-27.png)
+<img src="images/docker_image-27.png" width=450>
 
 - 이제 기존 이미지를 삭제하고 다시 불러오자.
 
@@ -593,13 +595,13 @@ exit
 
 `docker push bigenlight/practice-image:v1`
 
-![alt text](image-28.png)
+![alt text](images/docker_image-28.png)
 
 이제 Docker Hub에 들어가서 잘 업로드 됐다는 것을 확인할 수 있다.
 
 https://hub.docker.com/repositories/bigenlight
 
-![alt text](image-29.png)
+![alt text](images/docker_image-29.png)
 
 
 > 참고로 commit안에 compose 파일이 들어가지는 않는다. 만약 공유하고 싶으면 깃리포에 compose 파일을 올리고, 해당 리포를 클론하고, docker hub에서 이미지를 pull한 뒤에 docker compose를 시키면 된다.
@@ -615,3 +617,13 @@ https://hub.docker.com/repositories/bigenlight
 `docker run -d -p 5000:5000 --name remote-test bigenlight/practice-image:v1`
 
 ## 12. [스프링 부트 Dockerfile 만들기](https://youtu.be/MsMHStVibEk?si=NPNfP0_nUw5EGwfA)
+
+종합 도커 실습하기
+
+## 도커 팁
+
+- 참고로 docker stop이나 rm을 할때 컨테이너명이 아니라 아이도 앞 숫자로도 지정할 수 있다.
+
+예를 들어 ID가 35e72.. 이면 35e로도 조작이 가능하다.
+
+![alt text](images/docker_image-30.png)
