@@ -35,6 +35,12 @@ git pull origin main
 ```
 원격 저장소의 최신 변경 사항을 가져와 **로컬에 반영**.
 
+### git reset
+```bash
+git reset .
+```
+커밋 취소! (push중 오류가 발생하였을때 다시)
+
 <br>
 
 

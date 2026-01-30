@@ -120,3 +120,17 @@ alt + 여기저기 클릭 : 여기저기 클릭한 곳들이 전부 커서가 �
 
 ![alt text](images/vs_0_image-3.png)
 ![alt text](images/vs_0_image-4.png)
+
+
+### VScode ctrl+enter 중복 문제
+원래 ctrl + enter는 아래에 빈줄을 삽입하는 것이었다.
+
+하지만 만약에 코파일럿을 동시에 사용중이면 코드를 생성하는 것으로 해당 단축키가 바뀌어있다.
+
+ctrl + k ctrl + s로 단축키를 확인할 수 있다.
+
+![alt text](images/vs_1_image.png)
+
+충돌하는 기능은 Gemini Code Assist으로 해당 키를 변경해서 해결했다.
+
+앞으로 Gemini Code Assist는 ctrl + alt + a로 바꾸기로 했다.

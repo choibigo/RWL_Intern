@@ -1,4 +1,4 @@
-# Anaconda(추가 환경 생성 및 Lib 설치 해보기)
+# Anaconda
 
 ## 가상환경
 
