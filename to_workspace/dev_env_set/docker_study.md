@@ -1440,3 +1440,45 @@ root@c7db6ded0a83:/app#
 - `docker logs {컨테이너명}`: 백그라운드(`-d`)에서 돌아가는 컨테이너의 로그 출력을 보는 명령어. (`--tail {숫자}`로 뒤에서 부터 몇 줄의 로그만 볼지도 결정 가능.)
 
 - `docker logs -f {컨테이너명}`: 실시간으로 출력 되는 로그 보기.
+
+### 도커 상태 터미널에서 색깔 보는 방법
+
+원래 터미널에서 도커 사용시 색이 보이지 않는다. 큰 문제는 아니지만, 기다란 로그를 볼때 가독성이 떨어지는 문제가 있다.
+
+![alt text](image-3.png)
+
+하지만 이는 이외로 쉽게 바꿀 수 있다.
+
+일단 vscode로 컨테이너에 연결한 다음
+
+ctrl+p로 `~/.bashrc`를 검색한다.
+
+![alt text](image-2.png)
+
+보면 이 줄과
+
+```
+#force_color_prompt=yes
+```
+
+아래 두 줄이 주석이 쳐져 있는 것을 볼 수 있다.
+
+```
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+```
+
+해당 줄의 주석들을 해제하고 해당 변화를 적용한다.
+
+`source ~/.bashrc`
+
+깔끔하게 적용된 것을 볼 수 있다.
+
+![alt text](image-4.png)
+
+- 그리고 아래 해당 줄은 추가하면 이를 도커 이미지 빌드 단계에서 적용할 수 있다.
+
+```dockerfile
+RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/' /root/.bashrc
+```
+
