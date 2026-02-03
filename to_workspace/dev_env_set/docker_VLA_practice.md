@@ -5,33 +5,49 @@
 - [x] Flower VLA 실행
 - [x] Docker에 담기
     - [x] ~/.bashrc 색 변경
-    - [ ] run_robot.py 리팩토링, 실시간 출력 및 저장 방식 변경
+    - [x] run_robot.py 리팩토링, 실시간 출력 및 저장 방식 변경
         - [x] scene id가 총 몇개인지 체크
-    - [ ] 현재 상태 커밋 및 푸쉬
-        - [ ] 테스트 시행
-- [ ] 깃허브 업로드 
-    - [ ] 현재 리포 정리
-    - [ ] 리드미 새로 작성
-    - [ ] 포크하고 업로드
-- [ ] 개발 방식 정리 및 커밋
+    - [x] 현재 상태 커밋 및 푸쉬
+        - [x] 테스트 시행
+- [x] 깃허브 업로드 
+    - [x] 현재 리포 정리
+    - [x] 리드미 새로 작성
+    - [x] 포크하고 업로드
+- [x] 개발 방식 정리 및 커밋
 
-도커 실습으로 VLA를 도커에 담아 배포해볼 예정이다.
+Docker 실습으로 VLA를 도커에 담아 배포해볼 예정이다.
 
-### FLOWER: Democratizing Generalist Robot Policies with Efficient Vision-Language-Action Flow Policies
+# FLOWER VLA docker 배포
+
+VLA 모델과 inference에 필요한 환경을 가공하여 이미지에 넣고 배포해보는 실습 시행.
+
+![alt text](images/docker_vla_interactive_close_the_cabinet_an-_online-video-cutter.com_-_1_.gif)
+
+https://github.com/Bigenlight/Flower_VLA_for_libero_in_Docker
+
+![alt text](images/docker_vla_image-5.png)
+
+## FLOWER: Democratizing Generalist Robot Policies with Efficient Vision-Language-Action Flow Policies
+
+
+![alt text](images/docker_vla_image.png)
 
 https://intuitive-robots.github.io/flower_vla/
-https://www.arxiv.org/pdf/2509.04996
 
-![alt text](image.png)
+https://www.arxiv.org/pdf/2509.04996
 
 작년에 발표된 이 VLA 모델은 거의 모든 벤치마크에서 최우수 성적을 거뒀음에도 VRAM이 거의 필요하지 않다. 
 
 단일 이미지에서는 3GB 미안, 일반 추론시 8GB만 필요하다고 해서 현재 내 환경에서 안성맞춤이다.
 
+그렇기에 VLA inference 테스트도 할겸, 도커에 담아보는 실습을 진행하기로 했다.
+
 - Finetuning 및 평가용 버전을 이용해볼 예정이다.
 
 https://github.com/intuitive-robots/flower_vla_calvin
 
+
+- Installation
 
 ```bash
 git clone --recurse-submodules git@github.com:intuitive-robots/flower_vla_calvin.git
@@ -94,10 +110,10 @@ git clone git@github.com:mees/calvin.git
 ```
 
 
+<details>
+<summary>hulc_data_module.py 수정</summary>
 
-Hum... are you sure we can go from this? Shouldn't we not doing test for like actually testing the simulation things or something?
 
-hulc_data_module.py 수정
 ```py
     def train_dataloader(self):
         return {
@@ -153,7 +169,9 @@ hulc_data_module.py 수정
             for key, dataset in self.val_datasets.items()
         }
 ```
+</details>
 
+- 현재 로봇 정보 파악.
 
 ```bash
 (flower_cal) theo@theo-OMEN:~/flower_vla_calvin$ python check_joints.py
@@ -191,7 +209,11 @@ gripper_joint_ids: [9, 10]
 
 robot.py 수정이 필요할 수도 있음.
 
-```
+<details>
+<summary>robot.py 수정이 필요할 수도 있음</summary>
+
+
+```py
 import logging
 
 import numpy as np
@@ -565,20 +587,24 @@ class Robot:
         return f"{self.filename} : {self.__dict__}"
 
 ```
+</details>
 
+<br>
 
-```
+- Calvin 환경 사용을 위해 했던 노력들
+
+```bash
 cd $flower_calvin_ROOT
 conda create -n flower_cal python=3.9 -y
 conda activate flower_cal
 ```
 
-```
+```bash
 # Force install the binary version
 pip install --upgrade --force-reinstall --no-cache-dir --only-binary :all: mujoco
 ```
 
-```
+```bash
 cd ~/flower_vla_calvin/egl_probe
 
 cat > egl_probe/CMakeLists.txt << 'EOF'
@@ -622,19 +648,19 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 EOF
 ```
 
-```
+```bash
 rm -rf build dist egl_probe.egg-info egl_probe/build
 python setup.py build
 python setup.py install
 ```
 
-```
+```bash
 cd $flower_calvin_ROOT/LIBERO
 pip install -r requirements.txt
 pip install -e .
 ```
 
-```
+```bash
 # 1. Fix Numpy for FLOWER compatibility
 pip install "numpy~=1.23"
 
@@ -647,31 +673,35 @@ python setup.py build
 python setup.py install
 ```
 
-```
+```bash
 python -c "import egl_probe; print('SUCCESS: Found devices:', egl_probe.get_available_devices())"
 ```
 
 
 ---
 
-calvin 문제가 계속 해결이 안돼서 일단 Libero로 선회.
+### Calvin 문제가 계속 해결이 안돼서 일단 Libero로 선회 결정
 
 - ~~홈에 `.mujoco` 설치함, 끝나고 삭제할 것~~. <- 삭제 완료
 
 - 무조코 설치 문제 발생
 
+- Libero env 작동 완료
+
+- Libero_10 모델 사용
+ 
 - transformer 버전 문제 발생
 
 
 VLA 작동에 성공했다!!
 
-![alt text](image-1.png)
+![alt text](images/docker_vla_image-1.png)
 
 `run_inference.py`
 
 ### 필요 의존성
 
-```
+```bash
 # 1. Create clean environment
 conda create -n flower_cal python=3.9 -y
 conda activate flower_cal
@@ -680,14 +710,14 @@ conda activate flower_cal
 pip install --upgrade --force-reinstall --no-cache-dir --only-binary :all: mujoco
 ```
 
-```
+```bash
 cd flower_vla_calvin/egl_probe
 ```
 
 egl_probe/CMakeLists.txt을 다음 파일로 교체:
 `to_workspace/dev_env_set/etc/CMakeLists.txt`
 
-```
+```bash
 rm -rf build dist
 python setup.py build
 python setup.py install
@@ -695,7 +725,7 @@ python setup.py install
 
 위 의존성이 굉장히 많은 시간을 소비했음.
 
-```
+```bash
 # 1. Install LIBERO (Simulation Env)
 cd ../LIBERO
 pip install -r requirements.txt
@@ -712,12 +742,12 @@ python setup.py build
 python setup.py install
 ```
 
-```
+```bash
 pip install transformers==4.42.4
 ```
 
 해당 빌드 과정이 굉장히 오래걸림. 인내심을 가질것.
-```
+```bash
 MAX_JOBS=3 pip install flash-attn --no-build-isolation
 ```
 
@@ -726,47 +756,66 @@ MAX_JOBS=3 pip install flash-attn --no-build-isolation
 
 너무 작은 데이터셋에서 배워서 그런 듯?
 
-그래소 일단 리베로90을 사용해보기로 했다.
+그래서 일단 리베로90을 사용해보기로 했다.
 
 `huggingface-cli download mbreuss/flower_libero_90 --local-dir checkpoints/flower_libero_90`
 
 환경을 생각보다 많이탄다.
 
-작동이 된다!!
+- Libero_90은 10과 다르게 config.json을 사용함.
+    - 수정 완료
 
-하지만 일반화 성능이 생각보다 구리다.
+작동 성공!!
+
+- 하지만 일반화 성능이 생각보다 좋지 않다.
+
+"Close the top drawer of the cabinet and pick up the chocolate box."
+
+![alt text](images/docker_vla_interactive_Close_the_top_drawer.gif)
+
+"Pick up the chocolate bax and put it into th cabinet."
+
+![alt text](images/docker_vla_run_pick_up_the_chocolat.gif)
+
+"Pick the chocolate box and put it on the bowl."
+
+![alt text](images/docker_vla_run_Pick_the_chocolate_b.gif)
+
+"Close the top drawer and open the bottom drawer."
+
+![alt text](images/docker_vla_run_Close_the_top_drawer.gif)
+
+이미 배운 task 확실히 잘 수행한다. 하지만 그 범위를 넘어가는 순간 행동 양상이 이상해진다.
+
+마치 습관성으로 배운 행동으로 가려는 느낌? 매 장면 마다 아웃풋을 새로 만드는 것이니... 어떤 장면들과 인풋에서는 명령 수행이 아닌 데이터셋 그대로 따라가려는 느낌을 주기도하고, 어떤 장면에서는 올바른 행동을 하는 것 처럼 보이기하도 하고.
+
+아무래도 shortcut 러닝의 정도가 너무 심한 것 같긴하다. 이를 해소하기 위해 어마어마한 데이터가 필요해보였다. Libero 자체도 그리 작은 데이터셋이 아님에도, 아직 턱없이 부족한 것 같다.
 
 
-Close the top drawer of the cabinet and pick up the chocolate box.
+## 도커 이식 작업
 
-![alt text](interactive_Close_the_top_drawer.gif)
+- 도커파일 생성
 
-Pick up the chocolate bax and put it into th cabinet.
+- 이미지 빌드
+    - 참고로 빌드가 거의 2시간 걸린다. 그러니 한번 잘 됐으면 그 뒤로는 그냥 커밋하자.
 
-![alt text](run_pick_up_the_chocolat.gif)
+- 도커 컨테이너 실행. (딱히 이미지 빌드할 때 volume을 주지 않아도 이런식으로 RUN 단계에서 cli에서 volume을 마운트할 수 있다.)
 
-Pick the chocolate box and put it on the bowl.
-
-![alt text](run_Pick_the_chocolate_b.gif)
-
-Close the top drawer and open the bottom drawer.
-
-![alt text](run_Close_the_top_drawer.gif)
-
-
-
-도커 컨테이너 실행.
-
+```bash
 docker run --rm -it \
   --device nvidia.com/gpu=0 \
   -v $(pwd)/checkpoints:/app/checkpoints \
   -v $(pwd)/interactive_logs:/app/interactive_logs \
   flower_vla:v2 /bin/bash
+```
 
-위 명령어로 checkpoint 폴더어와 interactive_logs도 VOLUME으로 마운트할 수 있다.
+위 명령어로 checkpoint 폴더어와 interactive_logs도 VOLUME으로 설정하는 것이다.
 
-### 도커 이미지 안에 설치한 것들
+### 도커 컨테이너 안에 설치한 것들
 
+- 컨테이너 안에서 바로 실행이 안돼서 추가로 설치한 것들.
+
+```bash
 pip install pytorch-lightning
 pip install bddl
 pip install easydict
@@ -776,32 +825,139 @@ pip install "numpy<2"
 pip install einops-exts
 pip install timm
 pip install "transformers==4.42.4" "huggingface-hub>=0.23.0" accelerate
-
-지금보니 리베로 의존성이 설치가 안됨. 도커파일에서 빠짐.
-
 ```
+
+- 지금보니 리베로 의존성이 설치가 안됨. 도커파일에서 빠짐.
+
+```bash
 cd LIBERO
-pip install -r requirements.txt  # <--- THIS IS THE MISSING KEY
+pip install -r requirements.txt
 pip install -e .
 ```
 
+- 추가 설치 사항.
+
+```bash
 apt update
 apt install nautilus -y
 apt install tree -y
+```
 
+- 메인 코드에서 시각화가 바로 가능하게 만듬.
 
-- [x] ~/.bashrc 색 변경
-- [ ] run_robot.py 리팩토링, 실시간 출력 및 저장 방식 변경
-    - [x] scene id가 총 몇개인지 체크
-- [ ] 현재 상태 커밋 및 푸쉬
-    - [ ] 테스트 시행
-- [ ] 깃허브 업로드 
-    - [ ] 현재 리포 정리
-    - [ ] 리드미 새로 작성
-    - [ ] 포크하고 업로드
-- [ ] 개발 방식 정리 및 커밋
+- 저장하는 폴더 위치를 변경.
 
-
-아래 처럼 scene id를 args으로 만들 수 있게 만듬. (0~89)
+- scene id를 args으로 변겨할 수 있게 만듬. (0~89)
 
 `python run_robot.py --scene_id 10`
+
+### 상당히 많은 변경을 했으니 commit을 하고 푸쉬를 해보자.
+
+```bash
+# 1. Commit the container to a local image named 'flower_vla:v3'
+# (The -m flag adds a message like a git commit)
+docker commit -m "Fixed dependencies: timm, moviepy, numpy<2, transformers update, and live viewer script" 2a90b4498df5 flower_vla:v3
+
+# 2. Verify it exists (It should be slightly larger due to the Florence-2 model)
+docker image ls
+```
+
+- 태그 진행
+
+`docker tag flower_vla:v3 bigenlight/flower_vla:v3`
+
+- 마지막에 푸쉬를 진행한다.
+
+```bash
+# 1. Log in (enter username 'bigenlight' and your password/token)
+docker login
+
+# 2. Push the image
+docker push bigenlight/flower_vla:v3
+```
+
+- 사이트에 들어가면 잘 업로드 된 것을 확인할 수 있다.
+
+https://hub.docker.com/repository/docker/bigenlight/flower_vla/general
+
+
+### 실시간 시각화 구현
+
+`xhost +local:docker`
+
+```bash
+docker run -itd \
+  --name my_robot \
+  --device nvidia.com/gpu=0 \
+  -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v $(pwd)/checkpoints:/app/checkpoints \
+  -v $(pwd)/interactive_logs:/app/interactive_logs \
+  flower_vla:v3 /bin/bash
+```
+
+
+#### 시각화 문제 해결 시도 중
+
+```bash
+# Install the missing X11 libraries for OpenCV/Qt
+apt-get update && apt-get install -y libxcb-cursor0 libxcb-xinerama0 libxkbcommon-x11-0
+```
+
+```bash
+apt-get update && apt-get install -y \
+  libx11-xcb1 \
+  libxcb-icccm4 \
+  libxcb-image0 \
+  libxcb-keysyms1 \
+  libxcb-randr0 \
+  libxcb-render-util0 \
+  libxcb-shape0 \
+  libxcb-xfixes0
+```
+
+```bash
+apt-get update && apt-get install -y libxcb-util1 libdbus-1-3
+apt-get update && apt-get install -y libsm6 libxext6 libxrender1
+apt-get update && apt-get install -y libdbus-1-3 libxcb-util1 libgl1-mesa-glx
+```
+
+코드 강건성 증대.
+
+아쉽지만 진전이 없음.
+
+일단 해당 기능이 필수는 아니라서 패스.
+
+- 그래도 그동안의 변화를 v5에 커밋으로 작성.
+
+- 현재 사용 명령.
+
+```bash
+docker run -itd \
+  --name flower_vla \
+  --device nvidia.com/gpu=0 \
+  -v $(pwd)/checkpoints:/app/checkpoints \
+  -v $(pwd)/interactive_logs:/app/interactive_logs \
+  bigenlight/flower_vla:v5 \
+  /bin/bash
+```
+
+`python run_robot.py --scene_id 33`
+
+
+### 원래 안넣으려고 했지만 생각해보니 config 파일을 수정해서 그냥 VLA 모델도 이미지에 집어넣음.
+
+이제 아래 CLI으로 간단하게 실행가능하다.
+
+```bash
+docker run -itd \
+  --name flower_vla \
+  --gpus all \
+  -v $(pwd)/interactive_logs:/app/interactive_logs \
+  bigenlight/flower_vla:v6 \
+  /bin/bash
+```
+
+#### README에 VLA 및 도커 사용법 작성 및 업로드
+
+https://github.com/Bigenlight/Flower_VLA_for_libero_in_Docker

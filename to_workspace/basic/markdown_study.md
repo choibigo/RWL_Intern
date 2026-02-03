@@ -60,6 +60,7 @@ cpp, python, md, bash, json 등을 붙여서 적용 가능
 
 </details>
 ```
+
 <details>
 <summary>내용이 궁금하면 이곳을 누르시오</summary>
 
