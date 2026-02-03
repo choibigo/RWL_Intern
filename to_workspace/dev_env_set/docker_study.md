@@ -2,7 +2,7 @@
 - [x] 도커(Docker) 기초: 1~12강 시청
     - [x] 도커와 vscode
 - [x] [인프런] 비전공자도 이해할 수 있는 Docker 입문/실전: 1.1~2.8 시청.
-- [ ] 도커 실습
+- [x] [도커 실습](docker_vla_practice.md)
 
 # Docker study
 

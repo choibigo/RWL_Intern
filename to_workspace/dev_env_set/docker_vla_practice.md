@@ -23,7 +23,7 @@ VLA 모델과 inference에 필요한 환경을 가공하여 이미지에 넣고 
 
 ![alt text](images/docker_vla_interactive_close_the_cabinet_an-_online-video-cutter.com_-_1_.gif)
 
-https://github.com/Bigenlight/Flower_VLA_for_libero_in_Docker
+결과물: https://github.com/Bigenlight/Flower_VLA_for_libero_in_Docker
 
 ![alt text](images/docker_vla_image-5.png)
 
@@ -752,7 +752,9 @@ MAX_JOBS=3 pip install flash-attn --no-build-isolation
 ```
 
 
-## 하지만 리베로10으로는 일반화 성능이 너무 떨어진다.
+하지만 리베로10는 일반화 성능이 너무 떨어졌다.
+
+### Libero 90 사용
 
 너무 작은 데이터셋에서 배워서 그런 듯?
 
