@@ -16,6 +16,10 @@
 
 - 참고로 윈도우11에서는 도커 데스크톱 앱을 실행시켜야 cli에서 docker 명령어가 먹힌다 (근데 그냥 docker는 신기하게 되고, 뒤에 무언가를 붙인 순간 안된다.)
 
+### 주의!
+
+우분투에서 도커 설치시 무조건 apt를 이용할것!! Snap을 이용했다가는 피 봄! (NVIDIA Container Toolkit에서 문제 발생)
+
 # 도커 기초 강의
 
 ## 1. [도커 기초강의 안내](https://youtu.be/p1-wm-ThnTI?si=5p0gFUGJ9eVFvugT)
@@ -1482,4 +1486,10 @@ ctrl+p로 `~/.bashrc`를 검색한다.
 ```dockerfile
 RUN sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/' /root/.bashrc
 ```
+
+### 도커를 삭제하고 재설치해도 이미지는 남을까?
+
+해보니까 남더라.
+
+도커 문제가 있을 때 재설치의 간편을 의미하기도 하지만, 용량을 관리할때 개별적으로 삭제해야한다는 것도 의미.
 

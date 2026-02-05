@@ -27,6 +27,8 @@ VLA 모델과 inference에 필요한 환경을 가공하여 이미지에 넣고 
 
 ![alt text](images/docker_vla_image-5.png)
 
+![alt text](images/docker_vla_1_image.png)
+
 ## FLOWER: Democratizing Generalist Robot Policies with Efficient Vision-Language-Action Flow Policies
 
 
