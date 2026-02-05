@@ -598,9 +598,12 @@ exit
 
 `docker login`
 
-- 이미지에 이름표를 달아야 업로드가 된다. `docker tag [현재이미지] [내아이디]/[올릴이름]:[버전]`
+- 이미지에 이름표를 달아서 이미지 및 버전을 설정해준다. `docker tag [현재이미지] [내아이디]/[올릴이미지이름]:[버전]`
+
 
 `docker tag practice-image:v1 bigenlight/practice-image:v1`
+
+> commit 단계에서도 바로 tag를 할 수 있다. `docker commit -m "설명" -a "Theo" [컨테이너명] [내아이디]/[올릴이미지이름]:[버전] `
 
 - 그리고 마지막으로 이를 푸쉬하면 된다.
 
