@@ -1,5 +1,6 @@
 ### 계획
-- [ ] PEP 8 탐색 및 스터디 구상
+- [x] PEP 8 탐색 및 스터디 구상
+- [ ] 전문 읽기 및 필요 내용 작성
 
 # PEP 8
 
@@ -113,6 +114,123 @@ if x == 4 : print(x , y) ; x , y = y , x
 spam(ham[1], {eggs: 2})
 foo = (0,)
 if x == 4: print(x, y); x, y = y, x
+```
+
+- 연산자 양쪽에는 띄어쓰기를 넣는다
+
+```py
+# Wrong:
+i=i+1
+i= i+ 1
+
+# Correct:
+i = i + 1
+```
+
+- 하지만 키워드 내부 `=` 등호에는 띄어쓰기를 추가하지 않는다.
+
+```py
+# Wrong:
+def complex(real, imag = 0.0):
+    return magic(r = real, i = imag)
+
+# Correct:
+def complex(real, imag=0.0):
+    return magic(r=real, i=imag)
+```
+
+
+- 어노테이션에서 쓰는 화살표 양쪽도 띄워주기를 사용한다.
+
+```py
+def munge(input: str) -> int:
+    return len(input)
+# 참고로 어노테이션은 부가 정보 출력에 사용한다. 예를 들어 매개변수 정보 출력은 진행한다.
+print(munge.__annotations__)
+# 출력: {'input': <class 'str'>, 'return': <class 'int'>}
+```
+
+- 세미쿨룽 `;`을 사용하는게 가능하지만 가급적 사용하지 말아라.
+
+- if/else/for/while 같은 것을 사용할 때 부피를 줄일 수 있는데, 딱히 그럴 필요 없으면 자리를 더 차지해도 그렇게 놔둬라. 짧아지면 그만큼 더 읽기가 어렵다.
+
+```py
+# Wrong:
+if foo == 'blah': do_blah_thing()
+for x in lst: total += x
+while t < 10: t = delay()
+if foo == 'blah': do_blah_thing()
+else: do_non_blah_thing()
+if foo == 'blah': one(); two(); three()
+```
+
+## When to Use Trailing Commas (쉼표는 언제 사용해야 할까)
+
+- 문법적인 오류가 없더라고 쉼표는 가급적 어디 안에 넣어두는 것으로 해라.
+
+```py
+# Wrong:
+FILES = 'setup.cfg',
+
+# Correct:
+FILES = ('setup.cfg',)
+```
+
+## Comments
+
+- 주석 설명은 가급적 완전한 문장으로 마무리해라.
+
+- 당연하지만 첫 글자는 대문자로 한다.
+    - 하지만 첫 글자가 소문자로 시작하는 명칭이면 소문자로 시작해도 괜찮다.
+
+- 주석은 언제나 영어로 작성해라.
+
+### Documentation Strings (docstrings)
+
+- 공개되는 코드에는 docstrings을 달아주는 것이 좋다.
+
+- 각 코드 상단 및 함수 `def` 바로 아래에 설명을 기입하면 된다.
+
+```py
+"""Return a foobang
+
+Optional plotz says to frobnicate the bizbaz first.
+"""
+
+"""Return an ex-parrot."""
+```
+
+## Naming Conventions (네이밍 규칙)
+
+- 파이썬의 명명 규칙은 이미 혼돈이다. 하지만 그럼에도 일정하기 위해서 노력해야한다.
+
+- 네이밍에는 다양하는 방법이 있다.
+    - `b` (single lowercase letter)
+    - `B` (single uppercase letter)
+    - `lowercase`
+    - `lower_case_with_underscores`
+    - `UPPERCASE`
+    - `UPPER_CASE_WITH_UNDERSCORES`
+    - `CapitalizedWords` (or CapWords, or CamelCase – so named because of the bumpy look of its letters [4]). This is also sometimes known as StudlyCaps.
+        - Note: When using acronyms in CapWords, capitalize all the letters of the acronym. Thus HTTPServerError is better than HttpServerError.
+    - `mixedCase` (differs from CapitalizedWords by **initial lowercase** character!)
+
+- `single_trailing_underscore_`: 중복 방지를 위해 뒤에 `_`를 붙인다.
+
+```py
+
+```
+
+```py
+
+```
+
+```py
+
+```
+
+```py
+
 ```
 
 ```py
