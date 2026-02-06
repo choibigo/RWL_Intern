@@ -17,7 +17,7 @@ PEP 8은 파이썬 코드 작성시 지켜야하는 공식 스타일 가이드. 
 
 ### Indentation
 
-파이썬은 기본적으로 들여쓰기로 많은 것을 구분하기에 매우 중요하다.
+- 파이썬은 기본적으로 들여쓰기로 많은 것을 구분하기에 매우 중요하다.
 
 들여쓰기는 스페이스 4칸이 기준.
 
@@ -41,9 +41,9 @@ def long_function_name(
 
 ### Maximum Line Length
 
-모든 파이썬 줄은 최대 **79**자를 넘기면 안된다.
+- 모든 파이썬 줄은 최대 **79**자를 넘기면 안된다.
 
-주석 텍스트의 경우 최대 **72**자.
+- 주석 텍스트의 경우 최대 **72**자.
 
 ```py
 # 참고로 아래가 각각 총 72자다 (공백 포함)
@@ -53,7 +53,7 @@ def long_function_name(
 
 ### 연산자 배치
 
-여러 연산자를 배치할 때 연산자를 앞으로 배치하여 가독성을 높인다.
+- 여러 연산자를 배치할 때 연산자를 앞으로 배치하여 가독성을 높인다.
 
 ```py
 income = (gross_wages
@@ -65,16 +65,67 @@ income = (gross_wages
 
 ### Blank Lines
 
-함수 정의와 클래스 정의는 서로 두 줄 공백을 뛴다.
+- 함수 정의와 클래스 정의는 서로 두 줄 공백을 뛴다.
 
-한 클래스 내부의 함수끼리는 한 줄만 뛴다.
+- 한 클래스 내부의 함수끼리는 한 줄만 뛴다.
 
 **가급적 줄 공백 사용을 지양한다.**
 
-### Source File Encoding (import, from 등)
+### Imports
+
+- Import는 항상 파일 맨 상단에 배치해야한다.
+
+- Import 순서는:
+
+    1. 파이썬 스탠다드 라이브러리
+    1. 관련 서드파티 라이브러리
+    1. 로커 어플리케이션, 또는 개별 특정 라이브러리.
+
+- Import시 가급적 한 import에 호출하는 것이 하나여야한다.
 
 
+```py
+import os
+import sys
+```
 
+- 다만 from import와 같이 특정 모듈을 여럿 가져올때는 한줄에 여러개를 사용한다.
+
+```py
+from subprocess import Popen, PIPE
+```
+
+- 가급적 모든 모듈을 가져오는 `*`는 사용하지 않는다.
+
+### Whitespace in Expressions and Statements (띄어쓰기)
+
+- **가급적 띄워쓰기를 지양해야한다.**
+
+```py
+# Wrong:
+spam( ham[ 1 ], { eggs: 2 } )
+bar = (0, )
+if x == 4 : print(x , y) ; x , y = y , x
+```
+
+```py
+# Correct:
+spam(ham[1], {eggs: 2})
+foo = (0,)
+if x == 4: print(x, y); x, y = y, x
+```
+
+```py
+
+```
+
+```py
+
+```
+
+```py
+
+```
 
 ```py
 
