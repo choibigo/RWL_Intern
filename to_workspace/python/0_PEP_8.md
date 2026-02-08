@@ -1,6 +1,6 @@
 ### 계획
 - [x] PEP 8 탐색 및 스터디 구상
-- [ ] 전문 읽기 및 필요 내용 작성
+- [x] 전문 읽기 및 필요 내용 작성
 
 # PEP 8
 
@@ -37,7 +37,7 @@ def long_function_name(
 ```
 
 > 참고로 VScode 설정에서 Tab을 space 여러개로 바꿀 수 있다. ctrl+shit+p로 들어가서 설정을 space으로 바꿔주자. 그리고 size를 4로 할당하자.
-![alt text](image.png)
+![alt text](images/pep8_0_image.png)
 
 
 ### Maximum Line Length
@@ -244,34 +244,57 @@ Optional plotz says to frobnicate the bizbaz first.
 
 ## Programming Recommendations
 
-```py
+### Exeptions
 
+- Exeption을 사용할 때 각각의 exeptions을 최대한 정의해라.
+
+```py
+try:
+    import platform_specific_module
+except ImportError:
+    platform_specific_module = None
+```
+- 그리고 가급적 try 구문 안에 있는 내용은 최대한 짧게 유지해라.
+
+### With
+
+- `with`문은 파일을 열때난 닫을 때 주로 사용한다.
+    - 이때 객체만 달랑 호출하지말고 어떤 작업을 수행하는지 명시하라.
+
+```py
+# Wrong:
+with conn:
+    do_stuff_in_transaction(conn)
+# 위에 conn만 적혀 있어 무엇이 일어나는지 모른다. 
+# 그냥 연결 됐다는 것만 알 수 있다.
+# 반면에는 아래는 '연결이 되는구나'라고 간접적으로 알 수 있다.
+# Correct:
+with conn.begin_transaction():
+    do_stuff_in_transaction(conn)
 ```
 
-```py
+###  type comparisons
 
+- 타입 비교시 다른거 쓰지말고 isinstance를 사용해라.
+
+```py
+if isinstance(obj, int):
 ```
 
-```py
+## Variable Annotations
 
+- 원래 파이썬에서 변수 자료형을 선언하지 않았다. 그것은 C의 주 특징이다.
+    - 하지만 중요 변수에는 타입을 입력할 필요가 분명히 있다.
+
+- Variable annotation의 경우 `:` 앞에는 붙이고 뒤에 띄어준다.
+```py
+code: int
 ```
 
-```py
-
-```
+- 참고로 함수에도 이런 annotation을 확실히 할 수 있다.
 
 ```py
-
-```
-
-```py
-
-```
-
-```py
-
-```
-
-```py
-
+# 입력/출력이 실수라는 것을 각각 확실시함.
+def calculate_velocity(distance: float, time: float) -> float:
+    return distance / time
 ```
