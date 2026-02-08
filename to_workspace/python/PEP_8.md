@@ -215,7 +215,34 @@ Optional plotz says to frobnicate the bizbaz first.
         - Note: When using acronyms in CapWords, capitalize all the letters of the acronym. Thus HTTPServerError is better than HttpServerError.
     - `mixedCase` (differs from CapitalizedWords by **initial lowercase** character!)
 
-- `single_trailing_underscore_`: 중복 방지를 위해 뒤에 `_`를 붙인다.
+- `single_trailing_underscore_`: 중복 방지를 하려고할 때 위해 뒤에 `_`를 붙인다.
+
+- `__double_leading_and_trailing_underscore_`: 양쪽 언더바 두개씩. 현 네임스페스에서 특별한 attributes이나 object에만 할당함. 새로 창조하지말것. (예:  `__init_`_, `__import__` or `__file__`)
+
+### 피해야할 명칭
+
+- 절대로 `l` (소문자 L), `O` (대문자 o), `I` (대분자 i)를 홀소 사용하지말아라. 어떤 폰트에서는 아예 구별이 안될 수도 있다. 
+
+### Package와 Module
+
+- 패키지와 모듈이름은 소문자를 사용해라. `_`는 사용가능하다.
+
+### Class
+
+- 클래스는 기본적으로 CapitalizedWords 체계를 사용한다.
+
+### Function and Variable Names
+
+- 변수와 함수는 기본적으로 소문자와 언더바를 사용한다. 
+
+> 타입 변수의 경우 CapitalizedWords을 사용.
+
+### Constants
+
+- 상수는 대문자와 언더바를 사용한다.
+
+
+## Programming Recommendations
 
 ```py
 
