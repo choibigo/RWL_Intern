@@ -15,7 +15,7 @@
 
 물론 자동저장으로 인해 피해볼 상황도 생길 수 있지만, 하지 않아서 피해본 경험이 더 많다.
 
-## VScode를 깃 디폴트 편집기로 이용하기
+## VScode를 깃 디폴트 편집기로 이용하기 (**중요**)
 
 `git config --global core.editor "code --wait"` = Vim 대신에 vscode 사용해서 편집하기
 

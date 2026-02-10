@@ -12,6 +12,9 @@
 
 Conda 가상 환경은 특정 폴더에 별도의 실행 파일들을 모아놓고, 운영체제가 이를 먼저 보도록 하는 것.
 
+### 시작 부터 base에 들어가지 않게 막기.
+`conda config --set auto_activate_base false`
+
 ### 작동 방식
 우리가 `conda activate my_env`를 입력하면 터미널의 기본 $PATH 환경 변수 맨 앞에 `~/anaconda3/envs/my_env/bin`이 추가된다.
 

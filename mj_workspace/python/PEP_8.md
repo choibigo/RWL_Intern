@@ -3,13 +3,13 @@
 
 ---
 ### 바로가기
-[1. Code Lay-out](#1-code-lay-out)
-[2. String Quotes](#2-string-quotes)
-[3. Whitespace in Expressions and Statements](#3-whitespace-in-expressions-and-statements)
-[4. When to Use Trailing Commas](#4-when-to-use-trailing-commas)
-[5. Comments](#5-comments)
-[6. Naming Conventions](#6-naming-conventions)
-[7. Programming Recommendations](#7-programming-recommendations)
+[1. Code Lay-out](#1-code-lay-out) <br>
+[2. String Quotes](#2-string-quotes) <br>
+[3. Whitespace in Expressions and Statements](#3-whitespace-in-expressions-and-statements) <br>
+[4. When to Use Trailing Commas](#4-when-to-use-trailing-commas) <br>
+[5. Comments](#5-comments) <br>
+[6. Naming Conventions](#6-naming-conventions) <br>
+[7. Programming Recommendations](#7-programming-recommendations) <br>
 
 ---
 
