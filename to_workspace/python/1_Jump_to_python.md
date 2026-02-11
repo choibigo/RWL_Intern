@@ -18,7 +18,9 @@ https://wikidocs.net/book/1
 자료형이란 숫자, 문자열 등 프로그램에서 사용하는 모든 데이터의 형태
 
 ### 숫자형
+
 - Integer
+
 ```py
 a = 123
 a = -178
@@ -26,6 +28,7 @@ a = 0
 ```
 
 - Float
+
 ```py
 a = 1.2 
 a = -3.45
@@ -111,7 +114,7 @@ print(f"안녕, 지금은 정렬 연습 중이야 {"hi":^10}")
 
 - 이런식으로 뭔갈 넣은 상태로도 정령 가능
 
-```
+```py
 print(f"안녕, 지금은 정렬 연습 중이야 {"hi":*^20}")
 ```
 
@@ -121,7 +124,7 @@ print(f"안녕, 지금은 정렬 연습 중이야 {"hi":*^20}")
 
 - 양쪽 공백지우기
 
-```
+```py
 >>> a = " hi "
 >>> a.strip()
 'hi'
@@ -129,7 +132,7 @@ print(f"안녕, 지금은 정렬 연습 중이야 {"hi":*^20}")
 
 - 문자열 교체
 
-```
+```py
 >>> a = "Life is too short"
 >>> a.replace("Life", "Your leg")
 'Your leg is too short'
@@ -144,7 +147,7 @@ print(f"안녕, 지금은 정렬 연습 중이야 {"hi":*^20}")
 
 - 삼주 리스트에서 인덱싱하기
 
-```
+```py
 >>> a = [1, 2, ['a', 'b', ['Life', 'is']]]
 >>> a[2][2][0]
 'Life'
@@ -154,7 +157,7 @@ print(f"안녕, 지금은 정렬 연습 중이야 {"hi":*^20}")
 
 - del 명령어로 리스트 요소 제거. 
 
-```
+```py
 >>> a = [1, 2, 3, 4, 5]
 >>> del a[2:]
 >>> a
@@ -162,7 +165,7 @@ print(f"안녕, 지금은 정렬 연습 중이야 {"hi":*^20}")
 ```
 
 - 리스트에 요소 추가 - append
-```
+```py
 >>> a = [1, 2, 3]
 >>> a.append(4)
 >>> a
@@ -181,7 +184,7 @@ Immutable은 수정이 안되기에, 수정이 반영된 새로운 객체를 만
 
 - 튜플
 
-```
+```py
 t1 = ()
 t2 = (1,)
 t3 = (1, 2, 3)
@@ -193,7 +196,7 @@ t5 = ('a', 'b', ('ab', 'cd'))
 
 그 요소들을 가져와 연산을 하는 것은 가능하지만 결국 새로운 튜플을 만들어 저장해야한다.
 
-```
+```py
 >>> t2 = (3, 4)
 >>> t3 = t2 * 3
 >>> t3
@@ -206,7 +209,7 @@ t5 = ('a', 'b', ('ab', 'cd'))
 
 - Key와 Value의 쌍 여러 개가 {}로 둘러싸여 있다
 
-```
+```py
 dic = {'name': 'pey', 'phone': '010-9999-1234', 'birth': '1118'}
 ```
 
@@ -220,7 +223,7 @@ Value 안에는 뭘 넣든 상관 없다.
 
 - 많이 쓰는거:
 
-```
+```py
 my_dict = {'apple': 1, 'banana': 2, 'cherry': 1}
 
 for key, value in my_dict.items():
@@ -232,7 +235,7 @@ for key, value in my_dict.items():
 
 - 중괄호나 set함수를 이용해서 만들면 됨.
 
-```
+```py
 >>> s3 = {1, 2, 3}
 >>> s3
 {1, 2, 3}
@@ -241,7 +244,7 @@ for key, value in my_dict.items():
 {'a', 'c', 'b'}
 ```
 
-```
+```py
 >>> s2 = set("Hello")
 >>> s2
 {'e', 'H', 'l', 'o'}
@@ -251,28 +254,28 @@ for key, value in my_dict.items():
 
 ### 집합 연산
 
-```
+```py
 >>> s1 = set([1, 2, 3, 4, 5, 6])
 >>> s2 = set([4, 5, 6, 7, 8, 9])
 ```
 
 - 교집합
 
-```
+```py
 >>> s1 & s2
 {4, 5, 6}
 ```
 
 - 합집합
 
-```
+```py
 >>> s1 | s2
 {1, 2, 3, 4, 5, 6, 7, 8, 9}
 ```
 
 - 차집합
 
-```
+```py
 >>> s1 - s2
 {1, 2, 3}
 >>> s2 - s1
@@ -283,7 +286,7 @@ for key, value in my_dict.items():
 
 - 참/거짓
 
-```
+```py
 >>> a = True
 >>> b = False
 >>> type(a)
@@ -292,7 +295,7 @@ for key, value in my_dict.items():
 <class 'bool'>
 ```
 
-```
+```py
 >>> 1 == 1
 True
 >>> 2 < 1
@@ -303,7 +306,7 @@ False
 
 ## 자료형의 값을 저장하는 공간, 변수
 
-```
+```py
 >>> a = 1
 >>> b = "python"
 >>> c = [1, 2, 3]
@@ -321,7 +324,7 @@ False, None, True, and, as, assert, break, class, continue, def, del, elif, else
 
 - 튜플과 리스트에 집어넣기
 
-```
+```py
 >>> a, b = ('python', 'life')
 >>> [a, b] = ['python', 'life']
 ```
@@ -334,7 +337,7 @@ False, None, True, and, as, assert, break, class, continue, def, del, elif, else
 
 아니 그냥 space 위주로만 사용할 것.
 
-```
+```py
 if 조건문:
     수행할_문장1 
     수행할_문장2
@@ -362,7 +365,7 @@ else:
 
 - while문에 else를 결합하여, break으로 나왔을때랑 안나왔을 때를 구별할 수 있다.
 
-```
+```py
 # 그냥 지나갔을 때 else 발동
 >>> count = 0
 >>> while count < 3:
@@ -377,7 +380,7 @@ else:
 while 문이 정상 종료되었습니다.
 ```
 
-```
+```py
 # break이 발동하면 else가 작동을 안함.
 >>> count = 0
 >>> while count < 5:
@@ -398,7 +401,7 @@ while 문이 정상 종료되었습니다.
 
 - continue를 통해 이후 코드를 실행하지 않고 다시 위로 올라가서 실행함.
 
-```
+```py
 marks = [90, 25, 67, 45, 80]
 
 number = 0 
@@ -417,7 +420,7 @@ for mark in marks:
 
 - for 문을 리스트 안에 집어넣는걸 리스트 컴프리헨션이라고함.
 
-```
+```py
 >>> a = [1,2,3,4]
 >>> result = [num * 3 for num in a]
 >>> print(result)
@@ -428,7 +431,7 @@ for mark in marks:
 
 - while과 마찬가지로 for문도 else로 break 작동에 따른 구별 두기 가능.
 
-```
+```py
 >>> for i in range(5):
 ...     print(i)
 ... else:
@@ -442,7 +445,7 @@ for mark in marks:
 for 문이 정상 종료되었습니다.
 ```
 
-```
+```py
 >>> for i in range(5):
 ...     if i == 3:
 ...         break
@@ -459,7 +462,7 @@ for 문이 정상 종료되었습니다.
 
 - 원래 리스트를 그냥 for문에 돌리면 개별 요소가 튀어나오지만 enumerate를 사용하면 인덱스도 얻기 가능.
 
-```
+```py
 >>> fruits = ['apple', 'banana', 'orange']
 >>> for i, fruit in enumerate(fruits):
 ...     print(f"{i}: {fruit}")
@@ -473,7 +476,7 @@ for 문이 정상 종료되었습니다.
 
 - 두 개 이상의 리스트를 동시에 순회하고 싶을 때는 zip 함수를 사용한다.
 
-```
+```py
 >>> names = ['홍길동', '김철수', '이영희']
 >>> scores = [85, 92, 78]
 >>> for name, score in zip(names, scores):
@@ -492,7 +495,7 @@ for 문이 정상 종료되었습니다.
 
 - args를 통해서 가변 양의 변수를 입력으로 받을 수 있음.
 
-```
+```py
 >>> def add_many(*args): 
 ...     result = 0 
 ...     for i in args: 
@@ -509,7 +512,7 @@ for 문이 정상 종료되었습니다.
 
 - 입력을 `키=밸류` 이렇게 받으면 맞춰서 딕셔너리로 만드는 입력 방식.
 
-```
+```py
 >>> def print_kwargs(**kwargs):
 ...     print(kwargs)
 
@@ -523,7 +526,7 @@ for 문이 정상 종료되었습니다.
 
 - 이런식으로 args와 같이 쓰끼도 가능.
 
-```
+```py
 >>> def mixed_function(name, *args, **kwargs):
 ...     print(f"이름: {name}")
 ...     print(f"추가 인수들: {args}")
@@ -547,7 +550,7 @@ for 문이 정상 종료되었습니다.
 
 예를 들어 이 리스트의 경우는 외부에 왔지만, 함수 내부에서 수정했을 뿐인데 수정이 밖에도 반영이 됐다.
 
-```
+```py
 >>> def change_list(my_list):
 ...     my_list.append(4)  # 리스트에 값을 추가
 ...     # 반환 없음
@@ -561,7 +564,7 @@ for 문이 정상 종료되었습니다.
 
 - 람다로 함수 만들기.
 
-```
+```py
 >>> add = lambda a, b: a+b
 >>> result = add(3, 4)
 >>> print(result)
@@ -574,7 +577,7 @@ for 문이 정상 종료되었습니다.
 
 아래처럼 함수 선언 바로 아래에 """ """를 사용하면 된다.
 
-```
+```py
 def add(a, b):
     """
     두 숫자를 더하는 함수
@@ -596,7 +599,7 @@ print(add.__doc__)
 
 - open 사용시 항상 열고 close도 해줘야함.
 
-```
+```py
 f = open("foo.txt", 'w')
 f.write("Life is too short, you need python")
 f.close()
@@ -604,7 +607,7 @@ f.close()
 
 - 하지만 with를 사용하면 괜찮다.
 
-```
+```py
 # file_with.py
 with open("foo.txt", "w") as f:
     f.write("Life is too short, you need python")
@@ -615,7 +618,7 @@ with문 블록이 끝나는 순간 자동으로 f가 닫히는 것이다.
 
 - 파이썬 코드시 CLI단에서 입력을(인수 입력) 줄 수 있다.
 
-```
+```py
 # sys1.py
 import sys
 
@@ -636,7 +639,7 @@ for i in args:
 
 ![alt text](images/jumpt_to_py_image-7.png)
 
-```
+```py
 # calculator3.py
 class Calculator:
     def __init__(self):
@@ -680,7 +683,7 @@ C와 엄연히 다르다.
 
 - 참고로 이렇게 클래스 바로 아래 선어나는 변수를 `클래스 변수`.
 
-```
+```py
 >>> class Family:
 ...     lastname = "김"
 
@@ -694,7 +697,7 @@ C와 엄연히 다르다.
 모든 객체들에서 통일되게 적용. 사실상 공유자원.
 
 만약 한 곳에서 수정해도?
-```
+```py
 >>> Family.lastname = "박"
 >>> a.lastname
 박
@@ -709,7 +712,7 @@ C와 엄연히 다르다.
 
 이렇게 self를 붙여서 주로 추가하는 변수들이다.
 
-```
+```py
 def setdata(self, first, second):   # 메서드의 매개변수
     self.first = first              # 메서드의 수행문
     self.second = second            # 메서드의 수행문
@@ -722,7 +725,7 @@ def setdata(self, first, second):   # 메서드의 매개변수
 
 아래와 같이 add와 sub 함수만 있는 파일 mod1.py를 만들고 C:\doit 디렉터리에 저장하자. 
 
-```
+```py
 # mod1.py
 def add(a, b):
     return a + b
@@ -735,7 +738,7 @@ def sub(a, b):
 
 - 그리고 다음과 같이 불러올 수 있다.
 
-```
+```py
 >>> import mod1
 >>> print(mod1.add(3, 4))
 7
@@ -757,7 +760,7 @@ def sub(a, b):
 
 이 경우 아래 처럼 작성한다.
 
-```
+```py
 # mod1.py
 def add(a, b): 
     return a+b
@@ -790,7 +793,7 @@ if __name__ == "__main__":
 
 예를 들어 간단한 게임의 패키지의 구조는 다음과 같다:
 
-```
+```py
 game/
     __init__.py
     sound/
@@ -821,7 +824,7 @@ game/
 
 - 오류 상관없이 다 잡는 방법.
 
-```
+```py
 try:
     ...
 except:
@@ -830,7 +833,7 @@ except:
 
 - 특정 오류만 감지
 
-```
+```py
 try:
     ...
 except 발생오류:
@@ -839,7 +842,7 @@ except 발생오류:
 
 이렇게 한번에 여러 오류도 각각 알맞게 다룰 수 있다!
 
-```
+```py
 try:
     ...
 except 발생오류1:
@@ -851,14 +854,14 @@ except 발생오류2:
 - 발생 오류와 오류 변수까지 포함한 except 문
 
 오류의 내용까지 알고 싶을 때 사용
-```
+```py
 try:
     ...
 except 발생오류 as 오류변수:
     ...
 ```
 예시:
-```
+```py
 # try_except.py
 try:
     4 / 0
@@ -874,7 +877,7 @@ except ZeroDivisionError as e:
 
 보통 무언가를 close 해야할 때 자주 사용된다.
 
-```
+```py
 # try_finally.py
 try:
     f = open('foo.txt', 'w')
@@ -890,7 +893,7 @@ finally:
 
 - try 문 수행 중 오류가 발생하면 except 절이, 오류가 발생하지 않으면 else 절이 수행된다.
 
-```
+```py
 try:
     ...
 except [발생오류 [as 오류변수]]:
@@ -905,7 +908,7 @@ else:  # 오류가 없을 경우에만 수행
 
 - raise를 사용하면 된다.
 
-```
+```py
 raise NotImplementedError
 ```
 
@@ -915,7 +918,7 @@ raise NotImplementedError
 
 - 함수를 반복해서 적용해주는 함수.
 
-```
+```py
 >>> def two_times(x): 
 ...     return x*2
 ...
@@ -932,14 +935,14 @@ raise NotImplementedError
 
 - datetime.date
 
-```
+```py
 >>> import datetime
 >>> day1 = datetime.date(2021, 12, 14)
 >>> day2 = datetime.date(2023, 4, 5)
 ```
 - time
 
-```
+```py
 import time
 for i in range(10):
     print(i)
@@ -948,7 +951,7 @@ for i in range(10):
 
 - random
 
-```
+```py
 >>> import random
 >>> random.random()
 0.53840103305098674
@@ -958,7 +961,7 @@ for i in range(10):
 
 - os
 
-```
+```py
 >>> import os
 >>> os.environ['PATH']
 'C:\\ProgramData\\Oracle\\Java\\javapath;...생략...'
@@ -968,7 +971,7 @@ for i in range(10):
 
 - 병렬 수행 (정확히는 빠르게 왔다갔다 하는)
 
-```
+```py
 import threading
 import time
 
@@ -1002,7 +1005,7 @@ print("모든 작업 완료!")
 
 임시 파일 생성용
 
-```
+```py
 >>> import tempfile
 >>> filename = tempfile.mkstemp()
 >>> filename
@@ -1015,7 +1018,7 @@ print("모든 작업 완료!")
 
 - 오류 추적을 도와주는 라이브러리.
 
-```
+```py
 # traceback_test.py
 import traceback
 
@@ -1074,7 +1077,7 @@ ZeroDivisionError: division by zero`
 
 함수 안에 또 다른 함수가 있을 때, 밖에 있는 함수의 변수를 내부의 함수가 기억하는거임. 설령 밖의 함수를 한번 호출했다가 꺼도.
 
-```
+```py
 # wrapper.py
 def mul(m):
     def wrapper(n):
@@ -1107,14 +1110,14 @@ if __name__ == "__main__":
 
 - 예를 들어 아래와 같이 그냥 무언가를 출력하는 함수가 있다고 가정하자.
 
-```
+```py
 def myfunc():
     print("함수가 실행됩니다.")
 ```
 
 - 만약 이 함수를 수행하는데 걸린 시간이 궁금하면 다음과 같이 해야할 것이다.
 
-```
+```py
 import time
 
 def myfunc():
@@ -1132,7 +1135,7 @@ myfunc()
 
 아래 처럼 외부 함수가 될 클로저를 미리 만들고. 
 
-```
+```py
 # decorator.py
 import time
 
@@ -1159,7 +1162,7 @@ decorated_myfunc()
 - 하지만 이것보다 더 편한 방법이 있다!! 바로 `@함수`, 즉 **데코레이터**를 사용하는 것이다!!
 
 @elapsed라는 데코레이터를 추가
-```
+```py
 # decorator.py
 import time
 
@@ -1191,7 +1194,7 @@ myfunc 함수는 elapsed 데코레이터를 통해 수행될 것이다
 
 당연하지만 방법이 있다.  *args, **kwargs 매개변수를 추가하는 것이다.
 
-```
+```py
 # decorator2.py
 import time
 
@@ -1226,7 +1229,7 @@ myfunc("You need python")
 
 - 물론 다 반복이 된다고 해서 이터레이터는 아니다.
 
-```
+```py
 >>> a = [1, 2, 3]
 >>> next(a)
 Traceback (most recent call last):
@@ -1236,7 +1239,7 @@ TypeError: 'list' object is not an iterator
 
 - 리스트도 iter을 통해 이터레이터로 만들고 사용해야한다.
 
-```
+```py
 >>> a = [1, 2, 3]
 >>> ia = iter(a)
 >>> type(ia)
@@ -1255,7 +1258,7 @@ StopIteration
 
 또는
 
-```
+```py
 >>> a = [1, 2, 3]
 >>> ia = iter(a)
 >>> for i in ia:
@@ -1282,7 +1285,7 @@ StopIteration
 
 위 두 함수를 이용해 단순한 리스트 반복을 구현해보자.
 
-```
+```py
 # iterator.py
 class MyIterator:
     def __init__(self, data):
@@ -1322,7 +1325,7 @@ if __name__ == "__main__":
 
 - 사용
 
-```
+```py
 >>> def mygen():
 ...     yield 'a'
 ...     yield 'b'
@@ -1348,7 +1351,7 @@ StopIteration
 
 - 1부터 1,000까지 각각의 숫자를 제곱한 값을 순서대로 반환하는 제너레이터
 
-```
+```py
 # generator.py
 def mygen():
     for i in range(1, 1000):
@@ -1366,7 +1369,7 @@ print(next(gen))
 
 - 참고로 yield를 이용해 제네리이터를 만들 수도 있지만, `[]` 안에 for문을 집어 넣어 컴프리헨션을 만들었다시피, `()` 안에 for문을 집어넣어 제네레이터를 만들 수 있다.
 
-```
+```py
 gen = (i * i for i in range(1, 1000))
 ```
 
@@ -1378,7 +1381,7 @@ gen = (i * i for i in range(1, 1000))
 
 예를 들어 아래 같은 간단한 함수가 있고.
 
-```
+```py
 import time
 
 def longtime_job():
@@ -1389,14 +1392,14 @@ def longtime_job():
 
 컴프리헨션 리스트가 아래 처럼 있다면
 
-```
+```py
 list_job = [longtime_job() for i in range(5)]
 print(list_job[0])
 ```
 
 해당 과정은 반복을 5번하고, 리스트를 다 채우고, 그 뒤에 print가 될 것이다.
 
-```
+```py
 job start
 job start
 job start
@@ -1409,7 +1412,7 @@ done # 현재 리스트 내부: ['done', 'done', 'done', 'done', 'done']
 
 - 이때 제네레이터를 사용한다면
 
-```
+```py
 list_job = (longtime_job() for i in range(5))
 print(next(list_job))  # 첫 번째 값만 요청
 ```
@@ -1424,7 +1427,7 @@ print(next(list_job))  # 첫 번째 값만 요청
 
 원래 파이썬의 자료형은 자동으로 할당된다.
 
-```
+```py
 >>> a = 1
 >>> type(a)
 <class 'int'>
@@ -1438,7 +1441,7 @@ print(next(list_job))  # 첫 번째 값만 요청
 
 - 마치 C언에서 자료형을 먼적 확정하듯이 가능.
 
-```
+```py
 num: int = 1
 name: str = "홍길동"
 numbers: list = [1, 2, 3]
@@ -1446,7 +1449,7 @@ numbers: list = [1, 2, 3]
 
 - 물론 함수단에서도 가능하다.
 
-```
+```py
 def add(a: int, b: int) -> int: 
     return a + b
 
@@ -1457,20 +1460,21 @@ def get_user_info(user_id: int) -> dict:
     return {"id": user_id, "name": "홍길동"}
 ```
 
-`-> int`는 함수가 어떤 타입을 반환하는지 명시하는 것. 근데 강제성은 없음. 그래도 에러가나면 이를 보고 알려줌.
+`-> int`는 함수가 어떤 타입을 return으로 반환하는지 명시하는 것. 근데 강제성은 없음. 그래도 에러가나면 이를 보고 알려줌.
 
 일반함수의 경우
 
 ![alt text](images/jumpt_to_py_image-8.png)
 
 명시하지 않았을 때...도 보이긴하네.. 뭐지?
+
 ![alt text](images/jumpt_to_py_image-10.png)
 
 (근데 사실 현재 코드에서는 붙이지 않아도 보이긴 했다. 그래도 일단 이렇게 쓰는게 안전할 듯?)
 
 - 리스트나 딕셔너리에서도 내부 값을 명시화할 때
 
-```
+```py
 scores: list[int] = [95, 87, 92]
 user_data: dict[str, str] = {"name": "홍길동"}
 ```
