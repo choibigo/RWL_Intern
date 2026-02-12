@@ -14,8 +14,8 @@
     
 ### Python
 - [x] PEP 8 (https://peps.python.org/pep-0008/)
-- [ ] Coding Skill
-    - [ ] 점프 투 파이썬
+- [x] Coding Skill
+    - [x] 점프 투 파이썬
     - [ ] 파이썬 코딩의 기술(~5장 까지, 나머지는 선택)
           
 ### Deep Learning
