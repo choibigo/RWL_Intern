@@ -4,7 +4,7 @@
 
 # 파이썬 코딩의 기술
 
-![alt text](image.png)
+![alt text](images/efp_image.png)
 
 ~5장 까지
 
@@ -289,7 +289,7 @@ result = [res for x in numbers if (res := complex_calc(x)) > 13]
 
 - 참고로 Walrus는 바다 코기리라는 뜻이다.
 
-![alt text](image-1.png)
+![alt text](images/efp_image-1.png)
 
 `:=`   <- 이거랑 닮아서 그렇게 만든 것이다.
 
