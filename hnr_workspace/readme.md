@@ -2,19 +2,19 @@
 
 ## 커리큘럼
 ### 기본
-- [ ] Git(clone, commit, push, pull 실습)
-- [ ] VSCode
-- [ ] MD 파일 작성
+- [x] Git(clone, commit, push, pull 실습)
+- [x] VSCode
+- [x] MD 파일 작성
 
 ### 환경 세팅
-- [ ] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
+- [x] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
 - [ ] Docker
     - [ ] https://www.youtube.com/watch?v=MsMHStVibEk&list=PLlTylS8uB2fDLJRJCXqUowsOViG-ZKnWy&index=12 ~ 재생목록 12 (스프링 부트 Dockerfile 만들기 [ 도커 (Docker) 기초 ])
     - [ ] https://www.youtube.com/watch?v=OPmSQCfzl1Q&list=PLtUgHNmvcs6rS5aNCRIZtVcyk3gRX2iOd ~ 2.8
 ### Python
 - [ ] PEP 8 (https://peps.python.org/pep-0008/)
 - [ ] Coding Skill
-    - [ ] 점프 투 파이썬
+    - [x] 점프 투 파이썬
     - [ ] 파이썬 코딩의 기술
         - 필요한 부분만 보기
 - [ ] Toy Project (Crawling?)
