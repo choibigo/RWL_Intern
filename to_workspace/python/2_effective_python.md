@@ -4,7 +4,9 @@
 
 # 파이썬 코딩의 기술
 
-![alt text](images/efp_image.png)
+<div align="center">
+  <img src="images/efp_image.png" width="300">
+</div>
 
 ~5장 까지
 
