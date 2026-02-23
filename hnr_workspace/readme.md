@@ -4,7 +4,7 @@
 ### 기본
 - [x] Git(clone, commit, push, pull 실습)
 - [x] VSCode
-- [x] MD 파일 작성
+- [ ] MD 파일 작성
 
 ### 환경 세팅
 - [x] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
