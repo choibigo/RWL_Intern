@@ -15,7 +15,7 @@
 - [x] PEP 8 (https://peps.python.org/pep-0008/)
 - [ ] Coding Skill
     - [x] 점프 투 파이썬
-    - [ ] 파이썬 코딩의 기술
+    - [x] 파이썬 코딩의 기술
         - 필요한 부분만 보기
 - [ ] Toy Project (Crawling?)
           
