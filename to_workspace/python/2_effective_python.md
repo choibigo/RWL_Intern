@@ -156,7 +156,7 @@ for rank, (name, calories) in enumerate(snacks, 1):
     print(f'#{rank}: {name} 은 {calories} 칼로리입니다.')
 ```
 
-## Better way 7 range보다는 enumerate를 사용하라 066
+## Better way 7 range보다는 enumerate를 사용하라
 
 - for 문에서 range()와 len(리스트) 이런걸 많이 사용한다. (주로 리스트 + 번호가 필요할 때 이렇게 많이 씀)
 
@@ -189,7 +189,7 @@ for i, flavor in enumerate(flavor_list, 1):
     print(f'{i}: {flavor}')
 ```
 
-> 참고로 enumerate는 놀랍게도 제네레이터이다. 구체적으로 enumerate는 이터러블 루프를 감싸고 인덱스와 value를 쌍으로 넘겨주는 역학을 하는 제네레이터인 것이다.
+> 참고로 enumerate는 놀랍게도 제네레이터이다. 구체적으로 enumerate는 이터러블 루프를 감싸고 인덱스와 value를 쌍으로 넘겨주는 역할을 하는 제네레이터인 것이다.
 
 그렇기에 이런식으로 우리가 흔히 보는 제네레이터 사용 방식 처럼 사용이 가능하다.
 
@@ -262,7 +262,7 @@ if count = fresh_fruit.get('lemon', 0): # 오류 발생!
 쌉가능이다.
 
 ```py
-if count := fresh_fruit.get('lemon', 0): # if문 입력 중에 바로 무언가를 넣을 수 없다.
+if count := fresh_fruit.get('lemon', 0): # 원래 if문 입력 중에 바로 무언가를 넣을 수 없다.
     print(count)
 
 print(count)
@@ -273,7 +273,7 @@ print(count)
 ```py
 numbers = [1 , 2]
 
-if count := numbers[1] : # if문 입력 중에 바로 무언가를 넣을 수 없다.
+if count := numbers[1] : # 원래 if문 입력 중에 바로 무언가를 넣을 수 없다.
     print(count)
 ```
 
@@ -289,7 +289,7 @@ while (data := input("입력하세요 (종료: q): ")) != 'q':
 result = [res for x in numbers if (res := complex_calc(x)) > 13]
 ```
 
-- 참고로 Walrus는 바다 코기리라는 뜻이다.
+- 참고로 Walrus는 바다 코끼리라는 뜻이다.
 
 ![alt text](images/efp_image-1.png)
 
@@ -610,7 +610,7 @@ image_data = handle.read()
 minimum, maximum, average, median, count = get_stats(lengths)
 ```
 
-많은 경우 작은 클래스 메서드로 세분화해라.
+많은 경우 작은 **클래스 메서드**로 세분화해라.
 
 ## Better way 20 None을 반환하기보다는 예외를 발생시켜라
 
@@ -650,6 +650,11 @@ def careful_divide(a: float, b: float) -> float:
 - **함수도 일급시민 객체**다. 그렇기에 변수에 대입되거나, 다른 함수에 인자로 전달될 수 있다.
 
 - 그렇기에 함수를 클러저 형태로 사용할 수 있는 것이다.
+
+- 1급 시민 객체의 조건: 
+    1. 변수나 데이터 구조 안에 담을 수 있다.
+    1. 함수의 인자(매개변수)로 전달할 수 있다.
+    1. 함수의 반환값(리턴값)으로 사용할 수 있다.
 
 클로저는 자신의 영역 밖에서 정의된 변수를 참조할 수 있는 상태나 현상을 말한다.
 
@@ -1395,7 +1400,7 @@ MRO 순서: 자기 자신 → 첫(앞쪽) 부모 → 두번째 부모 → 공통
 
 - 하지만 그럼에도 다중 상속을 사용해야겠다면 mix-in을 사용을 추천함.
 
-> **믹스인(Mixin)**은 클래스에 필요한 특정 기능만 제공하기 위해 만든 임 부품용 클래스 방식을 말하는 것. 혼자 인스턴스를 만들지 않고, 다른 클래스에 종속되어 사용됨.
+> **믹스인(Mixin)**은 클래스에 필요한 특정 기능만 제공하기 위해 만든 부품용 클래스 방식을 말하는 것. 혼자 인스턴스를 만들지 않고, 다른 클래스에 종속되어 사용됨.
 
 ```py
 class ToDictMixin:

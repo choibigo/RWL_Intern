@@ -358,7 +358,7 @@ $$\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla L$$
 
 ![alt text](image-29.png)
 
-- 참고로 하나의 Softmax 출력 노드로만 Loss를 구한다고 하긴 하지만, Softmax랑 합쳐지면 결국 모든 노드의 출력에 대해서 채점하는 것임.
+- 참고로 CEE에서 하나의 Softmax 노드의 출력으로만 Loss를 구한다고 하긴 하지만, CEE랑 Softmax랑 합쳐지면 결국 모든 노드의 출력에 대해서 채점하는 공식으로 바뀜.
 
 $q_i - y_i$ (여기서는 $y_i - t_i$ 로 표시) 이 결국 Softmax 하류로 내려가는 편미분 도함수인데, 이 i는 딱 정답 레이블이 아니라 각 노드에 맞는 레이블이 고려하는 것이다.
 
