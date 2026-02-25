@@ -277,19 +277,19 @@ class BetterCountMissing:
         self.added += 1  # 상태를 업데이트함
         return 0         # 기본값 반환
 
-# 1. 객체를 생성합니다.
+# 1. 객체를 생성
 counter = BetterCountMissing()
 
-# 2. 객체를 함수처럼 호출해봅니다. (counter.something()이 아님!)
+# 2. 객체를 함수처럼 호출 (counter.something()이 아님)
 print(counter())  # 결과: 0 (함수처럼 작동)
 print(f"추가된 횟수: {counter.added}")  # 결과: 1 (상태가 저장됨)
 
-# 3. 이제 이 객체를 defaultdict에 '함수' 대신 넣어줍니다.
+# 3. 이제 이 객체를 defaultdict에 '함수' 대신 넣어준다.
 from collections import defaultdict
 current = {'초록': 12, '파랑': 3}
 result = defaultdict(counter, current)  # counter는 객체지만 함수처럼 취급됨
 
-# 없는 키를 조회하면 counter()가 자동으로 호출됩니다.
+# 없는 키를 조회하면 counter()가 자동으로 호출된다.
 result['빨강'] += 5
 result['주황'] += 9
 
@@ -349,8 +349,8 @@ class User:
         self.name = name
         self.age = age
 
-    # 파이썬은 메서드 이름이 같으면 마지막 것만 기억합니다!
-    # 즉, 위의 __init__은 사라지고 아래 것만 남게 됩니다.
+    # 파이썬은 메서드 이름이 같으면 마지막 것만 기억한다.
+    # 즉, 위의 __init__은 사라지고 아래 것만 남게 된다.
     def __init__(self, json_data): # JSON 입력용
         self.name = json_data['name']
         self.age = json_data['age']
@@ -477,7 +477,7 @@ class MyBaseClass:
 
 class ExplicitChild(MyBaseClass):
     def __init__(self, value):
-        # 괄호 안에 (자기이름, self)를 다 써줘야 했습니다.
+        # 괄호 안에 (자기이름, self)를 다 써줘야 했다.
         super(ExplicitChild, self).__init__(value)
         self.value *= 2
 ```
@@ -526,19 +526,19 @@ class Person(NameMixin, AgeMixin):
 
 ```python
 class DisplayMixin:
-    """이 믹스인은 __init__이 없으며, 오직 출력 기능만 제공합니다."""
+    """이 믹스인은 __init__이 없으며, 오직 출력 기능만 제공한다."""
     def display(self):
-        # 데이터(name, age)는 나를 상속받은 자식 객체가 가지고 있을 거라고 믿고 사용합니다.
+        # 데이터(name, age)는 나를 상속받은 자식 객체가 가지고 있을 거라고 믿고 사용한다.
         print(f"이름: {self.name}, 나이: {self.age}")
 
 class Person(DisplayMixin):
     def __init__(self, name, age):
-        # 데이터는 오직 진짜 클래스인 Person에서만 관리합니다.
+        # 데이터는 오직 진짜 클래스인 Person에서만 관리한다.
         self.name = name
         self.age = age
 
 p = Person("Hannuri", 25)
-p.display() # 믹스인의 기능을 가져다 씁니다.
+p.display() # 믹스인의 기능을 가져다 쓴다.
 ```
 
 ### 믹스인 클래스가 클래스별로 특화된 기능을 필요로 한다면 인스턴스 수준에서 끼워 넣을 수 있는 기능(정해진 메서드를 통해 해당 기능을 인스턴스가 제공하게 만듦)을 활용한다.
