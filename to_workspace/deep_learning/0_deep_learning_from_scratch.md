@@ -7,7 +7,7 @@
 # 밑바닥부터 시작하는 딥러닝 1
 
 <div align="center">
-  <img src="image-1.png" width="300">
+  <img src="images/dlfs_0_image-1.png" width="600">
 </div>
 
 - 여러번 배운 내용이고, 이후에 파이토치와 함께 한번 더 복습할 것이기에 딥러닝 이론 위주로 복습하는 방식으로 진행할 예정.
@@ -19,7 +19,7 @@
 
 - 퍼셉트론은 다수의 신호를 입력 받아 하나의 신호, `0` 또는 `1`을 내보냄.
 
-<img src="image.png" width="300">
+<img src="images/dlfs_0_image.png" width="600">
 
 
 
@@ -31,18 +31,18 @@
 
 이를 수식으로 나타내면 아래와 같으며
 
-<img src="image-2.png" width="200">
+<img src="images/dlfs_0_image-2.png" width="600">
 
 - 여기서 이 노드 또는 뉴런의 활성 임계값을 **세타**로 표기함.
 
 - 하지만 이 세타는 나중에 가면 잘 안씀, 수학적으로 이 임계값이 결국 bias(b로 표기)의 역할이 똑같아서 그냥 교체 됨. 오히려 더 심플함.
  - 즉, bias는 뉴런이 얼마나 쉽게 활성화 되느냐를 가르는 용도. 적어도 퍼셉트론에서는.
 
-![alt text](image-4.png)
+<img src="images/dlfs_0_image-4.png" width="600">
 
 - 이런 퍼셉트론 뉴런을 여럿 이용해서 보다 복잡한 논리도 구현할 수 있음. XOR 같은.
 
-<img src="image-5.png" width="300">
+<img src="images/dlfs_0_image-5.png" width="600">
 
 # CHAPTER 3 신경망
 
@@ -50,19 +50,19 @@
 
 - 신경망은 Input, Hidden, Output layer으로 구성됨.
 
-<img src="image-6.png" width="300">
+<img src="images/dlfs_0_image-6.png" width="600">
 
 (이걸 문헌에 따라 2개의 층이라 가졌다하기도 하고, 3개의 층이라는 말도 있음. 이 교재에서는 2층이라고 말함.)
 
 - bias를 포함하여 아래 그림 처럼 보여주기도 함.
 
-<img src="image-7.png" width="400">
+<img src="images/dlfs_0_image-7.png" width="600">
 
 ### 행렬곱
 
 - 당연하지만 이런 신경망의 입력과 가중치 곱셈들은 행렬 곱셈으로 진행됨.
 
-<img src="image-12.png" width="350">
+<img src="images/dlfs_0_image-12.png" width="600">
 
 - 이른 공간변환적으로 생각하면, 원래 2차원 벡터가 3개 있었는데.. 이들은 각각 1차원 scalar 값으로 정사영 시키고 곱한 값을 통해 3개의 변환된 scalar 값을 얻는 것과 같음.
 
@@ -72,7 +72,7 @@
   - 노드 안에서 작동한다고 생각하면 쉬움.
   - 퍼셉트론 처럼 꼭 임계치를 넘겨야 활성화가 되고말고를 결정하는 것은 아니고, 활성화 함수마다 출력 방식이 다름.
 
-<img src="image-8.png" width="300">
+<img src="images/dlfs_0_image-8.png" width="600">
 
 - 활성화 함수는 주로 `h()`으로 표현하며, 인풋으로 input 총합을 알맞게 아웃풋으로 만들어냄. 위 예시는 퍼셉트론과 같은 0과 1만을 출력하는 계단함수임. 당연하지만 이 계단함수를 실제로 잘 쓰지는 않음.
 
@@ -80,7 +80,7 @@
 
 - 아래 처럼 **시그모이드** 함수를 이용하기도 함. 이는 명백한 비선형이고, 0 부근에서 확실한 고저차가 있어서 좋음. 미분도 가능하고.
 
-<img src="image-9.png" width="300">
+<img src="images/dlfs_0_image-9.png" width="600">
 
 참고로 `exp(-x)`는 $e^{-x}$를 표현한 것.
 
@@ -96,9 +96,9 @@ def sigmoid(x):
 
 - 시그모이드 보다 많이 쓰이는게 **ReLU** 함수임.
 
-<img src="image-11.png" width="200">
+<img src="images/dlfs_0_image-11.png" width="600">
 
-![alt text](image-10.png)
+<img src="images/dlfs_0_image-10.png" width="600">
 
 어떻게 보면 0보다 크면 선형이라고 볼 수 있음.
 
@@ -131,7 +131,7 @@ def relu(x):
 
 그러면 **출력층**에서 사용하는 활성화 함수인 소프트맥스에 대해서 복습해보자.
 
-<img src="image-13.png" width="200">
+<img src="images/dlfs_0_image-13.png" width="600">
 
 - exp() : 지수함수 $e^x$
 - n : 출력층의 뉴런 수
@@ -156,11 +156,11 @@ def relu(x):
 
 - 즉 아래 X 데이터 하나를 돌리고. (784 픽셀의 한 이미지라고 가정할 때)
 
-![alt text](image-14.png)
+<img src="images/dlfs_0_image-14.png" width="600">
 
 이를 100번 반복하는 것보다. 아래 처럼 그 784 이미지 100개를 (GPU마다 다름) 합산해서 학습하는게 훨씬 더 빠름.
 
-![alt text](image-15.png)
+<img src="images/dlfs_0_image-15.png" width="600">
 
 이 100개 묶음 하나를 **미니배치(Mini-batch)**라고 부른다.
 
@@ -243,7 +243,7 @@ $$\left( \frac{\partial f}{\partial x_0}, \frac{\partial f}{\partial x_1} \right
 
 - 아래와 같은 그림을 많이 봤을텐데 이는 각 변수에 대해서 편미분하고, 그 기울기들은 정리한 벡터장을 표현한 것임.
 
-<img src="image-18.png" width="300">
+<img src="images/dlfs_0_image-18.png" width="600">
 
 각 $x_0$와 $x_1$의 값에 따른 기울기에 대한 벡터(gradient)들을 구하고 보기 좋게 나타낸 것.
 
@@ -271,7 +271,7 @@ $$\left( \frac{\partial f}{\partial x_0}, \frac{\partial f}{\partial x_1} \right
 
 다음과 같이 웨이트와 손실함수가 있을 때:
 
-<img src="image-19.png" width="200">
+<img src="images/dlfs_0_image-19.png" width="600">
 
 $$\mathbf{w} \leftarrow \mathbf{w} - \eta \frac{\partial L}{\partial \mathbf{w}}$$
 
@@ -306,39 +306,40 @@ $$\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla L$$
 - 역전파는 국소적인 미분을 역방향으로 보내는 과정. 원리는 연쇄법칙을 이용.
 - 연쇄법칙을 통해 전체를 한번에 미분하는 것이 아닌, 각 부분들을 독립적으로 미분할 수 있고. 그 부분들이 최종 출력에 영향을 미칠 수 있는지 알 수 있음.
 
-![alt text](image-22.png)
+<img src="images/dlfs_0_image-22.png" width="600">
+
 
 ### 계산 그래프를 통한 오차역전파와 연쇄법칙 설명
 
 - 서로 + 되는 더하기 노드는 그냥 그대로 뒤로 보내짐.
 
-![alt text](image-23.png)
+<img src="images/dlfs_0_image-23.png" width="600">
 
 왜냐하면 x + y를 각자 그 변수대로 편미분하면 나머지 변수는 0 되고, 그 변수는 1되기 때문.
 
 - 곱셈 노드는 다른 쪽을 같이 뒤로 보내게 됨.
 
-![alt text](image-24.png)
+<img src="images/dlfs_0_image-24.png" width="600">
 
 - 예시
 
-![alt text](image-25.png)
+<img src="images/dlfs_0_image-25.png" width="600">
 
 #### 과연 다음 빈칸의 정답은?
 
-![alt text](image-20.png)
+<img src="images/dlfs_0_image-20.png" width="600">
 
 <details>
 
 <summary>정답</summary>
 
-![alt text](image-21.png)
+<img src="images/dlfs_0_image-21.png" width="600">
 
 </details>
 
 #### ReLU
 
-![alt text](image-26.png)
+<img src="images/dlfs_0_image-26.png" width="600">
 
 0 이상이면 그대로 통과이고, 0이하면 0을 반환.
 
@@ -346,17 +347,17 @@ $$\mathbf{w} \leftarrow \mathbf{w} - \eta \nabla L$$
 
 #### Sigmoid
 
-![alt text](image-27.png)
+<img src="images/dlfs_0_image-27.png" width="600">
 
 ### Softmax with Loss 계층
 
 - [따로 공부해서 알고 있긴하지만](https://www.notion.so/robots-oh/MLE-Maximum-Likelihood-Estimation-30d63918d42a809c96f9c573233f3756#30d63918d42a80eaae2ace94c5514cae), 기본적으로 Softmax와 Cross Entropy는 꼭 같이 씀. 그래야만 계산이 엄청 간단해지기 때문.
 
-![alt text](image-28.png)
+<img src="images/dlfs_0_image-28.png" width="600">
 
 원래 복잡하던 계산 다른 손실함수 미분 처럼 결국 y - q로 떨어짐.
 
-![alt text](image-29.png)
+<img src="images/dlfs_0_image-29.png" width="600">
 
 - 참고로 CEE에서 하나의 Softmax 노드의 출력으로만 Loss를 구한다고 하긴 하지만, CEE랑 Softmax랑 합쳐지면 결국 모든 노드의 출력에 대해서 채점하는 공식으로 바뀜.
 
@@ -454,11 +455,11 @@ $$w \leftarrow w - \eta \frac{\partial L}{\partial w}$$
 
 예를 들어 실제 Loss 그래프가 아래 그림 처럼 골짝이 모양이면
 
-![alt text](image-31.png)
+<img src="images/dlfs_0_image-31.png" width="600">
 
 바로 내려갈 것을 한참동안 반복하면서 왔다갔다 하면서 내려감.
 
-![alt text](image-33.png)
+<img src="images/dlfs_0_image-33.png" width="600">
 
 그래서 불안정하고 시간이 더 오래 걸린다.
 
@@ -480,7 +481,7 @@ $$w \leftarrow w + v$$
 
 - 이를 통해 속도를 일정하게 늘릴 수 있음. 특히 x축의 가속도를 안정적으로 높여가 더 빨리 수렴하기 가능.
 
-![alt text](image-34.png)
+<img src="images/dlfs_0_image-34.png" width="600">
 
 - 물론 아직 y축으로는 불안정함.
 
@@ -498,7 +499,7 @@ optimizers["Momentum"] = Momentum(lr=0.1)
 
 `optimizers["Momentum"] = Momentum(lr=0.95)`
 
-![alt text](image-35.png)
+<img src="images/dlfs_0_image-35.png" width="600">
 
 </details>
 
@@ -528,7 +529,7 @@ $$w \leftarrow w - \eta \frac{1}{\sqrt{h} + \epsilon} \frac{\partial L}{\partial
 
   - 여기서 중요한 것는 개별의 $\frac{\partial L}{\partial w}$ 를 계산에 포함하는 것이기에, 각 **w마다 개별적인 학습률 조정**이 가능해짐!! 그래서 w 중에서 크게 움직인 것들만 학습률이 크게 낮아진다는 것.
 
-![alt text](image-38.png)
+<img src="images/dlfs_0_image-38.png" width="600">
 
 > 하지만 AdaGrad를 사용하다 보면 어느 순간 **업데이트량이 0**으로 수렴됨. 이 문제를 개선한 방법으로 **RMSProp**이 나중에 나옴. AdaGrad의 개선판임. 먼 과거의 기울기는 *서서히 잊고*, **새로운 기울기 위주**로 업데이트 하는 방싱임. 이 방법론을 Exponential Moving Average라 하여, 과거의 기울기를 급격하게 감소시킴.
 
@@ -536,13 +537,13 @@ $$w \leftarrow w - \eta \frac{1}{\sqrt{h} + \epsilon} \frac{\partial L}{\partial
 
 - 위 모멘텀과 AdaGrad(의 개선판인 RMSProp)의 장점을 합친게 Adam임.
 
-![alt text](image-36.png)
+<img src="images/dlfs_0_image-36.png" width="600">
 
 모멘텀도 있고, 학습률도 w마다 적응적으로 업데이트 됨.
 
 - **대부분의 상황에서 일단 Adam 부터 사용됨**.
 
-![alt text](image-37.png)
+<img src="images/dlfs_0_image-37.png" width="600">
 
 (물론 위 그래프 최적화 문제에서는 AdaGrad이 제일 좋았지만, 이는 간단한 방식이고, 신경망 최적화에 사용하려면 결국 모멘텀의 역할이 필요함)
 
@@ -591,7 +592,7 @@ $$ 분산 = 표준편차^2 = \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
 
 활성화된 값들이 거의 전부 0과 1로 지우쳐져 있다.
 
-![alt text](image-39.png)
+<img src="images/dlfs_0_image-39.png" width="600">
 
 (참고로 이거는 100개 노드의 출력이니 한 그래프 도합이 100이 아니라, 1000개의 데이터를(미니배치 기준으로) 100개의 노드에 통과했으니 그래프에 배치되는 값이 총 100,000개인 것이다)
 
@@ -600,7 +601,7 @@ $$ 분산 = 표준편차^2 = \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
 
 - 시그모이드 함수는 다음 그래프 처럼 생겼다.
 
-![alt text](image-40.png)
+<img src="images/dlfs_0_image-40.png" width="600">
 
 0,1 양 끝단에 시그모이드 결과 값들이 위치한다면, 그 기울기 들은 거의 0에 수렴하는 것이다.
 
@@ -614,7 +615,7 @@ $$ 분산 = 표준편차^2 = \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2
 
 이번에는 활성화된 값들이(시그모이드 아웃풋) 0.5에 지우쳐져 있다.
 
-![alt text](image-41.png)
+<img src="images/dlfs_0_image-41.png" width="600">
 
 - 기울기 소실 문제는 일어나지 않는다, 시그모이드 함수 중앙에 있기에.
 
@@ -641,7 +642,7 @@ $$\sigma = \frac{1}{\sqrt{n}}$$
 
 그리고 놀랍게도 결과가 굉장히 잘 나온다.
 
-![alt text](image-42.png)
+<img src="images/dlfs_0_image-42.png" width="600">
 
 > 참고로 만약에 활성화 단계에서 시그모이드가 안좋다면 tanh 함수를 사용하는 방법도 있다. 둘이 생긴 것은 비슷하지만, tanh는 원점 기준으로 대칭이고 sigmoid는 (0,0.5) 중심 대칭이다. 활성화 함수용으로는(출력용말고) 원 대칭인 함수가 더 성능이 좋다고 알려져 있다.
 
@@ -651,15 +652,15 @@ $$\sigma = \frac{1}{\sqrt{n}}$$
 
 - 표준편차: 1
 
-![alt text](images/Figure_relu1.png)
+<img src="images/Figure_relu1.png" width="600">
 
 - 표준편차: 0.01
 
-![alt text](images/Figure_0.01.png)
+<img src="images/Figure_0.01.png" width="600">
 
 - 표준편차: Xavier ($\frac{1}{\sqrt{n}}$)
 
-![alt text](images/Figure_reluXavier.png)
+<img src="images/Figure_reluXavier.png" width="600">
 
 - 물론 당연하지만 ReLU도 이상적인 정규분포 세팅 방식이 있다.
 
@@ -673,7 +674,7 @@ $$\sigma = \sqrt{\frac{2}{n}}$$
 
 보면 위에 ReLU + Xavier 보다 레이어가 깊어도 보다 고르게 분포된 것을 볼 수 있다.
 
-![alt text](image-43.png)
+<img src="images/dlfs_0_image-43.png" width="600">
 
 - 제곱근 2인 이유는 분산 기준으로 보기 때문이다. 분산을 2배 시키고 싶으면 표준편차는 $\sqrt{2}$ 배를 해야한다. 
 
@@ -687,7 +688,7 @@ $$\sigma = \sqrt{\frac{2}{n}}$$
 
 그게 바로 **Batch Normalization**이다. 즉, **배치 정규화**.
 
-![alt text](image-44.png)
+<img src="images/dlfs_0_image-44.png" width="600">
 
 - 위 표 처럼 각 레이러 사이마다 배치 정규화 단계를 추가하는 것이다.
 
@@ -750,7 +751,7 @@ $$y_i=\gamma\hat{x}_i+\beta$$
 
 - 아래 처럼 train셋에 대하여 정확도가 100이 되버리면 오버핏 된거라로 볼 수 있음.
 
-![alt text](image-45.png)
+<img src="images/dlfs_0_image-45.png" width="600">
 
 - 이를 위한 다양한 해결책이 있다.
 
@@ -781,7 +782,7 @@ Weight decay는 좋은 방법이다. 하지만 모델이 커지면 가중치 감
 
 - 이럴때 가장 흔하게 사용되는 것이 **드롭아웃**이다.
 
-![alt text](image-46.png)
+<img src="images/dlfs_0_image-46.png" width="600">
 
 - 무작위적으로 뉴런을 골라 끄는 것이다. (물론 은닉층에서만)
 
@@ -830,11 +831,11 @@ Convolution Neural Network
 
 - 아래가 그동안 만들고 공부했던 평범한 Affine ReLU 신경망이면
 
-![alt text](image-47.png)
+<img src="images/dlfs_0_image-47.png" width="600">
 
 - 아래는 Convolution(합성곱) 레이와 Pooling 레이어가 추가된 CNN 구조 신경망이다.
 
-![alt text](image-48.png)
+<img src="images/dlfs_0_image-48.png" width="600">
 
 - 조금 거창하게 달라 보일 수도 있지만, 사실 계산 방식은 같다.
   - 단지 **노드간의 연결만이 조금 다를** 뿐이다.
@@ -845,15 +846,15 @@ Convolution Neural Network
 
 보통 입출력 데이터를 둘다 feature map이라고 부른다.
 
-![alt text](image-55.png)
+<img src="images/dlfs_0_image-55.png" width="600">
 
 그리고 곱셈하는 필터를 **커널**이라고도 부른다. (그리고 그 커널이 보고 있는 면을 **윈도우**라고 부른다.)
 
-![alt text](image-53.png)
+<img src="images/dlfs_0_image-53.png" width="600">
 
 원래라면 아래 처럼 작아지는 것이 정상이다. 특히 **스트라이드**를 사용하면 더 급격하게 작아진다.
 
-![alt text](image-54.png)
+<img src="images/dlfs_0_image-54.png" width="600">
 
 이를 예방하기 위해 **패딩**을 추가하여 줄어드는 조절할 수 있다.
 
@@ -864,7 +865,7 @@ Convolution Neural Network
 - 참고로 예를 들어 RGB, 즉 3차원의 인풋이면 커널을 3개씩 사용하는 것이고.
   - 각 커널이 각 색을 연산하고, 그것들 또 더한 총합이 결과 피쳐맵의 한칸이다.
 
-  ![alt text](image-56.png)
+  <img src="images/dlfs_0_image-56.png" width="600">
 
   - 즉, RGB간의 구별을 뭉뚱그려 하나의 정보로 압축한 것이 맞다.
 
@@ -878,7 +879,7 @@ Convolution Neural Network
 
 예를 들어 커널 세트를 2개 사용해서 2차원 결과 피쳐맵을 아래 처럼 두개 만들 수 있다.
 
-![alt text](image-57.png)
+<img src="images/dlfs_0_image-57.png" width="600">
 
 #### Convolution 연산 최적화
 
@@ -891,11 +892,11 @@ Convolution Neural Network
 
 - 아까 위 이미지에서 봤을 때 Convolution 레이어만 있는게 아니라 Pooling Layer도 존재한다.
 
-![alt text](image-48.png)
+<img src="images/dlfs_0_image-48.png" width="600">
 
 - 풀링 레이어는 합성곱 보다 훨씬 간단하다. 그냥 보고 있는 윈도우에서 특정 값 하나만 가져오고 나머지는 버리는 것이다.
 
-![alt text](image-58.png)
+<img src="images/dlfs_0_image-58.png" width="600">
 
 일종의 공간 압축 기술이다.
 
@@ -909,7 +910,7 @@ CNN, 이미지 분류에 매우 탁월하다.
 
 그러면 각 층에서 커널들은 무엇을 보는걸까?
 
-![alt text](image-59.png)
+<img src="images/dlfs_0_image-59.png" width="600">
 
 - 일단 저수준에서는 Edge와 Blob(주변과 밝기가 확연히 차이나는 뭉쳐있는 픽셀 덩어리)를 많이 본다.
   - 실제로 우리 인간들도 이미지를 볼때 전체를 한번에 다 연산하는게 아니라, 주요 특징, 모서와 edge 부터 의식한다.
@@ -930,7 +931,7 @@ CNN, 이미지 분류에 매우 탁월하다.
 
 오히려 층이 깊은게 연산량이 적음.
 
-![alt text](image-50.png)
+<img src="images/dlfs_0_image-50.png" width="600">
 
 - 위 이미지로만 보면 잘 와닿지 않을 수도 있어서 더 큰 예시을 들자면:
   - 100x100 크기의 흑백 이미지가 있다고 가정하자. (패딩이 잘 돼서 이미지가 줄어들지는 않는다.)
@@ -952,7 +953,7 @@ ResNet은 마소가 개발한 이미지 분류 신경망으로, 층을 더 깊�
 
 - 그 장치는 바로 **스킵 연결**이다.
 
-![alt text](image-51.png)
+<img src="images/dlfs_0_image-51.png" width="600">
 
 - 보이는바와 같이 입력 x를 두 합성곱 계층을 건너뛰고, 그 다다음 활성화와 단에 바로 집어넣는 것이다.
 
@@ -960,7 +961,8 @@ ResNet은 마소가 개발한 이미지 분류 신경망으로, 층을 더 깊�
 
 ResNet은 아래 처럼 이 과정을 적극적으로 이용하여 각 층미다 건너뛰는 경우가 많다.
 
-![alt text](image-52.png)
+<img src="images/dlfs_0_image-52.png" width="600">
+
 
 ### 멀티모달 처리
 
