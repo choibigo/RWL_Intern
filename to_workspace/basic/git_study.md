@@ -364,3 +364,5 @@ d3fc4c5 HEAD@{6}: checkout: moving from main to to_basic_git
 ```
 
 `git branch -d <삭제할 브랜치명>` = 브랜치 삭제. 사용이 끝난 브랜치는 깔끔하게 삭제해두자.
+
+`git pull --rebase origin main` = pull하고 내가 커밋 만든 뒤 아직 푸쉬 안했는데 다른 사용자가 그 사이에 푸쉬를 해서 엇갈린 경우 이 명령어를 통해 매끄럽게 해결 됨. But 현재 변경이 stash 되거나 커밋이 되야함.
