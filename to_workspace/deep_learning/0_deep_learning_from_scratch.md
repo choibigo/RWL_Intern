@@ -737,6 +737,19 @@ $$y_i=\gamma\hat{x}_i+\beta$$
 
 - 하지만 이상하게도 실험적으로 ReLU 이후에 Batch Normalization을 하는게 더 좋다는 결과도 나오는 것이다.
 
+### 실무에서 Batch Normalization
+
+- 염두해야할 것은 그냥 '입력' 정규화가 아니라, '**배치**' 정규화이다. 
+
+그렇기에 배치 단위로 학습하는 train 단계와, 하나의 데이터만 넣는 test에서 batch norm은 약간 다르게 동작한다.
+
+- Training 단계:
+  - 현 배치 전체 데이터를 사용해서 평균과 분산을 구함. 이를 기반으로 정규화.
+  - But, Moving Average을 동시에 저장함. 매 배치마다 구한 평균과 분산을 누적하여 `running_mean`과 `running_var`라는 값으로 저장.
+
+- Inference 단계:
+  - `running_mean`과 `running_var`을 가져와 고정된 값으로 사용.
+
 ## 과대적합 문제
 
 신경망이 훈련 데이터에 너무 지나치게 적응되어 다른 데이터에서는 오히려 성능이 떨어지는 현상.
@@ -775,6 +788,25 @@ $$\frac{\partial}{\partial W} \left( \frac{1}{2} \lambda W^2 \right) = \lambda W
 $$W \leftarrow W - \eta (\text{Original Gradient} + \lambda W)$$
 
 그냥 오리지널 기울기(y-q)에다가 $\lambda W$를 더해서 더 많이 뺀 것이다!
+
+#### 이거... L1/L2 Regularization이랑 비슷한거 아니야?
+
+- L1과 L2 Regularization도 거의 **같은 개념**. 가중치가 너무 커지지 않게 브레이크를 거는 것.
+
+- 일단 적어도 L2 Regularization은 Weight Decay과 수학적으로 **완벽하게 일치함**. L2는 **손실함수에** 페널티를 추가하는 개념이고, Weigt Decay는 **파라미터단** 업데이트에서 실제로 구현되는 방식?
+
+  L2 Regularization 공식(위 weight decay이랑 똑같다):
+$$Loss_{total} = Loss_{data} + \frac{\lambda}{2} \sum w^2$$
+
+- 하지만 Adam으로 가면 Weight Decay이 **Decoupled Weight Decay**으로 바뀌어서 사용되고, 이는 일반적인 L2랑 달라지긴함.
+
+- **다만 L1 Regularization은 좀 다름**.
+  
+  L1 Regularization 공식:
+  $$Loss_{total} = Loss_{data} + \lambda \sum |w|$$
+
+- 미분하면 w가 빠지고 오직 $\lambda \cdot sgn(w)$만 남음(절댓값 미분하면 이럼). 그래서 이 값만 그냥 계속 일정하게 0이 되도록 빼는거임. 
+  - L2는 0으로 가까워지면 비교적 완만하게 빼지만, 이 친구는 그런거 없고 그냥 계속 0으로 보냄.
 
 ### 드롭아웃 방법
 
