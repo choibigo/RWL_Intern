@@ -18,7 +18,7 @@ https://arxiv.org/pdf/1512.03385
 
 <details>
 
-<summary>논문 자세히 보기</summary>
+<summary>논문 자세히 보려면 클릭</summary>
 
 ![alt text](images/dl_resnet_image-2.png)
 
@@ -103,15 +103,20 @@ $y = \mathcal{F}(x, \{W_i\}) + W_sx$
 
 ### CIFAR-10 적용
 
-어떻게 학습했는지 파라미터까지 꽤 상세하게 논문에서 나타남.
+- 어떻게 학습했는지 파라미터까지 꽤 상세하게 논문에서 나타남:
+    - SGD 사용
+    - weight decay 0.0001
+    - momentum 0.9
+    - 드롭아웃 미사용
+    - batch size 128 (GPU 2대 기준)
+    - lr 시작값 0.1
+        - 32k와 48k 단계에서 각각 한번 1/10을 함.
+    - 45k/5k train/val
+    - 4픽셀 패딩
+    - 데이터 증강했음
+    - 보통 3x3 conv 사용
+    - 2개 레이어보다 3개의 레이어로 잔차함수를 쓰는게 좋음.
+    - 적어도 residual 블록, 즉 Conv 레이어에서 bias는 생략함
 
-- SGD
-- weight decay 0.0001
-- momentum 0.9
-- 드롭아웃 미사용
-- batch size 128 (GPU 2대 기준)
-- lr 시작값 0.1
-    - 32k와 48k 단계에서 각각 한번 1/10을 함.
-- 45k/5k train/val
-- 4픽셀 패딩
-- 데이터 증강했음
+
+- U net과 ResNet의 연관점과 차이, CNN의 기준에서 생각했을 차이와 뭐가 더 좋은지.

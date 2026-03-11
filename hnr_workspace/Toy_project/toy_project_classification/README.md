@@ -5,7 +5,7 @@
 ### Docker (컨테이너): 
     파이썬뿐만 아니라 운영체제(OS) 환경 자체를 통째로 포장하는 도구이다. 우분투, CUDA(GPU 드라이버), 파이썬, 라이브러리를 모두 박스에 담아버리기 때문에, 윈도우든 맥이든 리눅스든 Docker만 깔려있으면 100% 똑같은 환경을 보장한다.
 
-
+```
 toy_project_classification/
 ├── configs/
 │   └── config.py
@@ -18,6 +18,7 @@ toy_project_classification/
 │   ├── engine.py
 │   └── utils.py
 └── train.py
+```
 
 ### configs/: 
     하이퍼파라미터(Batch Size, Learning Rate 등)와 경로 설정 등 프로젝트 전체의 환경 변수를 모아두는 곳이다.
