@@ -5,12 +5,11 @@
     # num_workers
     # image size
     # num_classes
-
 class CFG:
     SEED = 42
 
     BATCH_SIZE = 128
-    NUM_WORKERS = 2 #CPU의 일꾼(프로세스) 수
+    NUM_WORKERS = 2
     EPOCHS = 10
     LR = 1e-3
 
@@ -20,3 +19,5 @@ class CFG:
     DEVICE = "cuda"
     DATA_ROOT = "./data"
     SAVE_DIR = "./outputs"
+
+    MODEL_NAME = "resnet18"

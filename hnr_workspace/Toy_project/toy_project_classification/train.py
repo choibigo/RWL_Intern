@@ -24,8 +24,7 @@ def main():
         num_workers=CFG.NUM_WORKERS
     )
 
-    model = get_model(num_classes=CFG.NUM_CLASSES).to(device)
-
+    model = get_model(model_name=CFG.MODEL_NAME, num_classes=CFG.NUM_CLASSES).to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=CFG.LR)
 
