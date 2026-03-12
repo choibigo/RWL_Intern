@@ -10,7 +10,7 @@ class CFG:
 
     BATCH_SIZE = 128
     NUM_WORKERS = 2
-    EPOCHS = 10
+    EPOCHS = 20
     LR = 1e-3
 
     NUM_CLASSES = 100
@@ -20,4 +20,4 @@ class CFG:
     DATA_ROOT = "./data"
     SAVE_DIR = "./outputs"
 
-    MODEL_NAME = "resnet18"
+    MODEL_NAME = "resnet34"
