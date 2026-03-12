@@ -51,6 +51,70 @@ toy_project_classification/
     - Best Valid Accuracy: 0.4635
 
 # Experiment 1
+    - Model : ResNet18
+    - Dataset: CIFAR-100
+    - Epochs: 10
+    - Batch size: 128
+    - Optimizer: Adam
+    - Train augmentation:
+        - RandomCrop(32, padding=4)
+        - RandomHorizontalFlip()
+        - RandomRotation(15)
+    - Best Valid Accuracy: 0.5803
+
+# Experiment 2
+    - Model : ResNet18
+    - Dataset: CIFAR-100
+    - Epochs: 10
+    - Batch size: 128
+    - Optimizer: Adam
+    - Train augmentation:
+        - RandomCrop(32, padding=4)
+        - RandomHorizontalFlip()
+        - RandomRotation(15)
+        - ColorJitter(
+            brightness=0.2,
+            contrast=0.2,
+            saturation=0.2
+            )
+    - Best Valid Accuracy: 0.5977
+
+# Experiment 3
+    - Model : ResNet18
+    - Dataset: CIFAR-100
+    - Epochs: 10
+    - Batch size: 128
+    - Optimizer: Adam
+    - Train augmentation:
+        - RandomCrop(32, padding=4)
+        - RandomHorizontalFlip()
+        - RandomRotation(15)
+        - ColorJitter(
+            brightness=0.2,
+            contrast=0.2,
+            saturation=0.2
+            )
+        - RandomErasing(p=0.5)
+    - Best Valid Accuracy: 0.5552
+
+# Experiment 4
+    - Model : ResNet18
+    - Dataset: CIFAR-100
+    - Epochs: 20
+    - Batch size: 128
+    - Optimizer: Adam
+    - Train augmentation:
+        - RandomCrop(32, padding=4)
+        - RandomHorizontalFlip()
+        - RandomRotation(15)
+        - ColorJitter(
+            brightness=0.2,
+            contrast=0.2,
+            saturation=0.2
+            )
+    - Best Valid Accuracy: 0.6565
+
+# Experiment 5
     - Model : ResNet34
     - Dataset: CIFAR-100
     - Epochs: 20
@@ -60,3 +124,39 @@ toy_project_classification/
         - RandomCrop(32, padding=4)
         - RandomHorizontalFlip()
     - Best Valid Accuracy: 0.6646
+
+
+# Experiment 6
+    - Model : ResNet34
+    - Dataset: CIFAR-100
+    - Epochs: 20
+    - Batch size: 128
+    - Optimizer: Adam
+    - Train augmentation:
+        - RandomCrop(32, padding=4)
+        - RandomHorizontalFlip()
+        - RandomRotation(15)
+        - ColorJitter(
+            brightness=0.2,
+            contrast=0.2,
+            saturation=0.2
+            )
+    - Best Valid Accuracy: 0.6513
+
+
+# Experiment 7
+    - Model : ResNet34
+    - Dataset: CIFAR-100
+    - Epochs: 20
+    - Batch size: 128
+    - Optimizer: Adam
+    - Train augmentation:
+        - RandomCrop(32, padding=4)
+        - RandomHorizontalFlip()
+        - RandomRotation(15)
+        - ColorJitter(
+            brightness=0.2,
+            contrast=0.2,
+            saturation=0.2
+            )
+    - Best Valid Accuracy: 
