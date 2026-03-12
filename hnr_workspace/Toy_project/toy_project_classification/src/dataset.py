@@ -52,9 +52,16 @@ def get_transforms(train=True):
             # 이미지 주변에 padding 을 주고, 다시 32*32 로 랜덤하게 자른다.
             transforms.RandomHorizontalFlip(),
             # 좌우반전
+            transforms.RandomRotation(15),
+            transforms.ColorJitter(
+                    brightness=0.2,
+                    contrast=0.2,
+                    saturation=0.2
+                    ),
             transforms.ToTensor(),
             # [C,H,W] 형태로 변환한다.
             # 픽셀 값도 0~255 정수에서 0~1 실수 범위로 바꾼다.
+            # transforms.RandomErasing(p=0.5),
             transforms.Normalize(
                 mean=(0.5071, 0.4867, 0.4408),
                 std=(0.2675, 0.2565, 0.2761)

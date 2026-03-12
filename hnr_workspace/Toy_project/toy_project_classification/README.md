@@ -49,3 +49,14 @@ toy_project_classification/
         - RandomCrop(32, padding=4)
         - RandomHorizontalFlip()
     - Best Valid Accuracy: 0.4635
+
+# Experiment 1
+    - Model : ResNet34
+    - Dataset: CIFAR-100
+    - Epochs: 20
+    - Batch size: 128
+    - Optimizer: Adam
+    - Train augmentation:
+        - RandomCrop(32, padding=4)
+        - RandomHorizontalFlip()
+    - Best Valid Accuracy: 0.6646

@@ -12,9 +12,11 @@ from src.engine import train_one_epoch, valid_one_epoch
 from models.resnet import get_model
 from torch.utils.tensorboard import SummaryWriter
 
+
 def main():
     set_seed(CFG.SEED)
     writer = SummaryWriter(log_dir="runs/resnet_experiment")
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
@@ -47,9 +49,7 @@ def main():
         writer.add_scalar("Loss/valid", valid_loss, epoch)
         writer.add_scalar("Accuracy/train", train_acc, epoch)
         writer.add_scalar("Accuracy/valid", valid_acc, epoch)
-        print(f"\nTraining finished. Best Valid Acc: {best_acc:.4f}")
-        writer.close()
-
+        writer.add_scalar("LR", optimizer.param_groups[0]["lr"], epoch)
 
         if valid_acc > best_acc:
             best_acc = valid_acc
@@ -57,6 +57,7 @@ def main():
             print("Best model saved.")
 
     print(f"\nTraining finished. Best Valid Acc: {best_acc:.4f}")
+    writer.close()
 
 
 if __name__ == "__main__":
