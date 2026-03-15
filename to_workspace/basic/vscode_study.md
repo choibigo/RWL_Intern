@@ -141,7 +141,7 @@ ctrl + k ctrl + s로 단축키를 확인할 수 있다.
 
 아마 검색탭에서 보이는 `ab` 옵션이 활성화 돼서 그럴거다.
 
-<img src="vs_search_image.png" width="400">
+<img src="images/vs_search_image.png" width="400">
 
 - 이 옵션이 켜져 있으면 전체 단어가 일치해야하만 검색이 된다.
   - 꺼두자.
