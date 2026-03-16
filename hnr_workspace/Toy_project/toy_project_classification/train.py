@@ -28,7 +28,7 @@ def main():
 
     model = get_model(model_name=CFG.MODEL_NAME, num_classes=CFG.NUM_CLASSES).to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=CFG.LR)
+    optimizer = optim.AdamW(model.parameters(), lr=CFG.LR, weight_decay=0.01)
 
     best_acc = 0.0
 
