@@ -149,3 +149,69 @@ ctrl + k ctrl + s로 단축키를 확인할 수 있다.
 > 참고로 그 옆에 있는 `Aa`는 대소문자 구분임.
 
 > 그리고 `.*`은 정규표현식임 사용 옵션임. 예를 들어 `설.*요`를 검색하면 '설'로 시작하고 '요'로 끝나는 문장을 전부 찾음.
+
+
+### Markdown Preview Enhanced 익스텐션
+
+- 수식이라 그림이 실시간으로 렌더링됨. 변경점들도 거의 실시간으로 렌더링 됨.
+
+- (중요) 현 md 파일과 시각화 페이지의 **스크롤 정렬** 알고리즘이 보다 정확해짐!
+
+- 시각화 창을 따로 떼어냈을 때 원래 호환이 잘 안되고, 파일 바꾸면 반영안되고 그랬는데, 이제 안그럼.
+
+- pdf나 html 출력 가능
+
+### Image preview 익스텐션
+
+- 이거는 별거 아니고 그냥 md 파일 좌측과 커서 올리면 이미지가 팝업되게 만든 만듬.
+  - 생각보다 이미지가 안보일때 불편해서 추가함.
+
+### (중요) Past Image 익스텐션
+
+- 원래 md 파일로 노트 적을때 가장 불편한 것이 이미지 경로를 정리하는거였음.
+
+- 이 익스텐션을 사용하면 이게 해결 됨.
+
+- 우분투의 경우 일단 이거 설치 (익스텐션 사용에 필요):
+
+```bash
+sudo apt update
+sudo apt install xclip
+```
+
+- 이 익스텐션을 사용하면 json 파일 설정에서 이미지들을 바로 어디로 보낼지, 내 마크다운에는 이게 어디로 표시될지 세팅할 수 있음.
+
+- `>setting json`을 검색하면 여러 옵션이 나오는데
+
+![](images/2026-03-18-21-25-33.png)
+
+- 그 중에서 **Workspace**의 Json Setting을 고르면 된다.
+  - 이 설정이 **현재 경로** 기준으로 `.vscode` 폴더와 `settings.json` 파일 만들어져, 이를 **지금 보고 있는** VScode창만의 설정이 되는 것.
+  - 만약 Uset Settings를 고르면 VScode 프로그램에 **글로벌**에 통하는 설정임.
+
+- 그러면 이제 Json 파일에서 이미지 저장 경로와 표시 경로를 지정해보자.
+
+> 근데 이를 매번 편집하기 귀찮으니, 이번 노트를 끝으로 그냥 모든 이미지를 다 한 폴더에 넣어주자. 아 근데 생각해보니 md 파일에 표시되는 위치는 계속 바꿔야하나..? -> **아님!** **유동적**으로 바뀌게 할 수 있음!
+
+아래 처럼 하면 된다.
+```c++
+{
+    // 1. 실제 이미지가 저장될 경로 (예: 프로젝트 최상단 아래의 images 폴더)
+    // "pasteImage.path": "${projectRoot}/images",
+    "pasteImage.path": "${currentFileDir}/images", // 현재 파일 경로 기준, 나중에 images를 통합하면 지울 것.
+    // 2. 마크다운에 찍힐 이미지 경로의 기준점
+    // "pasteImage.basePath": "${projectRoot}/images",
+    "pasteImage.basePath": "${currentFileDir}", // 현재 경로로, 나중에 주석처리할 것
+    // 3. 윈도우 환경에서도 경로 슬래시(/)가 깨지지 않도록 강제 적용
+    "pasteImage.forceUnixStyleSeparator": true,
+    "cmake.sourceDirectory": "/home/theo_lab/RWL_Intern/to_workspace/dev_env_set/etc"
+}
+```
+
+- 현재 위 세팅은 우리 폴더 구조인 현재 currentFileDir와 같은 선상에 있는 images 폴더에 집어넣게 만드는 것. 
+  - 근데 사실 basePath의 경우 조금 이상하게 줘도 알아서 잘 찾아감. 지금도 알아서 images를 경로에 추가해서 인식함.
+    - 그냥 단순 표기상의 깔끔함을 유지하기 위함임.
+
+- 아 물론 일반 ctrl + v로 안됨.
+
+`ctrl + alt + v` 로 이미지 복붙하는거임.
