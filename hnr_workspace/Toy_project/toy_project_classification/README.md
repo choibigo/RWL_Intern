@@ -149,7 +149,7 @@ toy_project_classification/
     - Dataset: CIFAR-100
     - Epochs: 20
     - Batch size: 128
-    - Optimizer: Adam
+    - Optimizer: AdamW
     - Train augmentation:
         - RandomCrop(32, padding=4)
         - RandomHorizontalFlip()
