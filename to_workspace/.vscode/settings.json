@@ -1,0 +1,11 @@
+{
+    // 1. 실제 이미지가 저장될 경로 (예: 프로젝트 최상단 아래의 images 폴더)
+    // "pasteImage.path": "${projectRoot}/images",
+    "pasteImage.path": "${currentFileDir}/images", // 현재 파일 경로 기준, 나중에 images를 통합하면 지울 것.
+    // 2. 마크다운에 찍힐 이미지 경로의 기준점
+    // "pasteImage.basePath": "${projectRoot}/images",
+    "pasteImage.basePath": "${currentFileDir}", // 현재 경로로, 나중에 주석처리할 것
+    // 3. 윈도우 환경에서도 경로 슬래시(/)가 깨지지 않도록 강제 적용
+    "pasteImage.forceUnixStyleSeparator": true,
+    "cmake.sourceDirectory": "/home/theo_lab/RWL_Intern/to_workspace/dev_env_set/etc"
+}
