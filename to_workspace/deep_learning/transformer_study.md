@@ -158,3 +158,9 @@ Positional Encoding은 Transformer 구조에 포함이 안되나?
 - CNN에게도 억지로 시간에 대한 관념을 집어넣는다고 해서 CNN이 시간에 대한 Inductive Bias가 있다고 말하지 않는다.
 
 - **Inductive bias**는 어디까지나 **아키텍처 구조**에 대한 말이지, **입력 데이터 가공**에 대한 말이 아니다.
+
+### Cross? Self Attention?
+
+- Decoder의 중간 단계 Transformer 처럼 **서로 다른 sentence의 서로간의** 상관을(문맥) 측정하는 Attention 과정이면 **Cross Attention**이라고 말함.
+
+- Encoder이나 Decoder의 Masked 된 초반 Transformer은 **자기 자신** 속의 상관을 찾는거라 **Self Attention**이라고 부름
