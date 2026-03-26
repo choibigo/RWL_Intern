@@ -10,7 +10,7 @@
 https://arxiv.org/pdf/1512.03385
 
 
-<img src="images/dl_resnet_image.png" width="600">
+<img src="images/dl_resnet_image.png" width="400">
 
 ## 논문 분석
 
@@ -138,7 +138,7 @@ U-Net은 이미지 segmentation, 이미지 화질 개선, 디퓨젼 모델 등�
 
 - 일단 **Encoder** 단계 부터 보자.
 
-<img src="images/unet_image-2.png" width="600">
+<img src="images/unet_image-2.png" width="300">
 
 3x3 conv + Relu로 우측으로 이동 (채널 수는 두 배씩) (파란색 화살표)
 
@@ -146,7 +146,7 @@ U-Net은 이미지 segmentation, 이미지 화질 개선, 디퓨젼 모델 등�
 
 - **Decoder** 과정
 
-<img src="images/unet_image-3.png" width="600">
+<img src="images/unet_image-3.png" width="300">
 
 3x3 + Relu로 우측으로 이동하며 채널수 절반씩 날림.
 

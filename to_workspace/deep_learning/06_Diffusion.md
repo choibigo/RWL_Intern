@@ -9,7 +9,7 @@
 
 https://arxiv.org/pdf/2303.04137
 
-<img src="images/2026-03-25-11-04-16.png" width="600">
+<img src="images/2026-03-25-11-04-16.png" width="400">
 
 <img src="images/2026-03-25-11-04-32.png" width="600">
 
@@ -308,9 +308,9 @@ $$x_1 = x_0 + \int_{0}^{1} \hat{v}(x_t, t) dt$$
 
 ### Diffusion과 Flow 매칭이 추론 하는 방법 개형 차이
 
-<img src="images/2026-03-26-19-05-29.png" width="600">
+<img src="images/2026-03-26-19-05-29.png" width="400">
 
-<img src="images/2026-03-26-19-05-36.png" width="600">
+<img src="images/2026-03-26-19-05-36.png" width="400">
 
 결국 이게 SDE와 ODE의 차이이기도 함.
 

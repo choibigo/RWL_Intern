@@ -7,7 +7,7 @@
 # 밑바닥부터 시작하는 딥러닝 1
 
 <div align="center">
-  <img src="images/dlfs_0_image-1.png" width="600">
+  <img src="images/dlfs_0_image-1.png" width="400">
 </div>
 
 - 여러번 배운 내용이고, 이후에 파이토치와 함께 한번 더 복습할 것이기에 딥러닝 이론 위주로 복습하는 방식으로 진행할 예정.

@@ -25,7 +25,7 @@ https://www.youtube.com/watch?v=vJF3TBI8esQ
 
 - 물론 RGB 이미지면 쪼갠 한 조각에 3개의 채널이 마찬가지로 있다.
 
-<img src="images/2026-03-23-19-05-45.png" width="600">
+<img src="images/2026-03-23-19-05-45.png" width="300">
 
 - 0~255로 있던 값들은 전부 0~1로 정규화를 시키고.
 
@@ -33,7 +33,7 @@ https://www.youtube.com/watch?v=vJF3TBI8esQ
 
 - 그리고 이를 모든 구역들의 조각에 똑같이한다.
 
-<img src="images/2026-03-23-19-07-53.png" width="600">
+<img src="images/2026-03-23-19-07-53.png" width="400">
 
 즉, 지금은 나눠진 조각의 수 만큼 평탄화로 만들어진 벡터가 존재한다.
 
