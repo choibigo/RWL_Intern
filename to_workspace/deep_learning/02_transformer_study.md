@@ -2,30 +2,30 @@
 
 - [x] Attention Is All You Need 정독
 - [x] 모르는 부분 점검
-- [ ] 정리
-- [ ] 번역기 논문 구현
+- [x] 정리
+- [x] 번역기 논문 구현
 
 ---
 
-![](images/2026-03-18-21-42-02.png)
+<img src="images/2026-03-18-21-42-02.png" width="600">
 
-![](images/2026-03-18-21-42-10.png)
+<img src="images/2026-03-18-21-42-10.png" width="600">
 
-![](images/2026-03-18-21-42-16.png)
+<img src="images/2026-03-18-21-42-16.png" width="600">
 
-![](images/2026-03-18-21-42-22.png)
+<img src="images/2026-03-18-21-42-22.png" width="600">
 
-![](images/2026-03-18-21-42-27.png)
+<img src="images/2026-03-18-21-42-27.png" width="600">
 
-![](images/2026-03-18-21-42-47.png)
+<img src="images/2026-03-18-21-42-47.png" width="600">
 
-![](images/2026-03-18-21-42-55.png)
+<img src="images/2026-03-18-21-42-55.png" width="600">
 
-![](images/2026-03-18-21-43-01.png)
+<img src="images/2026-03-18-21-43-01.png" width="600">
 
-![](images/2026-03-18-21-43-08.png)
+<img src="images/2026-03-18-21-43-08.png" width="600">
 
-![](images/2026-03-18-21-43-13.png)
+<img src="images/2026-03-18-21-43-13.png" width="600">
 
 
 ## Positional Encoding
@@ -38,7 +38,7 @@ RNN과 다르게 Attention 알고리즘은 순서와 위치에 대한 자각이 
 
 - 아래 처럼 원래 인풋 임베딩에 그대로 Positional Encoding을 더한다.
 
-![alt text](images/transformer_pe_image.png)
+<img src="images/transformer_pe_image.png" width="600">
 
 - Positional Encoding을 PE라고 하면 그냥 아웃풋이 $x = E + PE$ 가 되는 것이다.
 
@@ -61,13 +61,13 @@ $PE_{(pos, 2i+1)} = \cos(pos / 10000^{2i/d_{model}})$
 
 $\sin(pos/ 10000^{0/512})$ 의 그래프
 
-![alt text](images/transformer_pe_image-2.png)
+<img src="images/transformer_pe_image-2.png" width="600">
 <image>
 
 
 $\sin(pos/ 10000^{255/512})$ 의 그래프
 
-![alt text](images/transformer_pe_image-1.png)
+<img src="images/transformer_pe_image-1.png" width="600">
 
 놀랍지 않냐? 와우!!
 

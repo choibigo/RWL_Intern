@@ -11,7 +11,7 @@ https://youtu.be/AsNTP8Kwu80?si=LTTvqACQVUHUAFFc
 - 그대로 ReLU 통과하고 또 새로운 Hidden state 저장.
 - 모델 통과해서 저장하고 이를 계속 반복.
 
-![](images/2026-03-21-16-14-00.png)
+<img src="images/2026-03-21-16-14-00.png" width="600">
 
 - 시계열 데이터의 길이가 총 3개($t=1, 2, 3$)라고 가정
 - RNN이 처음 가동될 때는 과거의 기억이 존재하지 않음. 그래서 보통 첫 은닉 상태($h_0$)는 모두 0으로 채워진 영벡터(Zero Vector)로 시작

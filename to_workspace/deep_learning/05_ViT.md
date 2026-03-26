@@ -10,7 +10,7 @@
 AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE에서 제안됨.
 https://arxiv.org/pdf/2010.11929
 
-![](images/2026-03-23-18-54-54.png)
+<img src="images/2026-03-23-18-54-54.png" width="600">
 
 
 https://www.youtube.com/watch?v=vJF3TBI8esQ
@@ -19,13 +19,13 @@ https://www.youtube.com/watch?v=vJF3TBI8esQ
 
 - 근데 이미지가 들어가니 이미지를 쪼개서 넣을 뿐.
 
-![](images/2026-03-23-19-03-15.png)
+<img src="images/2026-03-23-19-03-15.png" width="600">
 
 이렇게 먼저 이미지를 여럿으로 쪼갠다. 각각의 조각들은 patches라고 부른다.
 
 - 물론 RGB 이미지면 쪼갠 한 조각에 3개의 채널이 마찬가지로 있다.
 
-![](images/2026-03-23-19-05-45.png)
+<img src="images/2026-03-23-19-05-45.png" width="600">
 
 - 0~255로 있던 값들은 전부 0~1로 정규화를 시키고.
 
@@ -33,7 +33,7 @@ https://www.youtube.com/watch?v=vJF3TBI8esQ
 
 - 그리고 이를 모든 구역들의 조각에 똑같이한다.
 
-![](images/2026-03-23-19-07-53.png)
+<img src="images/2026-03-23-19-07-53.png" width="600">
 
 즉, 지금은 나눠진 조각의 수 만큼 평탄화로 만들어진 벡터가 존재한다.
 
@@ -41,14 +41,14 @@ https://www.youtube.com/watch?v=vJF3TBI8esQ
 
 - 이들을 이제 문장마냥 1열로 붙이면 된다.
 
-![](images/2026-03-24-16-04-01.png)
+<img src="images/2026-03-24-16-04-01.png" width="600">
 
 - 이 토큰들을 하나의 학습 되는 선형 투영 (Trainable Linear Projection) 층을 통과함. MLP는 아니고 단일 레이어임. 이제 제대로된 임베딩이 됐음.
     - 이는 트랜스포머가 모든 레이어에서 단일 크기의 벡터를 사용하기 위해 이 패치의 임베딩의 크기를 D로 맞추기 위해서임.
 
 - 여기에 Positional Embedding을(마찬가지로 학습) 더하고, Attention 블록을 돌린다.
 
-![](images/2026-03-24-16-05-40.png)
+<img src="images/2026-03-24-16-05-40.png" width="600">
 
 #### 근데 이 많은 아웃풋 중에서 뭘 어떻게 해서 분류하냐고?
 

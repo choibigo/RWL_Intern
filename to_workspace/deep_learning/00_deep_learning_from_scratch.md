@@ -1145,7 +1145,7 @@ $$MSE = E\left[(y - \hat{f}(x))^2\right] = \text{Bias}(\hat{f}(x))^2 + \text{Var
 
 - 하지만 **파라미터 수**가 **훈련 데이터의 수보다 압도적**으로 많아지는 **초거대 모델 구간**으로 진입하면, 치솟았던 Loss 증가 또는 분산의 증가가 **다시 하강**하는, **두번째 하강(Second Descent)** 이 발생한다.
 
-![alt text](images/dl_2_image.png)
+<img src="images/dl_2_image.png" width="600">
 
 - 위 표 처럼 모델이 복잡해짐에 따라 Train error가 어느 시점 부터 0이 된다.
   - 하지만 그 동시에 Variance에 의해 Test error가 꼭대기로 올라가는, 최악의 일반화 성능을 보여준다.
@@ -1157,15 +1157,15 @@ $$MSE = E\left[(y - \hat{f}(x))^2\right] = \text{Bias}(\hat{f}(x))^2 + \text{Var
 
 - 처음에는 해당 데이터들을 설명할 적당한 함수를 찾는다. (뉴런 4개)
 
-![alt text](images/dl_2_image-1.png)
+<img src="images/dl_2_image-1.png" width="600">
 
 - 임계점 부근에서는 **훈련 데이터**를 억지로 다 맞추는 뾰족하고 복잡한 함수 하나를 간신히 찾아낸다. (Train에 대한 Loss는 적은데 Variance가 극도로 높음) (뉴런 24개)
 
-![alt text](images/dl_2_image-2.png)
+<img src="images/dl_2_image-2.png" width="600">
 
 - 하지만 파라미터가 극단적으로 늘면 결국 모든 것을 맞출 수 있는 부드러운 방법을 찾게 된다. (뉴런 1735개)
 
-![alt text](images/dl_2_image-3.png)
+<img src="images/dl_2_image-3.png" width="600">
 
 > 그러니까 **어중간하게 복잡하게 만들 바에**는, 아예 훈련 데이터 수보다 **파라미터 수가 압도적**으로 많아질 때까지 모델의 크기를 키워버려라
 
