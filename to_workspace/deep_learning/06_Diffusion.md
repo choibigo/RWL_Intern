@@ -9,7 +9,7 @@
 
 https://arxiv.org/pdf/2303.04137
 
-<img src="images/2026-03-25-11-04-16.png" width="400">
+<img src="images/2026-03-25-11-04-16.png" width="600">
 
 <img src="images/2026-03-25-11-04-32.png" width="600">
 
@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=firXjwZ_6KI
 
 - 일단 이미지에서 랜덤한 이미지를 뽑는다고 가정해보자.
 
-<img src="images/2026-03-25-11-06-24.png" width="600">
+<img src="images/2026-03-25-11-06-24.png" width="400">
 
 $X_1 \sim dataset$  
  
