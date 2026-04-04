@@ -1,4 +1,4 @@
-## 계획
+### 계획
 
 - [x] Attention Is All You Need 정독
 - [x] 모르는 부분 점검
@@ -6,6 +6,8 @@
 - [x] 번역기 논문 구현
 
 ---
+
+# Transformer: Attention Is All You Need 
 
 <img src="images/2026-03-18-21-42-02.png" width="800">
 
