@@ -20,8 +20,7 @@
 ### Deep Learning
 - [x] 밑바닥 부터 시작하는 딥러닝 ~ 03.05
 - [x] 혁펜하임: 인스톨! 파이토치 (https://www.youtube.com/playlist?list=PL_iJu012NOxdhFmM2aw6bwpZTMFdsPxws)
-- [ ] Toy Project
+- [x] Toy Project
     - [x] Docker로 환경 세팅 + Conda에서 코드 실행
     - [x] Classification: ResNet Cifar100 학습 해보기 (dataloader는 customize하기)
     - [x] Translation: Transformer Multi30k
-    - [ ] Action Chunking Transformer 파이프라인 구축
