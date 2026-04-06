@@ -24,3 +24,5 @@
     - [x] Docker로 환경 세팅 + Conda에서 코드 실행
     - [x] Classification: ResNet Cifar100 학습 해보기 (dataloader는 customize하기)
     - [x] Translation: Transformer Multi30k
+
+- 현재 [개인 리포](https://github.com/Bigenlight/For-Neural-Network-Improvement-Private-)로 이전 함
