@@ -44,24 +44,21 @@ git commit -m ""을 통해 수정 내용들을 묶어서 local Repository로 보
 ## b.
 
    ``` bash
-   git remote add origin <github 주소>
+   git remote add origin <github 주소> # github 주소와 연결
    ```
-- github 주소와 연결한다.
 
 ## c.
    
    ``` bash
-   git branch [브랜치명]
-   git checkout [브랜치명]
+   git branch [브랜치명]   # branch 생성
+   git checkout [브랜치명]  # 특정 branch로 이동
    ```
-- git branch는 branch를 만드는 명령어고 git checkout은 특정 branch로 이동하는 명령어다.
 
 ## d.
 
    ``` bash
-   git branch
+   git branch # 현재 branch 확인
    ```
-- 원하는 branch로 이동했는지 확인하는 명령어다.
 
 ## e.
 
