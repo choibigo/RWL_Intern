@@ -2,6 +2,8 @@
 ###### git은 컴퓨터 파일의 변경사항을 추적하고, 여러 명의 사용자들 간에 파일들의 작업을 조율 하기 위한 분산 버전 관리 시스템
 -----
 
+![git_environment](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbuxYMh%2FbtsKNrMqnjn%2FAAAAAAAAAAAAAAAAAAAAAB_Dwd3b_36Rqb5g6dwNA3zxVPThOx-XyhtcE9PiQV1_%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1782831599%26allow_ip%3D%26allow_referer%3D%26signature%3DUeY6IELXg8kdvHVFAiyOBYKU2Ec%253D)
+
 # 1. Basic 명령어
 ## a.
    ``` bash
