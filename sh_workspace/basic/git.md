@@ -25,7 +25,7 @@ git commit -m ""을 통해 수정 내용들을 묶어서 local Repository로 보
 - git push를 통해 local Repository에 있던 commit들을 Github에 올린다.
 
 ## d.
-    ``` bash
+   ``` bash
    git pull origin main
    ```
 - git pull을 통해 다른 사람들의 수정내용을 원격 저장소로부터 내 컴퓨터(로컬)로 받아올 수 있다.
