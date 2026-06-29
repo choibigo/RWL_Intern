@@ -69,5 +69,11 @@ git commit -m ""을 통해 수정 내용들을 묶어서 local Repository로 보
    git merge [다른 브랜치 이름]
    git branch -d [브랜치 이름]
    ```
--한 branch에서 수정사항을 다른 branch랑 병합하고 있었던 branch를 삭제한다.
- 
+- 한 branch에서 수정사항을 다른 branch랑 병합하고 있었던 branch를 삭제한다.
+
+### **
+   ```bash
+   git config --global user.name "~~"
+   git confin --global user.email "~~"
+   ```
+- commit을 누가 보냈는지 나타내는 명령어다.(github 처음 설치 후 한 번만 작성)
