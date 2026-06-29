@@ -31,7 +31,7 @@
 -목차
 
 # URL 넣기
-- [이름](<URL>)
+- [이름](링크)
   
 -[한승학](https://github.com/choibigo/RWL_Intern/tree/main/sh_workspace)
 
