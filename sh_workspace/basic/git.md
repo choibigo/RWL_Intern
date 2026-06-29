@@ -34,9 +34,40 @@ git commit -m ""을 통해 수정 내용들을 묶어서 local Repository로 보
 
 ###### branch는 같은 프로젝트에서 기존 코드에 영향을 주지 않고 독립적으로 개발할 수 있는 환경
 
+## a.
+
    ``` bash
    git init
    ```
 - VSCode를 이용해서 먼저 파일을 만들고 git init을 통해 Git 저장소로 초기화 할 때 사용한다.
 
-  
+## b.
+
+   ``` bash
+   git remote add origin <github 주소>
+   ```
+- github 주소와 연결한다.
+
+## c.
+   
+   ``` bash
+   git branch [브랜치명]
+   git checkout [브랜치명]
+   ```
+- git branch는 branch를 만드는 명령어고 git checkout은 특정 branch로 이동하는 명령어다.
+
+## d.
+
+   ``` bash
+   git branch
+   ```
+- 원하는 branch로 이동했는지 확인하는 명령어다.
+
+## e.
+
+   ``` bash
+   git merge [다른 브랜치 이름]
+   git branch -d [브랜치 이름]
+   ```
+-한 branch에서 수정사항을 다른 branch랑 병합하고 있었던 branch를 삭제한다.
+ 
