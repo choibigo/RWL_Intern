@@ -5,6 +5,7 @@
 - [김한누리](https://github.com/choibigo/RWL_Intern/tree/main/hnr_workspace)
 - [조민제](https://github.com/choibigo/RWL_Intern/tree/main/mj_workspace)
 - [최태오](https://github.com/choibigo/RWL_Intern/tree/main/to_workspace)
+- [한승학](https://github.com/choibigo/RWL_Intern/tree/main/sh_workspace)
 
 ## 커리큘럼
 ### 기본
