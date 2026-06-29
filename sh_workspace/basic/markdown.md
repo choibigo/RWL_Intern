@@ -35,6 +35,6 @@
 -[한승학](https://github.com/choibigo/RWL_Intern/tree/main/sh_workspace)
 
 # 이미지 넣기
-### ![이미지](이미지 주소 및 경로)
+- ![이미지](이미지 주소 및 경로)
 ![이미지](https://devin.aks.ac.kr/image/ad725c61-f450-4c29-ab77-3cf4e6e9abd1?preset=orig)
 
