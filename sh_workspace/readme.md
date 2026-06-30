@@ -7,7 +7,7 @@
 - [x] MD 파일 작성
 
 ### 환경 세팅
-- [ ] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
+- [x] Anaconda(추가 환경 생성 및 Lib 설치 해보기)
 - [ ] Docker
     - [ ] https://www.youtube.com/watch?v=MsMHStVibEk&list=PLlTylS8uB2fDLJRJCXqUowsOViG-ZKnWy&index=12 ~ 재생목록 12 (스프링 부트 Dockerfile 만들기 [ 도커 (Docker) 기초 ])
     - [ ] https://www.youtube.com/watch?v=OPmSQCfzl1Q&list=PLtUgHNmvcs6rS5aNCRIZtVcyk3gRX2iOd ~ 2.8
