@@ -55,9 +55,11 @@
     conda env update -f environment.yml #환경 업데이트
 ```
 
-![conda env list](images/conda_env_list.png)
+![conda env list](../../images/conda_env_list.png)
 - conda env list 확인
-![conda install numpy](images/conda_install_numpy.png)
+
+
+![conda install numpy](../../images/conda_install_lib.png)
 - conda conda install libarart 해보기
 
     
