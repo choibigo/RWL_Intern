@@ -60,6 +60,14 @@
 
 
 ![conda install numpy](../../images/conda_install_lib.png)
-- conda conda install libarart 해보기
+- conda conda install library 해보기
 
-    
+
+![conda --export 사용](../../images/replicate.png)
+- env 안에 패키지 목록들을 파일로 복제
+
+![conda create new env using --file](../../images/create_new_env_using_file.png)
+- 위의 파일을 이용하여 똑같은 환경을 생성
+
+![conda remove](../../images/remove_env.png)
+- conda remove를 이용하여 환경 삭제
