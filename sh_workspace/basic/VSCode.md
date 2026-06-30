@@ -5,7 +5,7 @@
 ### git graph를 보면 이전 다른 사람들이 했던 commit들도 시간 순으로 확인할 수 있다.
 
 
-![git graph](/../images/)
+![git graph](/../images/git_graph.png)
 
 ### +를 누르면 git add가 된다.
 
