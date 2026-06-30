@@ -39,3 +39,9 @@
 ![대한민국](https://devin.aks.ac.kr/image/ad725c61-f450-4c29-ab77-3cf4e6e9abd1?preset=orig)
 <img src="https://devin.aks.ac.kr/image/ad725c61-f450-4c29-ab77-3cf4e6e9abd1?preset=orig" width="200">
 
+*bold*
+**bold**
+
+| table | 1 | 2 | 3 |
+| : - | : - : | - : |
+| 1| 2 | 3 | 
