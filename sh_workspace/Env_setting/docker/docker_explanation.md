@@ -101,6 +101,31 @@
 - 위의 명령어를 통해 docker-compose.yml 파일을 실행한다.
 
 
+- practice)
+
+![docker compose file](../../images/docker_compose_file.png)
+
+
+- compose file
+
+![docker_compose_up](../../images/docker_compose_up.png)
+
+
+- docker compose up을 통해 compose file기반 container 생성
+
+
+![docekr_compose_up_result](../../images/docker_compose_up_result.png)
+
+
+- 그 결과 container 2개가 돌아간다(compose 파일에서 돌아가는 container가 2개 있었기 때문)
+
+
+![docker_compose_-f](../../images/docker_compose_-f_up.png)
+
+
+- -f옵션을 이용해서 특정 compose 파일을 실행시켜서 container를 생성
+
+
 
 
 
