@@ -78,8 +78,11 @@
 
 
 ![docker_build](../../images/docker_build.png)
-- ->dockerfile을 실행하기 위한 docker build 명령어
+- ->dockerfile을 실행하기 위한 docker build 명령어world
 
+- ex) 
+
+![docker_build_practice](../../images/docker_build_practice.png)
 
 
 
