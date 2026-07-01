@@ -26,6 +26,42 @@
 
 #### command를 어떻게 사용할지 모르겠거나 어떤 옵션을 사용할 수 있을지 궁금하다면 맨 뒤에 --help를 붙히면 된다.
 
+**docker command를 쓸 때 최대한 구체화 한 상태에서 --help를 쓰며 명령어를 쓰면 된다**
+
+- ex)
+    
+    - httpd 이미지를 기반으로 container를 실행시킴
+    
+    
+    ![docker_container_run](../../images/docker_container_run.png)
+
+    - 잘 되는지 결과 확인
+    
+    
+    ![result_ckeck](../../images/docker_result.png)
+
+
+    - container 중지시킴
+
+
+    ![docker_stop](../../images/docker_container_stop.png)
+
+---
+# Docker 통신
+###### container들은 독립적인 환경에서 실행되기 때문에 컨테이너 밖에서 접근할 수 없다. 그래서 컨테이너와 통신이 필요한건데 이를 위해서는 'p' 옵션을 사용하여 호스트의 포트와 컨테이너의 포트를 설정해야 한다.
+
+
+![port](../../images/port.png)
+
+
+![port_structure](../../images/port_structure.png)
+
+
+
+
+
+
+
 
 
 
