@@ -85,6 +85,22 @@
 ![docker_build_practice](../../images/docker_build_practice.png)
 
 
+----
+# Docker compose 파일
+###### compose 파일은 도커 애플리케이션의 서비스, 네트워크, 볼륨 등의 설정을 yaml 형식으로 작성하는 파일
+
+
+- 이를 이용하여 똑같은 환경의 컨테이너들을 언제든지 다시 만들 수 있도록 환경을 정의해 높은 설정 파일
+
+
+
+``` bash
+    docker-compose up
+```
+
+- 위의 명령어를 통해 docker-compose.yml 파일을 실행한다.
+
+
 
 
 
