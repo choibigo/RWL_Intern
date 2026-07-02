@@ -234,6 +234,22 @@
         docker build ${option}${dockerfile directory}
     ```
 
+### 해볼 것: dockerfile을 만들어서 그 이미지로 container를 만들었을 때 container 내부에서 nvidia-smi가 돌아가는지 확인해보기.
+
+### *container 안에서 gpu을 사용하려면 항상 --gpus all 명령어를 사용해야 됨!
+
+    ```bash
+    docker run --gpus all myimage
+    ```
+
+
+![docker_file](../../images/docker_file.png)
+
+
+   
+![nvidia_result](../../images/nvidia_result.png)
+
+
 
 
 

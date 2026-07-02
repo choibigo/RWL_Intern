@@ -1,3 +1,4 @@
-FROM httpd
+FROM nvidia/cuda:12.4.1-base-ubuntu22.04
 
-COPY index.html /usr/local/apache2/htdocs/
+CMD ["sleep","infinity"]
+
