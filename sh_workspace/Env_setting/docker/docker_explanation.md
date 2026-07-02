@@ -148,8 +148,12 @@
 
 - ex) 
 
+
+
 ![docker_build_practice](../../images/docker_build_practice.png)
 
+
+![docker_build_result](../../images/docker_build_result.png)
 
 ----
 # Docker compose 파일
