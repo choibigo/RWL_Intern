@@ -1,6 +1,6 @@
 # Docker란?
 ###### 도커(Docker)는 컨테이너를 만들고 관리하는 프로그램이다.
-###### container는 프로그램이 실행되는 독립적인 공간이다.
+###### container는 프로그램이 실행되는 독립적인 공간이다.(like minicomputer)
 
 -----
 
@@ -16,6 +16,8 @@
 - image layer는 읽을 수만 있으며(수정 불가) container layer는 읽고 쓸 수가 있다. 아래 그림처럼 다른 container들이 하나의 image를 구성하는 image layer들을 공유한다.
 
 ![layer](../../images/layer.png)
+
+
 
 ---
 # Docker command
@@ -45,6 +47,70 @@
 
 
     ![docker_stop](../../images/docker_container_stop.png)
+
+
+
+
+    # Image
+###### image: 닌텐도 칩과 같이 환경을 설치하기 위한 정보들이 들어가 있는 것.
+
+- image를 다운받기 위해서는 아래와 같은 명령어를 사용하면 된다.(dockerhub이라는 사이트로부터 이미지를 설치한다.)
+
+    ``` bash
+        docker pull nginx
+    ```
+
+
+- :다음에 오늘 내용은 tag명으로 그 이미지의 어떤 버전인지를 나타내고 :입력을 안 한다면 자동으로 가장 최신 이미지인 latest가 다운받아진다.
+    ```bash
+        docker pull nginx:latest
+    ```
+
+- 중단된 컨테이너에서 사용하고 있는 이미지는 원래 삭제하지 못 하지만 -f를 붙힘으로써 강제로 삭제할 수 있다.
+
+    ```bash
+        docker image rm -f nginx
+    ```
+
+
+- 실행되고 있는 컨테이너에서 사용되고 있는 image를 제외하고 나머지 모든 image들을 삭제 하는 명령어
+
+    ```bash
+        docker image rm $(docker images -q)
+    ``` 
+    
+    # Container
+
+    ``` bash
+        docker container create mysql # container를 생성만 하고 실행은 안 한다. 컴퓨터에 원하는 image가 설치되어 있지 않아서 자동 설치한다.
+        docker container start {id_name} # 생성되어 있는 container를 실행한다.
+        docker container run mysql # create과 start를 한 번에 실행한다.
+        docker container rm -f testcontainer # 진행 중인 컨테이너도 -f 때문에 그냥 삭제해버린다. 
+    ```
+
+
+    # log 조회
+
+    ``` bash
+        docker logs {id}  # 지금까지 저장되어 있는 로그 한 번만 보여줌.
+        docker logs --tail 10 {id} # 로그의 마지막 10줄만 보여줘라.
+        docker logs -f {id} # 계속해서 실시간으로 로그를 받을 수 있음.
+    ```
+
+- 위의 명령어를 통해 현재 실행되고 있는 container의 log들을 확인할 수 있다.
+
+
+
+    # 실행 중인 container 내부에 들어가기
+
+    ``` bash
+        docker exec -it {id} bash
+    ```
+
+
+
+
+
 
 ---
 # Docker 통신
@@ -94,9 +160,9 @@
 
 
 
-``` bash
-    docker-compose up
-```
+    ``` bash
+        docker compose up
+    ```
 
 - 위의 명령어를 통해 docker-compose.yml 파일을 실행한다.
 
@@ -124,6 +190,46 @@
 
 
 - -f옵션을 이용해서 특정 compose 파일을 실행시켜서 container를 생성
+
+
+---
+# Docker 이미지 생성 및 저장
+
+
+- 이미지를 생성하는 경우
+    1. 특정 이미지에 자주 사용하는 설정을 추가하여 편하게 사용하고 싶을 경우
+
+    2. 본인이 개발한 애플리케이션을 이미지로 생성하고 싶은 경우
+
+
+    * 컨테이너로 이미지 생성하기
+        * container_name: 이미지로 만들고자 하는 컨테이너 이름
+        * image_name: 생성할 이미지의 이름
+    
+
+    ``` bash
+        docker commit {container_name}{image_name}
+    ``` 
+
+
+
+    * save와 load 커맨드를 사용하여 이미지 불러오기
+    ``` bash
+        docker save -o test123.tar test123
+    ```
+
+    ``` bash
+        docker load -i test123.tar
+    ```
+
+
+    * Dockerfile로 이미지 생성하기
+
+
+    ``` bash
+        docker build ${option}${dockerfile directory}
+    ```
+
 
 
 
