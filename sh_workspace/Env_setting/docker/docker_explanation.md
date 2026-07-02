@@ -238,9 +238,10 @@
 
 ### *container 안에서 gpu을 사용하려면 항상 --gpus all 명령어를 사용해야 됨!
 
-    ```bash
-    docker run --gpus all myimage
-    ```
+```bash
+docker run --gpus all myimage
+
+```
 
 
 ![docker_file](../../images/docker_file.png)
