@@ -140,7 +140,7 @@
     - CMD: docker container가 실행될 때 실행할 커맨드를 지정
     - ENTRYPOINT: 똑같이 도커 이미지가 실행될 때 사용되는 기본 커맨드를 지정하지만 CMD와 다르게 수정할 수 없다.
     - WORKDIR: 커맨드를 실행하는 디렉토리를 지정
-    - VOLLUME: 컨테이너의 데이터를 영구적으로 저장하기 위한 저장 공간을 생성하거나 연결하는 명령어
+    - VOLUME: 컨테이너의 데이터를 영구적으로 저장하기 위한 저장 공간을 생성하거나 연결하는 명령어
 
 
 ![docker_build](../../images/docker_build.png)
