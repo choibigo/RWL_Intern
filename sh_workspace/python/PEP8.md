@@ -322,13 +322,88 @@
         if x is not None: # 이렇게 사용
     ```
 
-4. lamba 대신 def 사용 (함수 만들 때)
+4. 비교 연산자는 전부 구현하라 (클래스 내부에서 구현해야 된다. 왜냐하면 클래스끼리는 Python에서 비교를 할 수 없기 때문에 클래스 내부에서 따로 만들어줘야 한다.)
 
-5. Exception은 Exception을 상속(우리가 만드는 예외는 일반적인 프로그램 오류이기 때문에 Exception을 상속한다.)
+5. lamba 대신 def 사용 (함수 만들 때)
+
+6. Exception은 Exception을 상속(우리가 만드는 예외는 일반적인 프로그램 오류이기 때문에 Exception을 상속한다.)
 
 ![Exception](../images/Exception.png)
 
 - Exceotion 상속 구조
+
+7. except: 를 쓰지 말라 (except: 는 너무 광범위해서 내가 원하지 않는 에러들까지 잡아버린다.)
+
+
+- ex) 
+
+
+``` python
+    try:
+        x = int(input())
+    except:
+        print("에러 발생")
+```
+- ValueError뿐만 아니라 KeyboardInterrupt까지 잡아버려서 Ctrl + C로 프로그램이 안 멈출 수도 있다.
+
+
+- --> 아래 코드처럼 쓰는 게 좋음.
+``` python
+    try:
+        x = int(input())
+    except
+        print("숫자를 입력해야 합니다.")
+```
+
+8. ```try``` 안에는 에러가 날 것으로 예상하는 코드만 최소한으로 넣어라.
+
+
+9. 자원은 ```with```를 사용하라. 핵심은 파일, DB연결, 네트워크 연결처럼 열고 닫아야 하는 자원은 ```with```를 쓰는 게 안전하다.
+
+
+10. ```return```을 명확하게 작성해라.
+
+- ex)
+
+``` python
+    def foo(x):
+        if x >= 0:
+            return math.sqrt(x)
+        return None
+```
+- 위와 같이 코드를 작성해야 한다. return 값을 정확히 지정해주지 않는다면, 자동으로 ```NOne```을 반환한다. 그렇기 때문에 그런 경우에도 None이라고 명시해줘야 한다.
+
+
+11. 문자열 앞/뒤 확인은 ```startswith```, ```endswith```를 이용한다. (가독성이 좋기 때문에)
+
+- ex)
+
+``` python
+    # 나쁜 코드
+    if name[:3] == "abc":
+        print("abc로 시작함")
+
+    # 좋은 코드
+    if name.startswith("abc"):
+        print("abc로 시작함")
+    
+```
+
+13. 빈 리스트, 빈 문자열은 그냥 ```if seq```라고 하면 됨. (빈 리스크나 문자열 등은 애초에 false로 나오기 대문이다.)
+
+
+14. if자체가 True, False를 비교해주기 때문에 굳이 ```greeting == True:```와 같이 쓰지 마라.
+
+
+15. 함수나 변수 둘 다 타입 힌트를 쓰는게 좋을 거다.
+
+- ex) 
+``` python
+    age: int = 20
+    name: str = "Tom"
+    height: float = 175.5
+    is_student: bool = True
+```
 
 
 
