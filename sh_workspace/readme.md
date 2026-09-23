@@ -26,4 +26,3 @@
     - [x] Classification: ResNet Cifar100 학습 해보기 (dataloader는 customize하기)
     - [x] Translation: Transformer Multi30k (dataloader는 customize하기)
     
-
